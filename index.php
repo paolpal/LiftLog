@@ -12,6 +12,8 @@
             include DIR_LAYOUT."header.php";
             include DIR_LAYOUT."navbar.php";
         ?>
-        <section></section>
+        <section>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam itaque, exercitationem, quae laborum quis amet aliquid molestiae, nisi ea ullam dolorum rerum doloribus quisquam cum. Architecto modi quaerat odio aliquid?</p>
+        </section>
     </body>
 </html>
