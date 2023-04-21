@@ -7,6 +7,7 @@
         <meta charset="utf-8">
         <meta name="author" content="Paolo Palumbo">
         <link rel="stylesheet" href="css/navbar.css">
+        <link rel="stylesheet" href="css/header.css">
     </head>
     <body>
         <?php
