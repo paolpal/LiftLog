@@ -1,0 +1,82 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+section {
+    padding-top: 3.5%;
+    padding-left: 25%;
+    padding-right: 25%;
+    padding-bottom: 3.5%;
+    margin: 0;
+}
+
+
+section h1 {
+    font-size: 2em;
+    text-align: left;
+}
+
+article.benvenuto {
+    font-size: xx-large;
+    text-transform: uppercase;
+    border-left: 5px solid;
+    border-color: orangered;
+    border-radius: 5px;
+    padding-left: 5px;
+}
+
+article.benvenuto b {
+    font-size: larger;
+}
+
+article.benvenuto em {
+    font-style: normal;
+    color: orangered;
+}
+
+.chisiamo .lista{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.chisiamo .scheda {
+    display: block;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.chisiamo img {
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+}
+
+
+.chisiamo div {
+    margin: 10px;
+    padding: 20px;
+    font-size: 18px;
+}
+
+.dovetrovarci {
+    display: flex;
+    background-color: aqua;
+}
+
+.dovetrovarci .info {
+    display: block;
+    padding-left: 30px;
+}
+
+.dovetrovarci .info h1{
+    text-align: center;
+}
+
+.dovetrovarci .map {
+    background-color: beige;
+}
+.map iframe {
+    width: 100%;
+}
