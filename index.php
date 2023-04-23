@@ -12,17 +12,21 @@
         <link rel="stylesheet" href="css/navbar.css">
         <link rel="stylesheet" href="css/master.css">
         <link rel="stylesheet" href="css/header.css">
+        <link rel="stylesheet" href="css/login_form.css">
+        <script src="js/login_util.js"></script>
         <script src="https://kit.fontawesome.com/65c740b968.js" crossorigin="anonymous"></script>
     </head>
     <body>
         <?php
             include DIR_LAYOUT."header.php";
+            include DIR_LAYOUT."login_form.php";
         ?>
         <nav>
             <a href="#benvenuto">Home</a>
             <a href="#chisiamo">Chi siamo</a>
+            <a href="#motivazione">La motivazione</a>
             <a href="#dovetrovarci">Dove trovarci</a>
-            <a href="" class="split">Login</a>
+            <a onclick="open_login_form()" class="split">Login</a>
         </nav>
         <div class="background-benvenuto">
             <section class="benvenuto" id="benvenuto">
@@ -62,7 +66,7 @@
             </div>
         </section>
         <div class="background-motivazione">
-            <section class="motivazione">
+            <section class="motivazione" id="motivazione">
                 <h2>La Motivazione</h2>
                 <blockquote>
                     “La forza non viene dal vincere. Le tue lotte sviluppano la tua forza. Quando passi attraverso delle avversità e decidi di <em>non arrenderti, quella è la forza.</em>”
