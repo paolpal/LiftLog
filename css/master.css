@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    color: #333;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -11,14 +12,24 @@ section {
     margin: 0;
 }
 
+.background-benvenuto {
+    background-image: url(https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);
+    background-size: cover;
+}
 
-section h1 {
+section.benvenuto {
+    background-color: rgba(0, 0, 0, 0.4);
+    height: 600px;
+}
+
+section h2 {
     font-size: 2em;
     text-align: left;
 }
 
 article.benvenuto {
-    font-size: xx-large;
+    color: antiquewhite;
+    font-size: xxx-large;
     text-transform: uppercase;
     border-left: 5px solid;
     border-color: orangered;
@@ -30,7 +41,7 @@ article.benvenuto b {
     font-size: larger;
 }
 
-article.benvenuto em {
+article em {
     font-style: normal;
     color: orangered;
 }
@@ -47,6 +58,11 @@ article.benvenuto em {
     font-weight: 600;
 }
 
+.scheda .ruolo {
+    color: orangered;
+    padding: 0%;
+}
+
 .chisiamo img {
     width: 200px;
     height: 200px;
@@ -60,9 +76,37 @@ article.benvenuto em {
     font-size: 18px;
 }
 
+.background-motivazione {
+    background-image: url(https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);
+    background-size: cover;
+}
+
+.motivazione {
+    background-color: rgba(0, 0, 0, 0.4);
+    height: 600px;
+    color: antiquewhite;
+}
+
+.motivazione blockquote {
+    font-size: 2em;
+    font-style: italic;
+    font-weight: 700;
+    text-align: center;
+}
+
+blockquote em {
+    color: orangered;
+}
+
+.motivazione img {
+    width: 50%;
+    filter: invert(100%);
+}
+
 .dovetrovarci {
     display: flex;
-    background-color: aqua;
+    padding-left: 0%;
+    padding-right: 0%;
 }
 
 .dovetrovarci .info {
@@ -70,13 +114,41 @@ article.benvenuto em {
     padding-left: 30px;
 }
 
-.dovetrovarci .info h1{
-    text-align: center;
-}
-
 .dovetrovarci .map {
     background-color: beige;
+    width: 50%;
+    height: 400px;
+    filter: grayscale(90%);
 }
+
 .map iframe {
     width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.content h2 {
+    font-size: 1.3em;
+    padding: 0%;
+    margin: 0%;
+}
+
+.info div.tag {
+    display: flex;
+    padding: 10px;
+}
+
+.info div.content{
+    font-size: 1.2em;
+    padding-left: 10px;
+}
+
+.info div i {
+    vertical-align: middle;
+    font-size: 2em;
+}
+
+.info div i:hover{
+    color: orangered;
+    transition-duration: 0.3s;
 }
