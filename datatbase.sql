@@ -1,0 +1,71 @@
+SET NAMES latin1;
+SET FOREIGN_KEY_CHECKS = 0;
+BEGIN;
+
+CREATE DATABASE IF NOT EXISTS LiftLog;
+COMMIT;
+USE LiftLog;
+
+DROP TABLE IF EXISTS Utente;
+CREATE TABLE IF NOT EXISTS Utente(
+username VARCHAR(50) NOT NULL,
+pass CHAR(128) NOT NULL,
+nome VARCHAR(50) NOT NULL,
+cognome VARCHAR(50) NOT NULL,
+dipendente BOOLEAN NOT NULL,
+immagine VARCHAR(100),
+PRIMARY KEY(username)
+)ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS Esercizio;
+CREATE TABLE IF NOT EXISTS Esercizio(
+id INT NOT NULL AUTO_INCREMENT,
+nome VARCHAR(150) NOT NULL,
+immagine VARCHAR(100),
+parte_del_corpo VARCHAR(50) NOT NULL,
+muscoli VARCHAR(200) NOT NULL,
+PRIMARY KEY(id)
+)ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS Scheda;
+CREATE TABLE IF NOT EXISTS Scheda(
+id INT NOT NULL AUTO_INCREMENT,
+proprietario VARCHAR(50) NOT NULL,
+data_assegnamento VARCHAR(100),
+parte_del_corpo VARCHAR(50) NOT NULL,
+PRIMARY KEY(id),
+CONSTRAINT FK_scheda_utente FOREIGN KEY(proprietario)
+	REFERENCES Utente(username)
+)ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS Svolgimento;
+CREATE TABLE IF NOT EXISTS Svolgimento(
+esercizio INT NOT NULL,
+scheda INT NOT NULL,
+ripetizioni INT NOT NULL,
+recupero INT NOT NULL,
+PRIMARY KEY(esercizio, scheda),
+CONSTRAINT FK_svolgimento_scheda FOREIGN KEY(scheda)
+	REFERENCES Scheda(id),
+CONSTRAINT FK_svolgimento_esercizio FOREIGN KEY(esercizio)
+	REFERENCES Esercizio(id)
+)ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS Turno;
+CREATE TABLE IF NOT EXISTS Turno(
+id INT NOT NULL AUTO_INCREMENT,
+giorno INT NOT NULL, /*DAYOFWEEK: 1 - sunday, 2 - monday ...*/
+ora VARCHAR(10) NOT NULL,
+PRIMARY KEY(id)
+)ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS Orario;
+CREATE TABLE IF NOT EXISTS Orario(
+dipendente VARCHAR(50) NOT NULL,
+turno INT NOT NULL,
+PRIMARY KEY(dipendente, turno),
+CONSTRAINT FK_orario_utente FOREIGN KEY(dipendente)
+	REFERENCES Utente(username),
+CONSTRAINT FK_orario_turno FOREIGN KEY(turno)
+	REFERENCES Turno(id)
+)ENGINE=InnoDB;
