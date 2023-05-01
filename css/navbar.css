@@ -26,3 +26,8 @@ nav a.split {
     background-color: orangered;
     color: white;
 }
+
+nav a.split:hover {
+    background-color: orange;
+    color: white;
+}

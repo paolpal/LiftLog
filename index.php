@@ -2,8 +2,6 @@
     require_once __DIR__."/php/config.php";
 ?>
 
-<!-- https://jevelin.shufflehound.com/home/home-fitness/ -->
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,15 +17,9 @@
     <body>
         <?php
             include DIR_LAYOUT."header.php";
+            include DIR_LAYOUT."navbar.php";
             include DIR_LAYOUT."login_form.php";
         ?>
-        <nav>
-            <a href="#benvenuto">Home</a>
-            <a href="#chisiamo">Chi siamo</a>
-            <a href="#motivazione">La motivazione</a>
-            <a href="#dovetrovarci">Dove trovarci</a>
-            <a onclick="open_login_form()" class="split">Login</a>
-        </nav>
         <div class="background-benvenuto">
             <section class="benvenuto" id="benvenuto">
                 <article class="benvenuto">
