@@ -1,6 +1,6 @@
 <?php
     $dbHostname = "localhost";
 	$dbUsername = "root"; 
-	$dbPassword = ""; 
-	$dbName = "liftlog";	
+	$dbPassword = "pippo"; 
+	$dbName = "LiftLog";	
 ?>
