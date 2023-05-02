@@ -1,6 +1,14 @@
 <?php
+    session_start();
     require_once __DIR__."/php/config.php";
-    require_once DIR_UTIL."trainerManagerDb.php"
+    require_once DIR_UTIL."trainerManagerDb.php";
+    include DIR_UTIL."sessionUtil.php";
+
+    #if(isLogged()){
+    #    header('Location: ./php/esercizi.php');
+    #    exit();
+    #}
+
 ?>
 
 <!DOCTYPE html>
@@ -17,14 +25,9 @@
     </head>
     <body>
         <header>
-            <?php
-            include DIR_LAYOUT."navbar.php";
-            ?>
+            <?php include DIR_LAYOUT."navbar.php"; ?>
         </header>
-        <?php
-            #include DIR_LAYOUT."header.php";
-            include DIR_LAYOUT."login_form.php";
-        ?>
+        <?php include DIR_LAYOUT."login_form.php"; ?>
 
         <div class="main">
             <div class="background-benvenuto">

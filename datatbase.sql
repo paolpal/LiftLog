@@ -8,14 +8,16 @@ USE LiftLog;
 
 DROP TABLE IF EXISTS Utente;
 CREATE TABLE IF NOT EXISTS Utente(
+id INT NOT NULL AUTO_INCREMENT,
 username VARCHAR(50) NOT NULL,
-pass CHAR(128) NOT NULL,
+`password` CHAR(128) NOT NULL,
 nome VARCHAR(50) NOT NULL,
 cognome VARCHAR(50) NOT NULL,
 dipendente BOOLEAN NOT NULL,
 ruolo VARCHAR(50),
 immagine VARCHAR(100),
-PRIMARY KEY(username)
+PRIMARY KEY(id),
+UNIQUE KEY username_UNIQUE (username)
 )ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS Esercizio;
@@ -32,12 +34,12 @@ PRIMARY KEY(id)
 DROP TABLE IF EXISTS Scheda;
 CREATE TABLE IF NOT EXISTS Scheda(
 id INT NOT NULL AUTO_INCREMENT,
-proprietario VARCHAR(50) NOT NULL,
+utente INT NOT NULL,
 data_assegnamento VARCHAR(100),
 parte_del_corpo VARCHAR(50) NOT NULL,
 PRIMARY KEY(id),
-CONSTRAINT FK_scheda_utente FOREIGN KEY(proprietario)
-	REFERENCES Utente(username)
+CONSTRAINT FK_scheda_utente FOREIGN KEY(utente)
+	REFERENCES Utente(id)
 )ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS Svolgimento;
@@ -117,9 +119,9 @@ VALUES (NULL, "Sollevamenti posteriori ai cavi", "esercizi/dorso/sollevamenti_po
 (NULL, "Shoulder press", "esercizi/spalle/shoulder_press.png", "spalle", "E’ una macchina la quale ci si siede afferrando le maniglie, buttando il petto in fuori si spinge verso l’alto.", "");
 
 INSERT INTO Utente
-VALUES ("admin", SHA2("admin",512),"Luciano", "Bonecchi", TRUE, "Proprietario", "dipendenti/luciano.jpg"),
-("achille", SHA2("achille",512), "Achille", "Fontana", TRUE, "Personal Trainer", "dipendenti/achille.png"),
-("arnold", SHA2("arnold",512), "Arnold", "Schwartzenegger", TRUE, "Body Building", "dipendenti/arnold.jpg"),
-("diego", SHA2("diego",512), "Diego", "Girolami", TRUE, "Postural Trainer", "dipendenti/diego.jpg"),
-("pietro", SHA2("pietro",512), "Pietro", "Arnoldi", TRUE, "Professional Coach", "dipendenti/pietro.png"),
-("ivan", SHA2("ivan",512), "Ivan", "Drago", TRUE, "Istruttore Box", "dipendenti/ivan.jpg");
+VALUES (NULL, "admin", SHA2("admin",512),"Luciano", "Bonecchi", TRUE, "Proprietario", "dipendenti/luciano.jpg"),
+(NULL, "achille", SHA2("achille",512), "Achille", "Fontana", TRUE, "Personal Trainer", "dipendenti/achille.png"),
+(NULL, "arnold", SHA2("arnold",512), "Arnold", "Schwartzenegger", TRUE, "Body Building", "dipendenti/arnold.jpg"),
+(NULL, "diego", SHA2("diego",512), "Diego", "Girolami", TRUE, "Postural Trainer", "dipendenti/diego.jpg"),
+(NULL, "pietro", SHA2("pietro",512), "Pietro", "Arnoldi", TRUE, "Professional Coach", "dipendenti/pietro.png"),
+(NULL, "ivan", SHA2("ivan",512), "Ivan", "Drago", TRUE, "Istruttore Box", "dipendenti/ivan.jpg");
