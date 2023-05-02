@@ -14,7 +14,9 @@
         <link rel="stylesheet" href="../css/header.css">
         <link rel="stylesheet" href="../css/login_form.css">
         <link rel="stylesheet" href="../css/exercise_card.css">
-        <script src="js/login_util.js"></script>
+		<script type="text/javascript" src="./../js/ajax/ajaxManager.js"></script>
+		<script type="text/javascript" src="./../js/ajax/ExerciseLoader.js"></script>
+		<script type="text/javascript" src="./../js/ajax/ExerciseDashboard.js"></script>		
         <script src="https://kit.fontawesome.com/65c740b968.js" crossorigin="anonymous"></script>
     </head>
     <body>
@@ -22,19 +24,17 @@
             include DIR_LAYOUT."header.php";
             include DIR_LAYOUT."navbar.php";
             include DIR_LAYOUT."sidebar.php";
-            require_once DIR_UTIL."exercisesManagerDb.php";
         ?>
         <div class="page">
             <div>
-                <form class="search" action="/action_page.php">
-                    <input type="text" placeholder="Ricerca.." name="search2">
+                <div class="search">
+                    <input type="text" placeholder="Ricerca.." name="search2" onkeyup="ExerciseLoader.search(this.value)">
                     <button type="submit"><i class="fa fa-search"></i></button>
-                </form>
+                </div>
             </div>
-            <div class="deck">
-
+            <div class="deck" id="exerciseDashboard">
                 <?php
-                    $result = getAllExcercises();
+                    /*$result = getAllExcercises();
                     while($row = $result->fetch_assoc()){
                         #echo $row['nome']. " "; 
                         #echo $row['parte_del_corpo'] . "<br>"; 
@@ -46,7 +46,7 @@
                                .'<p>'.$row['descrizione'].'</p>'
                             .'</div>'
                         .'</div>';
-                    }
+                    }*/
                     #echo "<br>";
                 ?>
                 

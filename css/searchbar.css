@@ -1,10 +1,10 @@
-form.search {
+.search {
     box-sizing: border-box;
     margin:auto;
     max-width:400px
 }
 
-form.search input[type=text] {
+.search input[type=text] {
     padding: 10px;
     font-size: 17px;
     border: 1px solid lightgrey;
@@ -15,7 +15,7 @@ form.search input[type=text] {
     border-bottom-left-radius: 15px;
 }
   
-form.search button {
+.search button {
     float: left;
     width: 20%;
     padding: 10px;
@@ -29,11 +29,11 @@ form.search button {
     border-bottom-right-radius: 15px;
 }
   
-form.search button:hover {
+.search button:hover {
     background: orange;
 }
   
-form.search::after {
+.search::after {
     content: "";
     clear: both;
     display: table;

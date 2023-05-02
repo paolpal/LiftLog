@@ -9,4 +9,16 @@
 		$liftLogDb->closeConnection();
         return $result;
     }
+
+    function getSearchExerciseByKeyWord($pattern){
+		global $liftLogDb;
+		$pattern = $liftLogDb->sqlInjectionFilter($pattern);
+		$queryText = 'SELECT * ' 
+					. 'FROM Esercizio '
+					. 'WHERE nome LIKE \'%' . $pattern . '%\''; 
+ 	
+ 		$result = $liftLogDb->performQuery($queryText);
+		$liftLogDb->closeConnection();
+		return $result; 
+	}
 ?>
