@@ -65,5 +65,6 @@ ExerciseDashboard.createDetailExerciseElement = function(currentData){
 ExerciseDashboard.createIllustrationElement = function(currentData){
     var imageExercise = document.createElement("img");
     imageExercise.setAttribute("src", "../img/"+currentData.image);
+    imageExercise.setAttribute("alt", "");
     return imageExercise;
 }
