@@ -19,15 +19,24 @@
 		if ($username != null && $password != null){
 			$userId = authenticate($username, $password);
     		if ($userId > 0){
+				$trainer = checkTrainer($userId);
     			session_start();
-    			setSession($username, $userId);
+    			setSession($username, $userId, $trainer);
     			return null;
     		}
 
     	} else
-    		return 'You should insert something';
+    		return 'Dati mancanti.';
     	
-    	return 'Username and password not valid.';
+    	return 'Username e password non validi.';
+	}
+
+	function checkTrainer($userId){
+		global $liftLogDb;
+		$queryText = "SELECT * FROM Utente WHERE id=".$userId." AND dipendente=TRUE";
+		$result = $liftLogDb->performQuery($queryText);
+		$numRow = mysqli_num_rows($result);
+		return ($numRow == 1);
 	}
 	
 	function authenticate ($username, $password){   
@@ -38,7 +47,7 @@
 		$queryText = "SELECT * FROM Utente WHERE username='" . $username . "' AND password=SHA2('" . $password . "',512)";
 
 		$result = $liftLogDb->performQuery($queryText);
-		echo $numRow = mysqli_num_rows($result);
+		$numRow = mysqli_num_rows($result);
 		if ($numRow != 1)
 			return -1;
 		

@@ -15,6 +15,7 @@ aside a {
     font-size: 17px;
     color: #f2f2f2;
     display: block;
+    padding: 15px 10px;
 }
 
 aside a:hover {
@@ -24,6 +25,7 @@ aside a:hover {
 
 .page {
     margin-left: 160px; /* Same as the width of the sidenav */
-    padding: 0px 10px;
+    padding: 0px;
     background-color: inherit;
+    height: 100%;
 }

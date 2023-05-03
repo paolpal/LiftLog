@@ -1,0 +1,47 @@
+/*.newUser {
+    width: 50%;
+}
+*/
+.newUser .pass {
+    display: inline-block;
+    width: 100%;
+}
+
+.newUser i {
+    margin-left: -40px;
+}
+
+.container {
+    padding: 16px;
+    width: 50%;
+}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+
+.pass i {
+    cursor: pointer;
+}
+
+/* Set a style for all buttons */
+button {
+    background-color: orangered;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    font-size: 17px;
+}
+
+button:hover {
+    background-color: orange;
+}

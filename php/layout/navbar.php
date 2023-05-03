@@ -10,6 +10,7 @@
     <a href="/LiftLog/index.php#dovetrovarci">Dove trovarci</a>
     <?php
     if(isLogged()){
+        echo '<a href="/LiftLog/php/esercizi.php">Parte privata</a>';
         echo '<a href="/LiftLog/php/util/logout.php" class="split">Logout</a>';
     }
     else{

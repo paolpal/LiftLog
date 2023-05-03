@@ -78,7 +78,7 @@
 
             $exercise->name = $row['nome'];
             $exercise->image = $row['immagine'];
-            $exercise->description = $row['descrizione'];
+            $exercise->description = ( $row['descrizione'] );
 
             $response->data[$index] = $exercise;
             $index++;

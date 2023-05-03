@@ -51,10 +51,12 @@ ExerciseDashboard.createDetailExerciseElement = function(currentData){
     var detailExercise = document.createElement("div");
 
     var nameExercise = document.createElement("h4");
-    nameExercise.textContent = currentData.name;
+    //nameExercise.textContent = currentData.name;
+    nameExercise.innerHTML = currentData.name;
 
     var descriptionExercise = document.createElement("p");
-    descriptionExercise.textContent = currentData.description;
+    //descriptionExercise.textContent = currentData.description;
+    descriptionExercise.innerHTML = currentData.description;
     
     detailExercise.appendChild(nameExercise);
     detailExercise.appendChild(descriptionExercise);
