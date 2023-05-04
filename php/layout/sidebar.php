@@ -6,6 +6,6 @@
 <aside>
     <a href="clienti.php">Utenti</a>
     <a href="esercizi.php">Esercizi</a>
-    <a href="">Schede</a>
+    <a href="schede.php">Schede</a>
     <a href="">...</a>
 </aside>

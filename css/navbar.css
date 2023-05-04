@@ -33,3 +33,9 @@ nav a.split:hover {
     background-color: orange;
     color: white;
 }
+
+.main {
+    margin-top: 50px;
+    background-color: white;
+    height: auto;
+}

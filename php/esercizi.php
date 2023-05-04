@@ -14,12 +14,11 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="author" content="Paolo Palumbo">
-		<link rel="stylesheet" href="../css/navbar.css">
-		<link rel="stylesheet" href="../css/searchbar.css">
-		<link rel="stylesheet" href="../css/sidebar.css">
 		<link rel="stylesheet" href="../css/master.css">
 		<link rel="stylesheet" href="../css/header.css">
-		<link rel="stylesheet" href="../css/login_form.css">
+		<link rel="stylesheet" href="../css/navbar.css">
+		<link rel="stylesheet" href="../css/sidebar.css">
+		<link rel="stylesheet" href="../css/searchbar.css">
 		<link rel="stylesheet" href="../css/exercise_card.css">
 		<script type="text/javascript" src="./../js/ajax/ajaxManager.js"></script>
 		<script type="text/javascript" src="./../js/ajax/ExerciseLoader.js"></script>

@@ -15,20 +15,14 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="author" content="Paolo Palumbo">
-		<link rel="stylesheet" href="../css/navbar.css">
-		<!--<link rel="stylesheet" href="../css/searchbar.css">-->
-		<link rel="stylesheet" href="../css/sidebar.css">
-		<link rel="stylesheet" href="../css/tab.css">
 		<link rel="stylesheet" href="../css/master.css">
 		<link rel="stylesheet" href="../css/header.css">
-		<!--<link rel="stylesheet" href="../css/login_form.css">-->
+		<link rel="stylesheet" href="../css/navbar.css">
+		<link rel="stylesheet" href="../css/sidebar.css">
+		<link rel="stylesheet" href="../css/tab.css">
 		<link rel="stylesheet" href="../css/new_user_form.css">
-		<!--<link rel="stylesheet" href="../css/exercise_card.css">-->
 		<script type="text/javascript" src="./../js/tab.js"></script>
 		<script type="text/javascript" src="./../js/passwordGenerator.js"></script>
-		<script type="text/javascript" src="./../js/ajax/ajaxManager.js"></script>
-		<script type="text/javascript" src="./../js/ajax/ExerciseLoader.js"></script>
-		<script type="text/javascript" src="./../js/ajax/ExerciseDashboard.js"></script>		
 		<script src="https://kit.fontawesome.com/65c740b968.js" crossorigin="anonymous"></script>
 	</head>
 	<body onload="document.getElementById('defaultOpen').click();">

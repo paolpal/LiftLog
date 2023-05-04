@@ -26,6 +26,4 @@ aside a:hover {
 .page {
     margin-left: 160px; /* Same as the width of the sidenav */
     padding: 0px;
-    background-color: inherit;
-    height: 100%;
 }
