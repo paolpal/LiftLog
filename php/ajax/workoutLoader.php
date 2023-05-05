@@ -9,112 +9,41 @@
     require_once DIR_AJAX_UTIL . "AjaxResponse.php";
 
     $response = new AjaxResponse();
-    
-    /*
-    if (!isset($_GET['userId'])){
-        echo json_encode($response);
-        return;
-    }		
 
-    $userId = $_GET['userId'];
-    
-    $result = getWorkoutByUserId($userId); 
-    
-    // ritorna la lista delle schede
-
-    if (checkEmptyResult($result)){
-        $response = setEmptyResponse();
+    if(!isset($_GET['userId'])){
         echo json_encode($response);
         return;
     }
-
-    $message = "OK";	
-    $response = setResponse($result, $message);
-    echo json_encode($response);
-
-    return;*/
+    $userId = $_GET['userId'];
 
     // ------------------ NUOVO APPROCCIO ------------------
-    if (isset($_GET['userId'])){
-        $userId = $_GET['userId'];
-        $result = getWorkoutByUserId($userId);
+    if(isset($_GET['delWorkout'])){
+        $workoutId = $_GET['delWorkout'];
+        $result = deleteWorkoutById($workoutId);
     }
-    elseif(isset($_GET['workout'])){
-        #echo 0;
-        $workout = json_decode($_GET['workout']);
-        #echo 1;
+    elseif(isset($_GET['addWorkout'])){
+        $workout = json_decode($_GET['addWorkout']);
         $result = insertWorkoutPlan($workout);
-        #echo 2;
-
-        if (checkEmptyResult($result)){
-            $response = setPositiveResponse();
-            echo json_encode($response);
-            return;
-        }
     }
-    else{
-        echo json_encode($response);
-        return;
-    }
-
-    if (checkEmptyResult($result)){
-        $response = setEmptyResponse();
-        echo json_encode($response);
-        return;
-    }
+    #else{
+    #    $result = getWorkoutByUserId($userId);
+    #}
+#
+    #if (checkEmptyResult($result)){
+    #    $response = setEmptyResponse();
+    #    echo json_encode($response);
+    #    return;
+    #}
 
     $message = "OK";	
-    $response = setResponse($result, $message);
+    $response = setResponse($userId, $message);
     echo json_encode($response);
     
     return;
-    //
-    //echo json_encode($response);
-    //return;
-    //$userId = $_GET['userId'];
-    //$result = getWorkoutByUserId($userId); 
-    //// ritorna la lista delle schede
-//
-    //if (checkEmptyResult($result)){
-    //    $response = setEmptyResponse();
-    //    echo json_encode($response);
-    //    return;
-    //}
-//
-    //$message = "OK";	
-    //$response = setResponse($result, $message);
-    //echo json_encode($response);
-//
-    //return;
-//
-    // ------------------ NUOVO APPROCCIO ----------------
-    /*
-    if(isset($_GET['pattern'])){
-        $pattern = $_GET['pattern'];
-        $result = getSearchExerciseByKeyWord($pattern); // RICERCA PAROLE CHIAVI ESERCIZI
-    }
-    elseif(isset($_GET['all'])){
-        $result = getAllExcercises();
-    }
-    else{
-        echo json_encode($response);
-        return;
-    }
-
-    if (checkEmptyResult($result)){
-        $response = setEmptyResponse();
-        echo json_encode($response);
-        return;
-    }
-
-    $message = "OK";	
-    $response = setResponse($result, $message);
-    echo json_encode($response);
-
-    return;
-*/
 
     function insertWorkoutPlan($workout){
+        //echo $workout;
+        #echo 2;
         if(insertWorkout($workout->userId)){
             #echo 2;
             if($result = getLastWorkout($workout->userId)){
@@ -122,6 +51,23 @@
                 $workoutId = ($result->fetch_assoc())['max(id)'];
                 #echo 4;
                 foreach ($workout->exes as $exe) {
+                    #echo 5;
+                    insertTraining($exe->exeId, $workoutId, $exe->series, $exe->reps, $exe->rest);
+                    #echo 6;
+                }
+            }
+        }
+        return $result;
+    }
+
+    function insertWorkoutPlan_new($workout, $userId){
+        if(insertWorkout($userId)){
+            #echo 2;
+            if($result = getLastWorkout($userId)){
+                #echo 3;
+                $workoutId = ($result->fetch_assoc())['max(id)'];
+                #echo 4;
+                foreach ($workout as $exe) {
                     #echo 5;
                     insertTraining($exe->exeId, $workoutId, $exe->series, $exe->reps, $exe->rest);
                     #echo 6;
@@ -149,10 +95,17 @@
         return new AjaxResponse("0", $message);
     }
 
-    function setResponse($result, $message){
+    function setResponse($userId, $message){
 		$response = new AjaxResponse("0", $message);
-			
-		$index = 0;
+		
+        $result = getWorkoutByUserId($userId);
+        
+        if (checkEmptyResult($result)){
+            $response = setEmptyResponse();
+            return $response;
+        }
+		
+        $index = 0;
 		while ($row = $result->fetch_assoc()){
             $workout = new Workout();
 

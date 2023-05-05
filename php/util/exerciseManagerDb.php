@@ -90,4 +90,25 @@
 		return $result; 
 	}
 
+	function deleteWorkoutById($workoutId){
+		global $liftLogDb;
+		$workoutId = $liftLogDb->sqlInjectionFilter($workoutId);
+		$queryText = 'DELETE FROM Scheda WHERE id = '.$workoutId;
+		$liftLogDb->performQuery($queryText);
+	
+		$result = $liftLogDb->closeConnection();
+		return $result; 
+	}
+
+	function deleteTrainingByWorkoutId($workoutId){
+		global $liftLogDb;
+		$workoutId = $liftLogDb->sqlInjectionFilter($workoutId);
+		$queryText = 'DELETE FROM Svolgimento WHERE scheda = '.$workoutId;
+		$liftLogDb->performQuery($queryText);
+	
+		$result = $liftLogDb->closeConnection();
+		return $result; 
+	}
+
+
 ?>

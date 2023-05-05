@@ -1,6 +1,6 @@
 function WorkoutDashboard(){}
 
-WorkoutDashboard.addExercise = function(currentData){
+WorkoutDashboard.addExerciseFields = function(currentData){
     var container = document.getElementById("formScheda");
 
 	var riga = document.createElement("div");
@@ -109,18 +109,81 @@ WorkoutDashboard.createWorkoutCard = function(currentData){
 	var date = document.createElement("h4");
 	date.textContent = currentData.assignDate;
 
+	var header = WorkoutDashboard.createHeaderElement();
 	var lista = WorkoutDashboard.createListElement(currentData);
-	var cestino = document.createElement("i");
-	cestino.setAttribute("class", "fa fa-trash fa-lg");
-	var stampa = document.createElement("i");
-	stampa.setAttribute("class", "fa fa-print fa-lg");
+	
+	var cestino = WorkoutDashboard.createTrashElement(currentData);
+	var stampa = WorkoutDashboard.createPrintElement();
 
 	workoutCard.appendChild(date);
+	workoutCard.appendChild(header);
 	workoutCard.appendChild(lista);
 	workoutCard.appendChild(cestino);
 	workoutCard.appendChild(stampa);
 
 	return workoutCard;
+}
+
+//<div class="header">
+//	<div>Esercizio </div> 
+//	<div class="info"> 
+//		<div>Serie</div> 
+//		<i class="fa fa-times"></i> 
+//		<div>Ripetizioni</div> 
+//		<div>Riposo</div> 
+//	</div>
+//</div>
+
+WorkoutDashboard.createHeaderElement = function(){
+	var header = document.createElement("div");
+	header.setAttribute("class", "header");
+	
+	var exe = document.createElement("div");
+	exe.textContent = "Esercizio";
+
+	var info = document.createElement("div");
+	info.setAttribute("class", "info");
+
+	var series = document.createElement("div");
+	series.textContent = "Serie";
+
+	var times = document.createElement("i");
+	times.setAttribute("class", "fa fa-times");
+
+	var reps = document.createElement("div");
+	reps.textContent = "Ripetizioni";
+
+	var rest = document.createElement("div");
+	rest.textContent = "Riposo";
+
+	info.appendChild(series);
+	info.appendChild(times);
+	info.appendChild(reps);
+	info.appendChild(rest);
+
+	header.appendChild(exe);
+	header.appendChild(info);
+
+	return header;
+}
+
+WorkoutDashboard.createTrashElement = function(currentData){
+	var button = document.createElement("button");
+	var cestino = document.createElement("i");
+	cestino.setAttribute("class", "fa fa-trash fa-xl");
+	button.appendChild(cestino);
+	button.setAttribute("onClick", "UserEventHandler.delWorkoutPlan("+currentData.id+","+currentData.userId+");");
+	
+	return button;
+}
+
+WorkoutDashboard.createPrintElement = function(){
+	var button = document.createElement("button");
+	var stampa = document.createElement("i");
+	stampa.setAttribute("class", "fa fa-print fa-xl");
+	button.appendChild(stampa);
+
+	return button;
 }
 
 WorkoutDashboard.createListElement = function(currentData){
@@ -142,7 +205,7 @@ WorkoutDashboard.createListElement = function(currentData){
 		var reps = document.createElement("div");
 		reps.textContent = exe.reps;
 		var rest = document.createElement("div");
-		rest.textContent = exe.rest;
+		rest.textContent = exe.rest+" s";
 		
 		info.appendChild(series);
 		info.appendChild(times);

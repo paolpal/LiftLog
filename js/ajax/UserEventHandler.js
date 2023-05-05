@@ -10,7 +10,7 @@ UserEventHandler.SUCCESS_RESPONSE = "0";
 UserEventHandler.NO_MORE_DATA = "-1";
 
 
-UserEventHandler.addExercise = function() {
+UserEventHandler.addExerciseFields = function() {
     var responseFunction = UserEventHandler.addExerciseResponse;
     var queryString = "?all";
     var url = UserEventHandler.EXERCISE_REQUEST + queryString;
@@ -23,7 +23,7 @@ UserEventHandler.addExercise = function() {
 
 UserEventHandler.addExerciseResponse = function(response){
     if (response.responseCode === UserEventHandler.SUCCESS_RESPONSE){
-		WorkoutDashboard.addExercise(response.data);
+		WorkoutDashboard.addExerciseFields(response.data);
 	}
     return;
 }
@@ -33,11 +33,12 @@ UserEventHandler.delExercise = function(elem) {
 }
 
 UserEventHandler.saveWorkoutPlan = function() {
+
+    // ------ Raccolta dati Form ----
+
     var form = document.getElementById("formScheda");
     var userId = document.getElementById("userId").value;
-    //console.log(form);
     var exes = form.getElementsByClassName("exe");
-    //console.log(exes.length);
     var exesJson = [];
     for (const exe of exes) {
         var exeId = exe.getElementsByTagName("select")[0].value;
@@ -60,8 +61,8 @@ UserEventHandler.saveWorkoutPlan = function() {
 
     // ------ Ajax ------
 
-    var responseFunction = UserEventHandler.addExerciseResponse;
-    var queryString = "?workout="+scheda;
+    var responseFunction = UserEventHandler.onWorkoutAjaxResponse;
+    var queryString = "?userId="+userId+"&addWorkout="+scheda;
     var url = UserEventHandler.WORKOUT_REQUEST + queryString;
 
     AjaxManager.performAjaxRequest(UserEventHandler.DEFAUL_METHOD, 
@@ -72,10 +73,21 @@ UserEventHandler.saveWorkoutPlan = function() {
 
 UserEventHandler.onWorkoutAjaxResponse = function(response){
     if (response.responseCode === WorkoutLoader.SUCCESS_RESPONSE){
-		//WorkoutDashboard.refreshData(response.data);
+		WorkoutDashboard.refreshData(response.data);
 		//return;
 	}
+    else WorkoutDashboard.setEmptyDashboard();
 	//if (response.responseCode === WorkoutLoader.NO_MORE_DATA)
     //    WorkoutDashboard.setEmptyDashboard();
 	return;
+}
+
+UserEventHandler.delWorkoutPlan = function(workoutId, userId) {
+	var responseFunction = UserEventHandler.onWorkoutAjaxResponse;
+    var queryString = "?delWorkout="+workoutId+"&userId="+userId;
+    var url = UserEventHandler.WORKOUT_REQUEST + queryString;
+
+    AjaxManager.performAjaxRequest(UserEventHandler.DEFAUL_METHOD, 
+        url, UserEventHandler.ASYNC_TYPE, 
+        null, responseFunction);
 }

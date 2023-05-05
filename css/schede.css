@@ -8,7 +8,25 @@
     margin-top: 10px;
 }
 
-.scheda > i:hover {
+.scheda .header {
+    font-weight: 700;
+    width: 95%;
+    margin-left: 5%;
+}
+
+.scheda .header div {
+    display: inline-block;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.scheda > button {
+    box-sizing: border-box;
+    background-color: inherit;
+    border: none;
+}
+
+.scheda > button:hover {
     color: orangered;
 }
 
@@ -27,7 +45,8 @@
 .scheda li div {
     display: inline-block;
     background-color: inherit;
-
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 .scheda li:before {

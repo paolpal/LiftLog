@@ -28,7 +28,7 @@
 		<script type="text/javascript" src="./../js/ajax/UserEventHandler.js"></script>
 		<script src="https://kit.fontawesome.com/65c740b968.js" crossorigin="anonymous"></script>
 	</head>
-	<body onload="UserEventHandler.addExercise();">
+	<body onload="UserEventHandler.addExerciseFields();">
 		<header>
 			<?php include DIR_LAYOUT."navbar.php"; ?>
 		</header>
@@ -39,12 +39,10 @@
 					<?php
 						$result = getAllCustomers();
 						while($row = $result->fetch_assoc()){
-							echo '<button class="tablinks" onclick="tablinkClick(\''.$row['id'].'\');">'.$row['nome'].'</button>';
+							echo '<button class="tablinks" onclick="tablinkClick(event, \''.$row['id'].'\');">'.$row['nome'].'</button>';
 							#echo '<i class="fa fa-times"></i>';
 						}
 					?>
-					<!--<button class="tablinks" onclick="openCity(event, 'London')">London</button>-->
-					
 				</div>
 						
 				
@@ -54,6 +52,9 @@
 						<!--
 							<div class="scheda">
 								<h4>12/04/2022</h4>
+								<div class="header">
+									<div>Esercizio </div> <div class="info"> <div>Serie</div> <i class="fa fa-times"></i> <div>Ripetizioni</div> <div>Riposo</div> </div>
+								</div>
 								<ul>
 									<li><div class="exe">Sollevamenti posteriori ai cavi</div> <div class="info"> <div>3</div> <i class="fa fa-times"></i> <div>12</div> <div>30</div>s </div></li>
 									<li><div class="exe">Sollevamenti posteriori ai cavi</div> <div class="info"> <div>3</div> <i class="fa fa-times"></i> <div>12</div> <div>30</div>s </div></li>
@@ -61,8 +62,12 @@
 									<li><div class="exe">Sollevamenti posteriori ai cavi</div> <div class="info"> <div>3</div> <i class="fa fa-times"></i> <div>12</div> <div>30</div>s </div></li>
 									<li><div class="exe">Sollevamenti posteriori ai cavi</div> <div class="info"> <div>3</div> <i class="fa fa-times"></i> <div>12</div> <div>30</div>s </div></li>
 								</ul>
-								<i class="fa fa-trash fa-lg"></i>
-								<i class="fa fa-print fa-lg"></i>
+								<button>
+									<i class="fa fa-trash fa-xl"></i>
+								</button>
+								<button>
+									<i class="fa fa-print fa-xl"></i>
+								</button>
 							</div>
 						-->
 						
@@ -77,7 +82,7 @@
 								</div>
 								<div class="command">
 									<div class="addExe">
-										<button onclick="UserEventHandler.addExercise();"><i class="fa fa-plus fa-lg"></i></button>
+										<button onclick="UserEventHandler.addExerciseFields();"><i class="fa fa-plus fa-lg"></i></button>
 									</div>
 									<div>&nbsp;</div>
 									<div>&nbsp;</div>

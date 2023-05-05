@@ -1,3 +1,5 @@
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=1 */;
+
 SET NAMES latin1;
 SET FOREIGN_KEY_CHECKS = 0;
 BEGIN;
@@ -39,6 +41,7 @@ data_assegnamento VARCHAR(100),
 PRIMARY KEY(id),
 CONSTRAINT FK_scheda_utente FOREIGN KEY(utente)
 	REFERENCES Utente(id)
+	ON DELETE CASCADE
 )ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS Svolgimento;
@@ -51,7 +54,8 @@ ripetizioni INT NOT NULL,
 recupero INT NOT NULL,
 PRIMARY KEY(id),
 CONSTRAINT FK_svolgimento_scheda FOREIGN KEY(scheda)
-	REFERENCES Scheda(id),
+	REFERENCES Scheda(id)
+	ON DELETE CASCADE,
 CONSTRAINT FK_svolgimento_esercizio FOREIGN KEY(esercizio)
 	REFERENCES Esercizio(id)
 )ENGINE=InnoDB;
