@@ -37,7 +37,7 @@
         $result = getSearchExerciseByKeyWord($pattern); // RICERCA PAROLE CHIAVI ESERCIZI
     }
     elseif(isset($_GET['all'])){
-        $result = getAllExcercises();
+        $result = getAllExercises();
     }
     else{
         echo json_encode($response);
@@ -79,6 +79,8 @@
             $exercise->name = $row['nome'];
             $exercise->image = $row['immagine'];
             $exercise->description = ( $row['descrizione'] );
+            $exercise->parteCorpo = ( $row['parte_del_corpo'] );
+            $exercise->id = ( $row['id'] );
 
             $response->data[$index] = $exercise;
             $index++;

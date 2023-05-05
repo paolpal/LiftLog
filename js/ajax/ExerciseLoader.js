@@ -33,8 +33,8 @@ ExerciseLoader.onExerciseAjaxResponse = function(response){
 		return;
 	}
 	
-	if (response.responseCode === ExerciseLoader.NO_MORE_DATA);
+	if (response.responseCode === ExerciseLoader.NO_MORE_DATA)
         ExerciseDashboard.setEmptyDashboard();
-	
+	return;
 }
 	

@@ -22,14 +22,48 @@
 	}
 
 	class Exercise {
+		public $id;
 		public $name;
 		public $image;
+		public $parteCorpo;
 		public $description;
 
-		function __construct($name = null, $image = null, $description = null){
+		function __construct($id=null, $name = null, $image = null, $parteCorpo = null, $description = null){
+			$this->id = $id;
 			$this->name = $name;
 			$this->image = $image;
+			$this->parteCorpo = $parteCorpo;
 			$this->description = $description;
+		}
+	}
+
+	class Training {
+		public $exercise; // stringa nome
+		public $workout;
+		public $series;
+		public $reps;
+		public $rest;
+
+		function __construct($exercise=null, $workout = null, $series = null, $reps = null, $rest = null){
+			$this->exercise = $exercise;
+			$this->workout = $workout;
+			$this->series = $series;
+			$this->reps = $reps;
+			$this->rest = $rest;
+		}
+	}
+
+	class Workout {
+		public $id;
+		public $userId;
+		public $assignDate;
+		public $trainingList;
+
+		function __construct($id=null, $userId = null, $assignDate = null, $trainingList = null){
+			$this->id = $id;
+			$this->userId = $userId;
+			$this->assignDate = $assignDate;
+			$this->trainingList = $trainingList;
 		}
 	}
 

@@ -36,7 +36,6 @@ CREATE TABLE IF NOT EXISTS Scheda(
 id INT NOT NULL AUTO_INCREMENT,
 utente INT NOT NULL,
 data_assegnamento VARCHAR(100),
-parte_del_corpo VARCHAR(50) NOT NULL,
 PRIMARY KEY(id),
 CONSTRAINT FK_scheda_utente FOREIGN KEY(utente)
 	REFERENCES Utente(id)
@@ -44,11 +43,13 @@ CONSTRAINT FK_scheda_utente FOREIGN KEY(utente)
 
 DROP TABLE IF EXISTS Svolgimento;
 CREATE TABLE IF NOT EXISTS Svolgimento(
+id INT NOT NULL AUTO_INCREMENT,
 esercizio INT NOT NULL,
 scheda INT NOT NULL,
+serie INT NOT NULL,
 ripetizioni INT NOT NULL,
 recupero INT NOT NULL,
-PRIMARY KEY(esercizio, scheda),
+PRIMARY KEY(id),
 CONSTRAINT FK_svolgimento_scheda FOREIGN KEY(scheda)
 	REFERENCES Scheda(id),
 CONSTRAINT FK_svolgimento_esercizio FOREIGN KEY(esercizio)
@@ -77,7 +78,7 @@ CONSTRAINT FK_orario_turno FOREIGN KEY(turno)
 INSERT INTO Esercizio
 VALUES (NULL, "Sollevamenti posteriori ai cavi", "esercizi/dorso/sollevamenti_posteriori_ai_cavi.png", "dorso", "Consiste nel allungare delle cavi mediante l&rsquo;uso della braccia, serve per allenare la parte alta del dorso.", ""),
 (NULL, "Rematore gomiti larghi", "esercizi/dorso/rematore_gomiti_larghi.png", "dorso", "Consiste nel sollevare e abbassare il bilanciere con una posizione leggermente inclinata verso l&rsquo;avanti.", ""),
-(NULL, "Row su panca inclinata con bilanciere su panca inclinata", "esercizi/dorso/row_su_panca_inclinata_con_bilanciere_su_panca_inclinata.png", "dorso", "L&rsquo;esecizio consiste nel sollevare un bilanciere trovandosi nella posizione a pancia in gi&ugrave; sulla panca inclinata.", ""),
+(NULL, "Row su panca inclinata con bilanciere", "esercizi/dorso/row_su_panca_inclinata_con_bilanciere_su_panca_inclinata.png", "dorso", "L&rsquo;esecizio consiste nel sollevare un bilanciere trovandosi nella posizione a pancia in gi&ugrave; sulla panca inclinata.", ""),
 (NULL, "Trazioni alla sbarra presa larga", "esercizi/dorso/trazioni_alla_sbarra_presa_larga.png", "dorso", "Consiste nel sollevare e abbassare il proprio corpo con tenendosi attaccati a una sbarra.", ""),
 (NULL, "Hammer pull up su macchina di assistenza", "esercizi/dorso/hammer_pull_up_su_macchina_di_assistenza.png", "dorso", "L&rsquo;esercizio consiste nello svolgere l&rsquo;esercizio sopra una macchina di assistenza apposita.", ""),
 (NULL, "Over row presa rovesciata", "esercizi/dorso/over_row_presa_rovesciata.png", "dorso", "consiste nel fare la stessa cosa dell&rsquo;esercizio numero 3 ma con la presa del bilanciere contraria.", ""),

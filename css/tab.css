@@ -22,18 +22,6 @@
 	transition: 0.3s;
 	font-size: 17px;
 }
-
-/*
-.tab i {
-	font-weight: 900;
-	font-size: 1.4em;
-	margin-right: 10px;
-}
-
-.tab i:hover {
-	color: red;
-}
-*/
 	
 	/* Change background color of buttons on hover */
 .tab button:hover {

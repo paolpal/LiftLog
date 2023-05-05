@@ -6,9 +6,7 @@ ExerciseDashboard.removeContent = function(){
 		return;
 	
 	var firstChild = dashboardElement.firstChild;
-	//if (firstChild !== null)
-	//	dashboardElement.removeChild(firstChild);
-    while(firstChild !== null){
+	while(firstChild !== null){
         dashboardElement.removeChild(firstChild);
         firstChild = dashboardElement.firstChild;
     }

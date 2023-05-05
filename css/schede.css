@@ -1,0 +1,125 @@
+.scheda {
+    background-color: #f1f1f1;
+    width: 50%;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-top: 10px;
+}
+
+.scheda > i:hover {
+    color: orangered;
+}
+
+.scheda ul {
+    list-style: none;
+    overflow-x: hidden;
+    width: 90%;
+    background-color: inherit;
+}
+
+.scheda li {
+    padding-top: 10px;
+    background-color: inherit;
+}
+
+.scheda li div {
+    display: inline-block;
+    background-color: inherit;
+
+}
+
+.scheda li:before {
+    white-space: nowrap;
+    width: 0;
+    float: left;
+    content:
+        ". . . . . . . . . . . . . . . . . . . . "
+        ". . . . . . . . . . . . . . . . . . . . "
+        ". . . . . . . . . . . . . . . . . . . . "
+        ". . . . . . . . . . . . . . . . . . . . "
+        ". . . . . . . . . . . . . . . . . . . . "
+        ". . . . . . . . . . . . . . . . . . . . ";
+}
+
+.scheda .info {
+    float: right;
+}
+
+.newScheda {
+    position: fixed;
+    right: 0px;
+    top: 50px;
+    background-color: #f1f1f1;
+    width: 40%;
+    margin-right: 20px;
+    margin-top: 20px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.newScheda .container {
+    display: table;
+}
+
+.newScheda .titles {
+    display: table-header-group;
+    font-weight: bold;
+}
+
+.newScheda .exe {
+    display: table-row;
+    font-weight: bold;
+}
+
+.newScheda div {
+    display: table-cell;
+    padding: 5px 10px;
+}
+
+.newScheda input[type=number]{
+    width: 50px;
+}
+
+.exe i:hover {
+    color: orangered;
+}
+
+.addExe button {
+    background-color: orangered;
+    color: white;
+    border-radius: 20px;
+    text-align: center;
+    border: none;
+    padding: 10px;
+    margin: 4px 2px;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.addExe button:hover{
+    background-color: orange;
+}
+
+.newScheda .command {
+    display: table-footer-group;
+}
+
+.command button {
+    background-color: orangered;
+    color: white;
+    border-radius: 20px;
+    text-align: center;
+    border: none;
+    padding: 10px;
+    margin: 4px 2px;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.command button:hover{
+    background-color: orange;
+}
