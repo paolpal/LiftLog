@@ -38,15 +38,17 @@
 						<button type="submit"><i class="fa fa-search"></i></button>
 					</div>
 				</div>
+				
 				<div class="deck" id="exerciseDashboard">
-					
-					<!--<div class="excard">
+				<!--
+					<div class="excard">
 						<img src="../img/esercizi/addominali/abdominal_crunch.png" alt="">
 						<div>
 							<h4>Esercizio</h4>
 							<p>Descrizione</p>
 						</div>
-					</div>-->
+					</div>
+				-->
 				</div>
 			</div>
 		</div>

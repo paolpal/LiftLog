@@ -1,0 +1,187 @@
+<esercizi>
+    <esercizio>
+        <nome>Squat</nome>
+        <parte_del_corpo>Gambe</parte_del_corpo>
+        <muscoli>Quadricipiti, Glutei, Muscoli posteriori della coscia</muscoli>
+    </esercizio>
+    <esercizio>
+        <nome>Panca piana</nome>
+        <parte_del_corpo>Petto</parte_del_corpo>
+        <muscoli>Pettorali, Tricipiti</muscoli>
+    </esercizio>
+    <esercizio>
+        <nome>Trazioni alla sbarra</nome>
+        <parte_del_corpo>Schiena, Bicipiti</parte_del_corpo>
+        <muscoli>Dorsali, Bicipiti</muscoli>
+    </esercizio>
+    <esercizio>
+        <nome>Deadlift</nome>
+        <parte_del_corpo>Gambe, Schiena</parte_del_corpo>
+        <muscoli>Quadricipiti, Glutei, Muscoli posteriori della coscia, Dorsali, Trapezio, Addominali</muscoli>
+    </esercizio>
+    <esercizio>
+        <nome>Leg Press</nome>
+        <parte_del_corpo>Gambe</parte_del_corpo>
+        <muscoli>Quadricipiti, Glutei, Muscoli posteriori della coscia</muscoli>
+    </esercizio>
+    <esercizio>
+        <nome>Shoulder Press</nome>
+        <parte_del_corpo>Spalle</parte_del_corpo>
+        <muscoli>Deltoidi, Tricipiti</muscoli>
+    </esercizio>
+    <esercizio>
+        <nome>Bent-Over Row</nome>
+        <parte_del_corpo>Schiena, Bicipiti</parte_del_corpo>
+        <muscoli>Dorsali, Bicipiti, Trapezio</muscoli>
+    </esercizio>
+    <esercizio>
+        <nome>Push-up</nome>
+        <parte_del_corpo>Petto, Spalle, Tricipiti</parte_del_corpo>
+        <muscoli>Pettorali, Deltoidi, Tricipiti</muscoli>
+    </esercizio>
+    <esercizio>
+        <nome>Chin-up</nome>
+        <parte_del_corpo>Schiena, Bicipiti</parte_del_corpo>
+        <muscoli>Dorsali, Bicipiti</muscoli>
+    </esercizio>
+    <esercizio>
+        <nome>Dips</nome>
+        <parte_del_corpo>Petto, Tricipiti</parte_del_corpo>
+        <muscoli>Pettorali, Tricipiti</muscoli>
+    </esercizio>
+    <esercizio>
+        <nome>Leg Curl</nome>
+        <parte_del_corpo>Gambe</parte_del_corpo>
+        <muscoli> Muscoli posteriori della coscia</muscoli>
+    </esercizio>
+    <esercizio>
+        <nome>Lateral Raise</nome>
+        <parte_del_corpo>Spalle</parte_del_corpo>
+        <muscoli>Deltoidi</muscoli>
+    </esercizio>
+    <esercizio>
+        <nome>Barbell Curl</nome>
+        <parte_del_corpo>Bicipiti</parte_del_corpo>
+        <muscoli>Bicipiti, Brachioradialis</muscoli>
+    </esercizio>
+    <esercizio>
+        <nome>Hammer Curl</nome>
+        <parte_del_corpo>Bicipiti, Avambracci</parte_del_corpo>
+        <muscoli>Bicipiti, Brachioradialis</muscoli>
+    </esercizio>
+    <esercizio>
+        <nome>Triceps Dip</nome>
+        <parte_del_corpo>Tricipiti</parte_del_corpo>
+        <muscoli>Tricipiti</muscoli>
+    </esercizio>
+    <esercizio>
+        <nome>Crunch</nome>
+        <parte_del_corpo>Addominali</parte_del_corpo>
+        <muscoli>Addominali</muscoli>
+    </esercizio>
+    <esercizio>
+        <nome>Russian Twist</nome>
+        <parte_del_corpo>Addominali, Obliqui</parte_del_corpo>
+        <muscoli>Addominali, Obliqui</muscoli>
+    </esercizio>
+    <esercizio>
+        <nome>Leg Extension</nome>
+        <parte_del_corpo>Gambe</parte_del_corpo>
+        <muscoli>Quadricipiti</muscoli>
+    </esercizio>
+    <esercizio>
+        <nome>Seated Calf Raise</nome>
+        <parte_del_corpo>Polpacci</parte_del_corpo>
+        <muscoli>Polpacci</muscoli>
+    </esercizio>
+    <esercizio>
+        <nome>Reverse Fly</nome>
+        <parte_del_corpo>Spalle</parte_del_corpo>
+        <muscoli>Deltoidi posteriori, Rhomboidei</muscoli>
+    </esercizio>
+    <esercizio>
+        <nome>Bench Press</nome>
+        <parte_del_corpo>Petto, Spalle, Tricipiti</parte_del_corpo>
+        <muscoli>Pettorali, Deltoidi, Tricipiti</muscoli>
+    </esercizio>
+    <esercizio>
+        <nome>Shoulder Shrug</nome>
+        <parte_del_corpo>Trapezio</parte_del_corpo>
+        <muscoli>Trapezio</muscoli>
+    </esercizio>
+    <esercizio>
+        <nome>Seated Leg Curl</nome>
+        <parte_del_corpo>Gambe</parte_del_corpo>
+        <muscoli>Muscoli posteriori della coscia</muscoli>
+    </esercizio>
+    <esercizio>
+        <nome>Push Press</nome>
+        <parte_del_corpo>Spalle</parte_del_corpo>
+        <muscoli>Deltoidi, Tricipiti</muscoli>
+    </esercizio>
+    <esercizio>
+        <nome>Incline Bench Press</nome>
+        <parte_del_corpo>Petto, Spalle, Tricipiti</parte_del_corpo>
+        <muscoli>Pettorali, Deltoidi, Tricipiti</muscoli>
+    </esercizio>
+    <esercizio>
+        <nome>Lunges</nome>
+        <parte_del_corpo>Gambe</parte_del_corpo>
+        <muscoli>Quadricipiti, Glutei, Muscoli posteriori della coscia</muscoli>
+    </esercizio>
+    <esercizio>
+        <nome>Barbell Row</nome>
+        <parte_del_corpo>Schiena, Bicipiti</parte_del_corpo>
+        <muscoli>Dorsali, Bicipiti</muscoli>
+    </esercizio>
+    <esercizio>
+        <nome>Seated Dumbbell Press</nome>
+        <parte_del_corpo>Spalle</parte_del_corpo>
+        <muscoli>Deltoidi</muscoli>
+    </esercizio>
+    <esercizio>
+        <nome>Barbell Bench Press</nome>
+        <parte_del_corpo>Petto, Spalle, Tricipiti</parte_del_corpo>
+        <muscoli>Pettorali, Deltoidi, Tricipiti</muscoli>
+    </esercizio>
+    <esercizio>
+        <nome>Hamstring Curl</nome>
+        <parte_del_corpo>Gambe</parte_del_corpo>
+        <muscoli>Muscoli posteriori della coscia</muscoli>
+    </esercizio>
+    <esercizio>
+        <nome>Arnold Press</nome>
+        <parte_del_corpo>Spalle</parte_del_corpo>
+        <muscoli>Deltoidi, Tricipiti</muscoli>
+    </esercizio>
+    <esercizio>
+        <nome>Preacher Curl</nome>
+        <parte_del_corpo>Bicipiti</parte_del_corpo>
+        <muscoli>Bicipiti, Brachioradialis</muscoli>
+    </esercizio>
+    <esercizio>
+        <nome>Skull Crusher</nome>
+        <parte_del_corpo>Tricipiti</parte_del_corpo>
+        <muscoli>Tricipiti</muscoli>
+    </esercizio>
+    <esercizio>
+        <nome>Calf Raise</nome>
+        <parte_del_corpo>Polpacci</parte_del_corpo>
+        <muscoli>Polpacci</muscoli>
+    </esercizio>
+    <esercizio>
+        <nome>Rear Delt Fly</nome>
+        <parte_del_corpo>Spalle</parte_del_corpo>
+        <muscoli>Deltoidi posteriori, Rhomboidei</muscoli>
+    </esercizio>
+    <esercizio>
+        <nome>Weighted Sit-up</nome>
+        <parte_del_corpo>Addominali</parte_del_corpo>
+        <muscoli>Addominali</muscoli>
+    </esercizio>
+    <esercizio>
+        <nome>Standing Calf Raise</nome>
+        <parte_del_corpo>Polpacci</parte_del_corpo>
+        <muscoli>Polpacci</muscoli>
+    </esercizio>
+</esercizi>
