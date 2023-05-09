@@ -1,12 +1,14 @@
 function WorkoutDashboard(){}
 
-WorkoutDashboard.addExerciseFields = function(currentData){
+// **************** FIELD FORM NUOVA SCHEDA ****************
+
+WorkoutDashboard.addExerciseFields = function(data){
     var container = document.getElementById("formScheda");
 
 	var riga = document.createElement("div");
 	riga.setAttribute("class", "exe");
 
-	var select = WorkoutDashboard.createSelectExercise(currentData);
+	var select = WorkoutDashboard.createGruppedSelectExercise(data);
 	var series = WorkoutDashboard.createSiriesPicker();
 	var reps = WorkoutDashboard.createRepsPicker();
 	var rest = WorkoutDashboard.createRestPicker();
@@ -21,6 +23,18 @@ WorkoutDashboard.addExerciseFields = function(currentData){
 	container.appendChild(riga);
 }
 
+WorkoutDashboard.groupByParteCorpo = function(data) {
+	return data.reduce((acc, element) => {
+	  const { parteCorpo } = element;
+	  if (!acc[parteCorpo]) {
+		acc[parteCorpo] = [];
+	  }
+	  acc[parteCorpo].push(element);
+	  return acc;
+	}, {});
+}
+  
+
 WorkoutDashboard.createSelectExercise = function(data){
 	var div = document.createElement("div");
 	var sel = document.createElement("select");
@@ -28,10 +42,35 @@ WorkoutDashboard.createSelectExercise = function(data){
 	if(data!=null)
 	data.forEach(element => {
 		var opt = document.createElement("option");
-		opt.textContent = element.name;
+		opt.innerHTML = element.name;
 		opt.value = element.id;
 		sel.appendChild(opt);
 	});
+	div.appendChild(sel);
+	return div;
+}
+
+WorkoutDashboard.createGruppedSelectExercise = function(data){
+	var div = document.createElement("div");
+	var sel = document.createElement("select");
+	sel.setAttribute("name", "name")
+	if(data!=null){
+		var groupedData = WorkoutDashboard.groupByParteCorpo(data);
+		const keys = Object.keys(groupedData);
+		for (let i = 0; i < keys.length; i++) {
+		  	const key = keys[i];
+		  	const elements = groupedData[key];
+			var optgroup = document.createElement("optgroup");
+			optgroup.setAttribute("label", key);
+		  	for (let j = 0; j < elements.length; j++) {
+				var opt = document.createElement("option");
+				opt.innerHTML = elements[j].name;
+				opt.value = elements[j].id;
+				optgroup.appendChild(opt);
+		  	}
+			sel.appendChild(optgroup);
+		}
+	}
 	div.appendChild(sel);
 	return div;
 }
@@ -88,21 +127,24 @@ WorkoutDashboard.removeContent = function(){
 
 }
 
+// **************** ELENCO DELLE SCHEDE ****************
+
+
 WorkoutDashboard.setEmptyDashboard = function(){
 	WorkoutDashboard.removeContent();
 }
 
-WorkoutDashboard.refreshData = function(data) {
+WorkoutDashboard.refreshData = function(data, isTrainer) {
 	WorkoutDashboard.removeContent();
 
 	var dashboardElement = document.getElementById("workoutDashboard");
 	for (var i = 0; i < data.length; i++){
-        var workoutCard = WorkoutDashboard.createWorkoutCard(data[i]);
+        var workoutCard = WorkoutDashboard.createWorkoutCard(data[i], isTrainer);
         dashboardElement.appendChild(workoutCard);
     }
 }
 
-WorkoutDashboard.createWorkoutCard = function(currentData){
+WorkoutDashboard.createWorkoutCard = function(currentData, isTrainer){
 	var workoutCard = document.createElement("div");
 	workoutCard.setAttribute("class", "scheda");
 
@@ -112,13 +154,13 @@ WorkoutDashboard.createWorkoutCard = function(currentData){
 	var header = WorkoutDashboard.createHeaderElement();
 	var lista = WorkoutDashboard.createListElement(currentData);
 	
-	var cestino = WorkoutDashboard.createTrashElement(currentData);
-	var stampa = WorkoutDashboard.createPrintElement();
+	if(isTrainer) var cestino = WorkoutDashboard.createTrashElement(currentData);
+	var stampa = WorkoutDashboard.createPrintElement(currentData);
 
 	workoutCard.appendChild(date);
 	workoutCard.appendChild(header);
 	workoutCard.appendChild(lista);
-	workoutCard.appendChild(cestino);
+	if(isTrainer) workoutCard.appendChild(cestino);
 	workoutCard.appendChild(stampa);
 
 	return workoutCard;
@@ -177,11 +219,12 @@ WorkoutDashboard.createTrashElement = function(currentData){
 	return button;
 }
 
-WorkoutDashboard.createPrintElement = function(){
+WorkoutDashboard.createPrintElement = function(currentData){
 	var button = document.createElement("button");
 	var stampa = document.createElement("i");
 	stampa.setAttribute("class", "fa fa-print fa-xl");
 	button.appendChild(stampa);
+	button.setAttribute("onClick", "window.open('print.php?userId="+currentData.userId+"&workoutId="+currentData.id+"');");
 
 	return button;
 }
@@ -193,7 +236,7 @@ WorkoutDashboard.createListElement = function(currentData){
 		
 		var nome = document.createElement("div");
 		nome.setAttribute("class", "exe");
-		nome.textContent = exe.exercise;
+		nome.innerHTML = exe.exercise;
 		var info = document.createElement("div");
 		info.setAttribute("class", "info");
 

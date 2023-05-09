@@ -34,6 +34,18 @@
 		return $result; 
 	}
 
+	function getWorkoutByWorkoutId($workoutId){
+		global $liftLogDb;
+		$userId = $liftLogDb->sqlInjectionFilter($workoutId);
+		$queryText = 'SELECT * ' 
+					. 'FROM Scheda '
+					. 'WHERE id = '.$workoutId; 
+		$result = $liftLogDb->performQuery($queryText);
+		
+		$liftLogDb->closeConnection();
+		return $result; 
+	}
+
 	function getTrainingByWorkoutId($workoutId){
 		global $liftLogDb;
 		$workoutId = $liftLogDb->sqlInjectionFilter($workoutId);
@@ -84,9 +96,9 @@
 		global $liftLogDb;
 		$exeId = $liftLogDb->sqlInjectionFilter($exeId);
 		$queryText = 'INSERT INTO Svolgimento VALUES (NULL,'.$exeId.','.$workoutId.','.$series.','.$reps.','.$rest.')';
-		$liftLogDb->performQuery($queryText);
+		$result = $liftLogDb->performQuery($queryText);
 	
-		$result = $liftLogDb->closeConnection();
+		$liftLogDb->closeConnection();
 		return $result; 
 	}
 
@@ -94,9 +106,9 @@
 		global $liftLogDb;
 		$workoutId = $liftLogDb->sqlInjectionFilter($workoutId);
 		$queryText = 'DELETE FROM Scheda WHERE id = '.$workoutId;
-		$liftLogDb->performQuery($queryText);
+		$result = $liftLogDb->performQuery($queryText);
 	
-		$result = $liftLogDb->closeConnection();
+		$liftLogDb->closeConnection();
 		return $result; 
 	}
 
@@ -104,9 +116,19 @@
 		global $liftLogDb;
 		$workoutId = $liftLogDb->sqlInjectionFilter($workoutId);
 		$queryText = 'DELETE FROM Svolgimento WHERE scheda = '.$workoutId;
-		$liftLogDb->performQuery($queryText);
+		$result = $liftLogDb->performQuery($queryText);
 	
-		$result = $liftLogDb->closeConnection();
+		$liftLogDb->closeConnection();
+		return $result; 
+	}
+
+	function getUserByUserId($userId){
+		global $liftLogDb;
+		$userId = $liftLogDb->sqlInjectionFilter($userId);
+		$queryText = "SELECT * FROM Utente WHERE id =".$userId;
+		$result = $liftLogDb->performQuery($queryText);
+	
+		$liftLogDb->closeConnection();
 		return $result; 
 	}
 

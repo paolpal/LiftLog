@@ -19,4 +19,12 @@
         return $result;
     }
 
+    function getCustomerByUserId($userId){
+        global $liftLogDb;
+        $queryText = 'SELECT nome, cognome FROM Utente WHERE id='.$userId;
+		$result = $liftLogDb->performQuery($queryText);
+		$liftLogDb->closeConnection();
+        return $result;
+    }
+
 ?>

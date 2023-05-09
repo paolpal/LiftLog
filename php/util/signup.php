@@ -1,7 +1,13 @@
 <?php
     require_once __DIR__ . "/../config.php";
     require_once DIR_UTIL . "liftLogDbManager.php";
+    include DIR_UTIL . "sessionUtil.php";
+	session_start();
 
+	if (!isTrainer()){
+        header('location: ./../../clienti.php?errorMessage=NOT ALLOWED');
+		exit;
+	}
 
     $username = $_POST['user'];
     $nome = $_POST['nome'];

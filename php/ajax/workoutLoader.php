@@ -1,14 +1,15 @@
 <?php
-
-    //session_start();
-    
     require_once __DIR__ . "/../config.php";
-    
     require_once DIR_UTIL . "exerciseManagerDb.php";
-    
     require_once DIR_AJAX_UTIL . "AjaxResponse.php";
-
+    include_once DIR_UTIL . "sessionUtil.php";
+    session_start();
     $response = new AjaxResponse();
+
+    if(!isLogged()){
+        echo json_encode($response);
+        return;
+    }
 
     if(!isset($_GET['userId'])){
         echo json_encode($response);
@@ -18,42 +19,41 @@
 
     // ------------------ NUOVO APPROCCIO ------------------
     if(isset($_GET['delWorkout'])){
+        if(!isTrainer()){
+            echo json_encode($response);
+            return;
+        }
         $workoutId = $_GET['delWorkout'];
         $result = deleteWorkoutById($workoutId);
     }
     elseif(isset($_GET['addWorkout'])){
+        if(!isTrainer()){
+            echo json_encode($response);
+            return;
+        }
         $workout = json_decode($_GET['addWorkout']);
         $result = insertWorkoutPlan($workout);
     }
-    #else{
-    #    $result = getWorkoutByUserId($userId);
-    #}
-#
-    #if (checkEmptyResult($result)){
-    #    $response = setEmptyResponse();
-    #    echo json_encode($response);
-    #    return;
-    #}
 
-    $message = "OK";	
+    if(!isTrainer() && $_SESSION['userId']!=$userId){
+        echo json_encode($response);
+        return;
+    }
+
+
+    $message = "OK";
     $response = setResponse($userId, $message);
     echo json_encode($response);
     
     return;
 
     function insertWorkoutPlan($workout){
-        //echo $workout;
-        #echo 2;
+
         if(insertWorkout($workout->userId)){
-            #echo 2;
             if($result = getLastWorkout($workout->userId)){
-                #echo 3;
                 $workoutId = ($result->fetch_assoc())['max(id)'];
-                #echo 4;
                 foreach ($workout->exes as $exe) {
-                    #echo 5;
                     insertTraining($exe->exeId, $workoutId, $exe->series, $exe->reps, $exe->rest);
-                    #echo 6;
                 }
             }
         }
@@ -62,15 +62,10 @@
 
     function insertWorkoutPlan_new($workout, $userId){
         if(insertWorkout($userId)){
-            #echo 2;
             if($result = getLastWorkout($userId)){
-                #echo 3;
                 $workoutId = ($result->fetch_assoc())['max(id)'];
-                #echo 4;
                 foreach ($workout as $exe) {
-                    #echo 5;
                     insertTraining($exe->exeId, $workoutId, $exe->series, $exe->reps, $exe->rest);
-                    #echo 6;
                 }
                 return null;
             }

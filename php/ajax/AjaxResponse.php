@@ -6,19 +6,26 @@
 		
 		It is possibile to serialize also protected and private property but it is out of the course scope.
 	*/
+
+	require_once __DIR__ . "/../config.php";
+	require_once DIR_UTIL . "sessionUtil.php";
+	session_start();
+
 	class AjaxResponse{
 		public $responseCode; // 0 all ok - 1 some errors - -1 some warning
 		public $message;
 		public $data;
+		public $isTrainer;
 		
 		function __construct($responseCode = 1, 
 								$message = "Somenthing went wrong! Please try later.",
-								$data = null){
+								$data = null,
+								$isTrainer = null){
 			$this->responseCode = $responseCode;
 			$this->message = $message;
 			$this->data = null;
+			$this->isTrainer = isTrainer();
 		}
-	
 	}
 
 	class Exercise {
@@ -64,6 +71,20 @@
 			$this->userId = $userId;
 			$this->assignDate = $assignDate;
 			$this->trainingList = $trainingList;
+		}
+	}
+
+	class User {
+		public $id;
+		public $username;
+		public $nome;
+		public $cognome;
+
+		function __construct($id=null, $username = null, $nome = null, $cognome = null){
+			$this->id = $id;
+			$this->username = $username;
+			$this->nome = $nome;
+			$this->cognome = $cognome;
 		}
 	}
 

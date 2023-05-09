@@ -28,26 +28,44 @@
 		<script type="text/javascript" src="./../js/ajax/UserEventHandler.js"></script>
 		<script src="https://kit.fontawesome.com/65c740b968.js" crossorigin="anonymous"></script>
 	</head>
+
+	<?php
+		if(isTrainer()){
+	?>
 	<body onload="UserEventHandler.addExerciseFields();">
+	<?php
+		}
+		else {
+	?>
+	<body onload="WorkoutLoader.workoutOfUser(<?php echo $_SESSION['userId']; ?>)">
+	<?php
+		}
+	?>
+
 		<header>
 			<?php include DIR_LAYOUT."navbar.php"; ?>
 		</header>
 		<div class="main">
 			<?php include DIR_LAYOUT."sidebar.php"; ?>
 			<div class="page">
+				<?php
+					if(isTrainer()){
+				?>
 				<div class="tab">
 					<?php
-						$result = getAllCustomers();
-						while($row = $result->fetch_assoc()){
-							echo '<button class="tablinks" onclick="tablinkClick(event, \''.$row['id'].'\');">'.$row['nome'].'</button>';
-							#echo '<i class="fa fa-times"></i>';
-						}
+					$result = getAllCustomers();
+					while($row = $result->fetch_assoc()){
+						echo '<button class="tablinks" onclick="tablinkClick(event, \''.$row['id'].'\');">'.$row['nome'].'</button>';
+						#echo '<i class="fa fa-times"></i>';
+					}
 					?>
 				</div>
-						
-				
-				  
-				<div id="paolpal" class="tabcontent">
+				<?php
+					} 
+				?>
+					
+			
+				<div class="tabcontent">
 					<div id="workoutDashboard">
 						<!--
 							<div class="scheda">
@@ -72,6 +90,10 @@
 						-->
 						
 					</div>
+
+					<?php
+						if(isTrainer()){
+					?>
 					<div class="newScheda">
 						<h3>Nuova Scheda</h3>
 						<div>
@@ -118,6 +140,9 @@
 							</div>
 						</div>
 					</div>
+					<?php
+						} 
+					?>
 				</div>
 			</div>
 		</div>

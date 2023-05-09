@@ -8,7 +8,7 @@ WorkoutLoader.SUCCESS_RESPONSE = "0";
 WorkoutLoader.NO_MORE_DATA = "-1";
 
 WorkoutLoader.workoutOfUser = function(userId) {
-    var responseFunction = WorkoutLoader.onWorkoutAjaxResponse;
+    var responseFunction = WorkoutLoader.onAjaxResponse;
     var queryString = "?userId=" + userId;
     var url = WorkoutLoader.WORKOUT_REQUEST + queryString;
 
@@ -17,9 +17,9 @@ WorkoutLoader.workoutOfUser = function(userId) {
         null, responseFunction);
 }
 
-WorkoutLoader.onWorkoutAjaxResponse = function(response){
+WorkoutLoader.onAjaxResponse = function(response){
     if (response.responseCode === WorkoutLoader.SUCCESS_RESPONSE){
-		WorkoutDashboard.refreshData(response.data);
+		WorkoutDashboard.refreshData(response.data, response.isTrainer);
 		return;
 	}
 	

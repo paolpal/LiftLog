@@ -1,6 +1,7 @@
 <?php
 	require_once __DIR__."/config.php";
-	require_once DIR_UTIL."userManagerDb.php";
+    require_once DIR_UTIL."userManagerDb.php";
+    require_once DIR_UTIL."exerciseManagerDb.php";
 	include DIR_UTIL . "sessionUtil.php";
 	session_start();
 
@@ -8,110 +9,162 @@
 		header('Location: ./../index.php');
 		exit;
 	}
+
+    if(!isset($_GET['userId']) || !isset($_GET['workoutId'])){
+        header('Location: ./../index.php');
+        exit;
+    }
+    $userId = $_GET['userId'];
+    $workoutId = $_GET['workoutId'];
+
+    if(!isTrainer() && $_SESSION['userId']!=$userId){
+        header('Location: ./../index.php');
+        exit;
+    }
+
+    $result = getCustomerByUserId($userId);
+    if(checkEmptyResult($result)){
+        // FALLIMENTO
+        // RITORNA UN ERRORE
+        echo "Utente Inesistente";
+        header('Location: ./../index.php');
+        exit;
+    }
+    if($row = $result->fetch_assoc()){
+        $nome = $row["nome"].' '.$row["cognome"];
+    }
+
+    $result = getWorkoutByWorkoutId($workoutId);
+    if(checkEmptyResult($result)){
+        // FALLIMENTO
+        // RITORNA UN ERRORE
+        echo "Scheda Insistente";
+        header('Location: ./../index.php');
+        exit;
+    }
+    if($row = $result->fetch_assoc()){
+        $dataAssegnamento = $row["data_assegnamento"];
+        if($row["utente"]!=$userId){
+            echo "Scheda Inesistente";
+            header('Location: ./../index.php');
+            exit;
+        }
+    }
+
+
+    function checkEmptyResult($result){
+		if ($result === null || !$result)
+			return true;
+			
+		return ($result->num_rows <= 0);
+	}
 ?>
-<!--
-	
-	<!DOCTYPE html>
-	<html>
-		<head>
-			<meta charset="utf-8">
-			<meta name="author" content="Paolo Palumbo">
-			<link rel="stylesheet" href="../css/master.css">
-			<link rel="stylesheet" href="../css/header.css">
-			<link rel="stylesheet" href="../css/navbar.css">
-			<link rel="stylesheet" href="../css/sidebar.css">
-			<link rel="stylesheet" href="../css/tab.css">
-			<link rel="stylesheet" href="../css/schede.css">
-			<script src="https://kit.fontawesome.com/65c740b968.js" crossorigin="anonymous"></script>
-		</head>
-		<body>
-			<div>
-	
-			</div>
-		</body>
-	</html>
--->
 
-
-<!--
-
--->
 <!DOCTYPE html>
-<html lang="it">
+<html>
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="../css/master.css">
+    <title>Scheda di allenamento</title>
 	<link rel="stylesheet" href="../css/print.css">
-	<script src="https://kit.fontawesome.com/65c740b968.js" crossorigin="anonymous"></script>
-	<title>Scheda degli esercizi</title>
 </head>
 <body>
-	<h1>LiftLog</h1>
-	<!--
-		<div class="deck" id="exerciseDashboard">
-			<div class="excard">
-				<img src="../img/esercizi/addominali/abdominal_crunch.png" alt="">
-				<div>
-					<h4>Esercizio</h4>
-					<p>Descrizione</p>
-				</div>
-			</div>
-		</div>
-	-->
-	<div class="workout">
-		<div class="exercise">
-			<div class="image">
-				<!--
+    
+    
+    <div class="header">
+        <h2>LiftLog</h2>
+        <div class="info">
+            <p>Nome atleta: <?php echo $nome?></p>
+            <p>Data assegnazione: <?php echo $dataAssegnamento?></p>
+        </div>
+    </div>
 
-				-->
-				<img src="../img/esercizi/addominali/abdominal_crunch.png" alt="">
-			</div>
-			<div class="info">
-				<div class="name">Squat</div>
-				<div class="parteCorpo">Gambe</div>
-				<div class="svolgimento">
-					<div>3</div>x</i><div>12</div><div>30s</div>
-				</div>
-				<!--
+    <table class="workout">
+        <?php 
+        $result = getTrainingByWorkoutId($workoutId);
+        $index = 0;
+        while ($row = $result->fetch_assoc()) {
+            $resultEsercizio = getExerciseById($row["esercizio"]);
+            if ($rowEsercizio = $resultEsercizio->fetch_assoc()) {
+                $nomeEsercizio = $rowEsercizio["nome"];
+                $parteCorpo = $rowEsercizio["parte_del_corpo"];
+                $immagine = $rowEsercizio["immagine"];
+            }
+            if ($index % 2 === 0) {
+                echo '<tr>'
+                    . '<td colspan="2">'
+                    . '<div class="banda"></div>'
+                    . '</td>'
+                    . '</tr>'
+                    . '<tr>';
+            }
+            echo '<td>'
+                . '<div class="esercizio">'
+                . '<div>'
+                . '<div class="immagine">'
+                . '<img src="../img/'.$immagine.'">'
+                . '</div>'
+                . '<div class="contenuto">'
+                . '<div class="nome">'.$nomeEsercizio.'</div>'
+                . '<div class="parte-corpo">'.$parteCorpo.'</div>'
+                . '<div class="dettagli">Serie: '.$row["serie"].'</div>'
+                . '<div class="dettagli">Ripetizioni: '.$row["ripetizioni"].'</div>'
+                . '<div class="dettagli">Tempo di recupero: '.$row["recupero"].' secondi</div>'
+                . '</div>'
+                . '</div>'
+                . '</div>'
+                . '</td>';
+        
+            $index++;
+            if ($index % 2 === 0) {
+                echo '</tr>';
+            }
+        }
+        if ($index % 2 !== 0) {
+            echo '<td></td></tr>';
+        }
 
-				-->
-			</div>
-		</div>
-		<div class="exercise">
-			<div class="image">
-				<!--
+        ?>
+    <!--
+        <tr>
+            <td colspan="2">
+                <div class="banda"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="esercizio">
+                    <div>
+                        <div class="immagine">
+                            <img src="../img/esercizi/addominali/abdominal_crunch.png" alt="Squat">
+                        </div>
+                        <div class="contenuto">
+                            <div class="nome">Squat</div>
+                            <div class="parte-corpo">Gambe</div>
+                            <div class="dettagli">Serie: 3</div>
+                            <div class="dettagli">Ripetizioni: 10</div>
+                            <div class="dettagli">Tempo di recupero: 1 minuto</div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="esercizio">
+                    <div>
+                        <div class="immagine">
+                            <img src="../img/esercizi/addominali/abdominal_crunch.png" alt="Squat">
+                        </div>
+                        <div class="contenuto">
+                            <div class="nome">Squat</div>
+                            <div class="parte-corpo">Gambe</div>
+                            <div class="dettagli">Serie: 3</div>
+                            <div class="dettagli">Ripetizioni: 10</div>
+                            <div class="dettagli">Tempo di recupero: 1 minuto</div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    -->
+    </table>
 
-				-->
-				<img src="../img/esercizi/addominali/abdominal_crunch.png" alt="">
-			</div>
-			<div class="info">
-				<div class="name">Squat</div>
-				<div class="description">
-					Lo squat è un esercizio fondamentale per allenare le gambe. Si esegue posizionandosi con i piedi leggermente più larghi delle spalle e piegando le ginocchia fino a formare un angolo di 90 gradi. Poi si ritorna in posizione eretta.
-				</div>
-				<!--
-
-				-->
-			</div>
-		</div>
-		<div class="exercise">
-			<div class="image">
-				<!--
-
-				-->
-				<img src="../img/esercizi/addominali/abdominal_crunch.png" alt="">
-			</div>
-			<div class="info">
-				<div class="name">Squat</div>
-				<div class="description">
-					Lo squat è un esercizio fondamentale per allenare le gambe. Si esegue posizionandosi con i piedi leggermente più larghi delle spalle e piegando le ginocchia fino a formare un angolo di 90 gradi. Poi si ritorna in posizione eretta.
-				</div>
-				<!--
-
-				-->
-			</div>
-		</div>
-	</div>
 </body>
 </html>
