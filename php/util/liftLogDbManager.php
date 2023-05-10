@@ -39,6 +39,13 @@
 			
 			return $this->mysqli_conn->query($queryText);
 		}
+
+		function prepare($queryText) {
+			if (!$this->isOpened())
+				$this->openConnection();
+			
+			return $this->mysqli_conn->prepare($queryText);
+		}
 		
 		function sqlInjectionFilter($parameter){
 			if(!$this->isOpened())

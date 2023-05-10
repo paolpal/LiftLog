@@ -2,135 +2,212 @@
 	require_once __DIR__ . "/../config.php";
     require_once DIR_UTIL . "liftLogDbManager.php"; //includes Database Class
 
-    function getAllExercises(){
-        global $liftLogDb;
-        $queryText = 'SELECT * FROM Esercizio';
-		$result = $liftLogDb->performQuery($queryText);
-		$liftLogDb->closeConnection();
-        return $result;
-    }
-
-    function getSearchExerciseByKeyWord($pattern){
+	function getAllExercises() {
 		global $liftLogDb;
-		$pattern = $liftLogDb->sqlInjectionFilter($pattern);
-		$queryText = 'SELECT * ' 
-					. 'FROM Esercizio '
-					. 'WHERE nome LIKE \'%' . $pattern . '%\''; 
- 	
- 		$result = $liftLogDb->performQuery($queryText);
-		$liftLogDb->closeConnection();
-		return $result; 
-	}
-
-	function getWorkoutByUserId($userId){
-		global $liftLogDb;
-		$userId = $liftLogDb->sqlInjectionFilter($userId);
-		$queryText = 'SELECT * ' 
-					. 'FROM Scheda '
-					. 'WHERE utente = '.$userId; 
-		$result = $liftLogDb->performQuery($queryText);
 		
-		$liftLogDb->closeConnection();
-		return $result; 
-	}
-
-	function getWorkoutByWorkoutId($workoutId){
-		global $liftLogDb;
-		$userId = $liftLogDb->sqlInjectionFilter($workoutId);
-		$queryText = 'SELECT * ' 
-					. 'FROM Scheda '
-					. 'WHERE id = '.$workoutId; 
+		$queryText = 'SELECT * FROM Esercizio';
 		$result = $liftLogDb->performQuery($queryText);
+		$liftLogDb->closeConnection();
 		
-		$liftLogDb->closeConnection();
-		return $result; 
+		return $result;
 	}
-
-	function getTrainingByWorkoutId($workoutId){
-		global $liftLogDb;
-		$workoutId = $liftLogDb->sqlInjectionFilter($workoutId);
-		$queryText = 'SELECT * ' 
-			. 'FROM Svolgimento '
-			. 'WHERE scheda = '.$workoutId;
-		$result = $liftLogDb->performQuery($queryText);
 	
-		$liftLogDb->closeConnection();
-		return $result; 
-	}
+	function getSearchExerciseByKeyWord($pattern) {
+		global $liftLogDb;
+	
+		$queryText = 'SELECT * FROM Esercizio WHERE nome LIKE ?';
+		$stmt = $liftLogDb->prepare($queryText);
+		
+		if ($stmt === false) {
+			die("Errore nella preparazione della query: " . $liftLogDb->error);
+		}
 
+		$pattern = '%' . $liftLogDb->sqlInjectionFilter($pattern) . '%';
+		$stmt->bind_param("s", $pattern);
+		$stmt->execute();
+		
+		if ($stmt === false) {
+			die("Errore nell'esecuzione della query: " . $stmt->error);
+		}
+		
+		$result = $stmt->get_result();
+		$stmt->close();
+		$liftLogDb->closeConnection();
+		
+		return $result;
+	}
+	
+	function getWorkoutByUserId($userId) {
+		global $liftLogDb;
+	
+		$queryText = 'SELECT * FROM Scheda WHERE utente = ?';
+		$stmt = $liftLogDb->prepare($queryText);
+		if ($stmt === false) {
+			die("Errore nella preparazione della query: " . $liftLogDb->error);
+		}
+		
+		$stmt->bind_param("i", $userId);
+		$stmt->execute();
+		
+		if ($stmt === false) {
+			die("Errore nell'esecuzione della query: " . $stmt->error);
+		}
+	
+		$result = $stmt->get_result();
+		$stmt->close();
+		$liftLogDb->closeConnection();
+	
+		return $result;
+	}
+	
+	function getWorkoutByWorkoutId($workoutId) {
+		global $liftLogDb;
+	
+		$queryText = 'SELECT * FROM Scheda WHERE id = ?';
+		$stmt = $liftLogDb->prepare($queryText);
+	
+		if ($stmt === false) {
+			die("Errore nella preparazione della query: " . $liftLogDb->error);
+		}
+	
+		$stmt->bind_param("s", $workoutId);
+		$stmt->execute();
+	
+		if ($stmt === false) {
+			die("Errore nell'esecuzione della query: " . $stmt->error);
+		}
+	
+		$result = $stmt->get_result();
+		$stmt->close();
+		$liftLogDb->closeConnection();
+	
+		return $result;
+	}
+	
+	function getTrainingByWorkoutId($workoutId) {
+		global $liftLogDb;
+	
+		$queryText = 'SELECT * FROM Svolgimento WHERE scheda = ?';
+		$stmt = $liftLogDb->prepare($queryText);
+	
+		if ($stmt === false) {
+			die("Errore nella preparazione della query: " . $liftLogDb->error);
+		}
+	
+		$stmt->bind_param("s", $workoutId);
+		$stmt->execute();
+	
+		if ($stmt === false) {
+			die("Errore nell'esecuzione della query: " . $stmt->error);
+		}
+	
+		$result = $stmt->get_result();
+		$stmt->close();
+		$liftLogDb->closeConnection();
+	
+		return $result;
+	}
+	
 	function getExerciseById($exeId){
 		global $liftLogDb;
-		$exeId = $liftLogDb->sqlInjectionFilter($exeId);
-		$queryText = 'SELECT * ' 
-			. 'FROM Esercizio '
-			. 'WHERE id = '.$exeId;
-		$result = $liftLogDb->performQuery($queryText);
+		$queryText = 'SELECT * FROM Esercizio WHERE id = ?';
+		$stmt = $liftLogDb->prepare($queryText);
+		if ($stmt === false) {
+			die("Errore nella preparazione della query: " . $liftLogDb->error);
+		}
+		$stmt->bind_param("s", $exeId);
+		$stmt->execute();
+		if ($stmt === false) {
+			die("Errore nell'esecuzione della query: " . $stmt->error);
+		}
+		$result = $stmt->get_result();
+		$stmt->close();
+		$liftLogDb->closeConnection();
+		return $result; 
+	}
 	
-		$liftLogDb->closeConnection();
-		return $result; 
-	}
-
-	function getLastWorkout($userId){
+	function getLastWorkout($userId) {
 		global $liftLogDb;
-		$userId = $liftLogDb->sqlInjectionFilter($userId);
-
-		$queryText = 'SELECT max(id) FROM Scheda WHERE utente = \''.$userId.'\'';
-		$result = $liftLogDb->performQuery($queryText);
-
+		$queryText = 'SELECT MAX(id) FROM Scheda WHERE utente = ?';
+		$stmt = $liftLogDb->prepare($queryText);
+		$stmt->bind_param('i', $userId);
+		$stmt->execute();
+		$stmt->bind_result($lastWorkoutId);
+		$stmt->fetch();
+		$stmt->close();
 		$liftLogDb->closeConnection();
-		return $result; 
+		return $lastWorkoutId;
 	}
-
+	
 	function insertWorkout($userId) {
 		global $liftLogDb;
-		$userId = $liftLogDb->sqlInjectionFilter($userId);
-
-		$queryText = 'INSERT INTO Scheda VALUES (NULL, '.$userId.', curdate())';
-		$result = $liftLogDb->performQuery($queryText);
-		
+		$queryText = 'INSERT INTO Scheda VALUES (NULL, ?, curdate())';
+		$stmt = $liftLogDb->prepare($queryText);
+		if ($stmt === false) {
+			die("Errore nella preparazione della query: " . $liftLogDb->error);
+		}
+		$stmt->bind_param("s", $userId);
+		$stmt->execute();
+		if ($stmt === false) {
+			die("Errore nell'esecuzione della query: " . $stmt->error);
+		}
+		$stmt->close();
 		$liftLogDb->closeConnection();
-		return $result; 
+		return true; 
 	}
-
+	
 	function insertTraining($exeId, $workoutId, $series, $reps, $rest){
 		global $liftLogDb;
-		$exeId = $liftLogDb->sqlInjectionFilter($exeId);
-		$queryText = 'INSERT INTO Svolgimento VALUES (NULL,'.$exeId.','.$workoutId.','.$series.','.$reps.','.$rest.')';
-		$result = $liftLogDb->performQuery($queryText);
-	
+		$queryText = 'INSERT INTO Svolgimento VALUES (NULL, ?, ?, ?, ?, ?)';
+		$stmt = $liftLogDb->prepare($queryText);
+		if ($stmt === false) {
+			die("Errore nella preparazione della query: " . $liftLogDb->error);
+		}
+		$stmt->bind_param("sssss", $exeId, $workoutId, $series, $reps, $rest);
+		$stmt->execute();
+		if ($stmt === false) {
+			die("Errore nell'esecuzione della query: " . $stmt->error);
+		}
+		$stmt->close();
 		$liftLogDb->closeConnection();
-		return $result; 
+		return true; 
 	}
-
-	function deleteWorkoutById($workoutId){
+	
+	function deleteWorkoutById($workoutId) {
 		global $liftLogDb;
-		$workoutId = $liftLogDb->sqlInjectionFilter($workoutId);
-		$queryText = 'DELETE FROM Scheda WHERE id = '.$workoutId;
-		$result = $liftLogDb->performQuery($queryText);
-	
+		$queryText = 'DELETE FROM Scheda WHERE id = ?';
+		$stmt = $liftLogDb->prepare($queryText);
+		$stmt->bind_param('i', $workoutId);
+		$stmt->execute();
+		$affectedRows = $stmt->affected_rows;
+		$stmt->close();
 		$liftLogDb->closeConnection();
-		return $result; 
+		return $affectedRows;
 	}
 
-	function deleteTrainingByWorkoutId($workoutId){
+	function deleteTrainingByWorkoutId($workoutId) {
 		global $liftLogDb;
-		$workoutId = $liftLogDb->sqlInjectionFilter($workoutId);
-		$queryText = 'DELETE FROM Svolgimento WHERE scheda = '.$workoutId;
-		$result = $liftLogDb->performQuery($queryText);
-	
+		$queryText = 'DELETE FROM Svolgimento WHERE scheda = ?';
+		$stmt = $liftLogDb->prepare($queryText);
+		$stmt->bind_param('i', $workoutId);
+		$stmt->execute();
+		$affectedRows = $stmt->affected_rows;
+		$stmt->close();
 		$liftLogDb->closeConnection();
-		return $result; 
+		return $affectedRows;
 	}
 
-	function getUserByUserId($userId){
+	function getUserByUserId($userId) {
 		global $liftLogDb;
-		$userId = $liftLogDb->sqlInjectionFilter($userId);
-		$queryText = "SELECT * FROM Utente WHERE id =".$userId;
-		$result = $liftLogDb->performQuery($queryText);
-	
+		$queryText = 'SELECT * FROM Utente WHERE id = ?';
+		$stmt = $liftLogDb->prepare($queryText);
+		$stmt->bind_param('i', $userId);
+		$stmt->execute();
+		$result = $stmt->get_result();
+		$user = $result->fetch_assoc();
+		$stmt->close();
 		$liftLogDb->closeConnection();
-		return $result; 
-	}
-
+		return $user;
+	}	
 
 ?>

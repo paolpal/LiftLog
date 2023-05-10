@@ -20,8 +20,11 @@
 		<link rel="stylesheet" href="../css/navbar.css">
 		<link rel="stylesheet" href="../css/sidebar.css">
 		<link rel="stylesheet" href="../css/tab.css">
+        <link rel="stylesheet" href="../css/alert.css">
 		<link rel="stylesheet" href="../css/schede.css">
 		<script type="text/javascript" src="./../js/schedeUtil.js"></script>
+        <script type="text/javascript" src="./../js/alertUtil.js"></script>
+		<script type="text/javascript" src="./../js/formUtil.js"></script>
 		<script type="text/javascript" src="./../js/ajax/ajaxManager.js"></script>
 		<script type="text/javascript" src="./../js/ajax/WorkoutLoader.js"></script>
 		<script type="text/javascript" src="./../js/ajax/WorkoutDashboard.js"></script>
@@ -55,7 +58,7 @@
 					<?php
 					$result = getAllCustomers();
 					while($row = $result->fetch_assoc()){
-						echo '<button class="tablinks" onclick="tablinkClick(event, \''.$row['id'].'\');">'.$row['nome'].'</button>';
+						echo '<button class="tablinks" onclick="tablinkClick(event, \''.$row['id'].'\');">'.htmlspecialchars($row['nome']).'</button>';
 						#echo '<i class="fa fa-times"></i>';
 					}
 					?>
@@ -109,7 +112,10 @@
 									<div>&nbsp;</div>
 									<div>&nbsp;</div>
 									<div>
-										<button onclick="UserEventHandler.saveWorkoutPlan();">Salva Scheda</button>
+										<!-- 
+											<button onclick="UserEventHandler.saveWorkoutPlan();">Salva Scheda</button>
+										-->
+										<button onclick="if (checkBeforeSave()) { UserEventHandler.saveWorkoutPlan(); resetWorkoutForm(); UserEventHandler.addExerciseFields();}">Salva Scheda</button>
 									</div>
 								</div>
 								<!--

@@ -20,7 +20,9 @@
         <link rel="stylesheet" href="css/master.css">
         <link rel="stylesheet" href="css/header.css">
         <link rel="stylesheet" href="css/loginForm.css">
-        <script src="js/login_util.js"></script>
+        <link rel="stylesheet" href="css/alert.css">
+        <script type="text/javascript" src="js/alertUtil.js"></script>
+        <script type="text/javascript" src="js/loginUtil.js"></script>
         <script src="https://kit.fontawesome.com/65c740b968.js" crossorigin="anonymous"></script>
     </head>
     <body>
@@ -76,7 +78,7 @@
                     <div class="tag">
                         <i class="fa-sharp fa-solid fa-location-dot"></i>
                         <div class="content">
-                            <h2>Location</h2>
+                            <h2>Indirizzo</h2>
                             Street number and town name 23
                         </div>
                     </div>
@@ -90,12 +92,20 @@
                     <div class="tag">
                         <i class="fa-solid fa-phone"></i>
                         <div class="content">
-                            <h2>Phone number</h2>
+                            <h2>Telefono</h2>
                             425 521432
                         </div>
                     </div>
                 </div>
             </section>
+            <?php
+				if (isset($_GET['errorMessage'])){
+					echo '<div class="alert">'
+                        .'<span class="closebtn" onclick="closeAlert(event)">&times;</span>  '
+                        .'<strong>Attenzione!</strong> '. htmlspecialchars($_GET['errorMessage'])
+                    .'</div>';
+				}
+			?>
         </div>
     </body>
 </html>

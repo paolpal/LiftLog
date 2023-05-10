@@ -19,7 +19,7 @@
 		<link rel="stylesheet" href="../css/navbar.css">
 		<link rel="stylesheet" href="../css/sidebar.css">
 		<link rel="stylesheet" href="../css/searchbar.css">
-		<link rel="stylesheet" href="../css/exercise_card.css">
+		<link rel="stylesheet" href="../css/exerciseCard.css">
 		<script type="text/javascript" src="./../js/ajax/ajaxManager.js"></script>
 		<script type="text/javascript" src="./../js/ajax/ExerciseLoader.js"></script>
 		<script type="text/javascript" src="./../js/ajax/ExerciseDashboard.js"></script>		

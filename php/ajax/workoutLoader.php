@@ -24,7 +24,7 @@
             return;
         }
         $workoutId = $_GET['delWorkout'];
-        $result = deleteWorkoutById($workoutId);
+        $deletedRows = deleteWorkoutById($workoutId);
     }
     elseif(isset($_GET['addWorkout'])){
         if(!isTrainer()){
@@ -32,7 +32,7 @@
             return;
         }
         $workout = json_decode($_GET['addWorkout']);
-        $result = insertWorkoutPlan($workout);
+        $result = insertWorkoutPlan($workout, $userId);
     }
 
     if(!isTrainer() && $_SESSION['userId']!=$userId){
@@ -47,23 +47,22 @@
     
     return;
 
-    function insertWorkoutPlan($workout){
+    #function insertWorkoutPlan_old($workout){
+    #
+    #    if(insertWorkout($workout->userId)){
+    #        if($result = getLastWorkout($workout->userId)){
+    #            $workoutId = ($result->fetch_assoc())['max(id)'];
+    #            foreach ($workout->exes as $exe) {
+    #                insertTraining($exe->exeId, $workoutId, $exe->series, $exe->reps, $exe->rest);
+    #            }
+    #        }
+    #    }
+    #    return $result;
+    #}
 
-        if(insertWorkout($workout->userId)){
-            if($result = getLastWorkout($workout->userId)){
-                $workoutId = ($result->fetch_assoc())['max(id)'];
-                foreach ($workout->exes as $exe) {
-                    insertTraining($exe->exeId, $workoutId, $exe->series, $exe->reps, $exe->rest);
-                }
-            }
-        }
-        return $result;
-    }
-
-    function insertWorkoutPlan_new($workout, $userId){
+    function insertWorkoutPlan($workout, $userId){
         if(insertWorkout($userId)){
-            if($result = getLastWorkout($userId)){
-                $workoutId = ($result->fetch_assoc())['max(id)'];
+            if($workoutId = getLastWorkout($userId)){
                 foreach ($workout as $exe) {
                     insertTraining($exe->exeId, $workoutId, $exe->series, $exe->reps, $exe->rest);
                 }
@@ -81,7 +80,7 @@
 	}
 	
 	function setEmptyResponse(){
-		$message = "No more movies to load";
+		$message = "No more workout to load";
 		return new AjaxResponse("-1", $message);
 	}
 
@@ -92,9 +91,8 @@
 
     function setResponse($userId, $message){
 		$response = new AjaxResponse("0", $message);
-		
         $result = getWorkoutByUserId($userId);
-        
+
         if (checkEmptyResult($result)){
             $response = setEmptyResponse();
             return $response;

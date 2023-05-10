@@ -53,11 +53,7 @@ UserEventHandler.saveWorkoutPlan = function() {
         }
         exesJson.push(exeJson);
     }
-    var data = {
-        "userId": userId,
-        "exes": exesJson
-    }
-    var scheda = JSON.stringify(data);
+    var scheda = JSON.stringify(exesJson);
 
     // ------ Ajax ------
 

@@ -44,9 +44,12 @@ UserDashboard.refreshData = function(data, isTrainer) {
 // ******************* USER DATA FORM *******************
 
 UserDashboard.createUpdateUserDataForm = function(currentData) {
-	var form = UserDashboard.createFormElement("util/updateuser.php");
+	var form = UserDashboard.createFormElement("util/updateuser.php", "userDataForm");
 	var container = UserDashboard.createContainer();
 	form.appendChild(container);
+
+	form.addEventListener("submit", checkEditUser);
+
 	UserDashboard.createUsernameField(container, currentData);
 	UserDashboard.createNomeField(container, currentData);
 	UserDashboard.createCognomeField(container, currentData);
@@ -99,7 +102,7 @@ UserDashboard.createSaveButton = function(container) {
 // ******************* PASSWORD FORM *******************
 
 UserDashboard.createPasswordForm = function(currentData) {
-	var form = UserDashboard.createFormElement("util/updatepassword.php");
+	var form = UserDashboard.createFormElement("util/updatepassword.php", "pswForm");
 	var container = UserDashboard.createContainer();
 	form.appendChild(container);
 	UserDashboard.createUserIdField(container, currentData);
@@ -112,7 +115,7 @@ UserDashboard.createPasswordForm = function(currentData) {
 // ******************* TRAINER PASSWORD FORM *******************
 
 UserDashboard.createTrainerPasswordForm = function(currentData) {
-	var form = UserDashboard.createFormElement("util/trainerupdatepassword.php");
+	var form = UserDashboard.createFormElement("util/trainerupdatepassword.php", "trainerPswForm");
 	var container = UserDashboard.createContainer();
 	form.appendChild(container);
 	UserDashboard.createUserIdField(container, currentData);
@@ -151,7 +154,7 @@ UserDashboard.createChangePasswordButton = function(container) {
 // ******************* DELETE FORM *******************
 
 UserDashboard.createDeleteForm = function(currentData) {
-	var form = UserDashboard.createFormElement("util/deleteaccount.php");
+	var form = UserDashboard.createFormElement("util/deleteaccount.php", "deleteForm");
 	var container = UserDashboard.createContainer();
 	form.appendChild(container);
 	UserDashboard.createUserIdField(container, currentData);
@@ -186,13 +189,15 @@ UserDashboard.createInput = function(type, placeholder, name, value) {
 	input.placeholder = placeholder;
 	input.name = name;
 	input.value = value;
+	input.defaultValue = value;
 	return input;
 }
 
-UserDashboard.createFormElement = function(action) {
+UserDashboard.createFormElement = function(action, id) {
 	var form = document.createElement("form");
 	form.action = action;
 	form.className = "editUser";
 	form.method = "POST";
+	form.id = id;
 	return form;
 }

@@ -6,32 +6,6 @@
     require_once DIR_AJAX_UTIL . "AjaxResponse.php";
     $response = new AjaxResponse();
 
-    /*
-    
-    if (!isset($_GET['pattern'])){
-        echo json_encode($response);
-        return;
-    }		
-
-    $pattern = $_GET['pattern'];
-    $result = getSearchExerciseByKeyWord($pattern); // RICERCA PAROLE CHIAVI ESERCIZI
-
-    if (checkEmptyResult($result)){
-        $response = setEmptyResponse();
-        echo json_encode($response);
-        return;
-    }
-
-    $message = "OK";	
-    $response = setResponse($result, $message);
-    echo json_encode($response);
-
-    return;
-
-    */
-
-    // ------------------ NUOVO APPROCCIO ----------------
-
     if(isset($_GET['pattern'])){
         $pattern = $_GET['pattern'];
         $result = getSearchExerciseByKeyWord($pattern); // RICERCA PAROLE CHIAVI ESERCIZI

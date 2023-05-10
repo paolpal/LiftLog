@@ -20,8 +20,11 @@
 		<link rel="stylesheet" href="../css/navbar.css">
 		<link rel="stylesheet" href="../css/sidebar.css">
 		<link rel="stylesheet" href="../css/tab.css">
+        <link rel="stylesheet" href="../css/alert.css">
 		<link rel="stylesheet" href="../css/userForm.css">
-		<script type="text/javascript" src="./../js/tab.js"></script>
+		<script type="text/javascript" src="./../js/schedeUtil.js"></script>
+        <script type="text/javascript" src="./../js/alertUtil.js"></script>
+		<script type="text/javascript" src="./../js/formUtil.js"></script>
 		<script type="text/javascript" src="./../js/passwordGenerator.js"></script>
 		<script type="text/javascript" src="./../js/ajax/ajaxManager.js"></script>
 		<script type="text/javascript" src="./../js/ajax/UserLoader.js"></script>
@@ -55,7 +58,7 @@
 					<?php
 						$result = getAllCustomers();
 						while($row = $result->fetch_assoc()){
-							echo '<button class="tablinks" onclick="openTab(event, \'userTab\'); UserLoader.dataOfUser('.$row['id'].')">'.$row['nome'].'</button>';
+							echo '<button class="tablinks" onclick="openTab(event, \'userTab\'); UserLoader.dataOfUser('.$row['id'].')">'.htmlspecialchars($row['nome']).'</button>';
 							#echo '<i class="fa fa-times"></i>';
 						}
 					?>
@@ -70,44 +73,6 @@
 					<div id="userDashboard">
 					</div>
 				</div>
-
-				<?php
-					#$result = getAllCustomers();
-
-					#while($row = $result->fetch_assoc()){
-					#	echo '<div id="'.$row['username'].'" class="tabcontent">'
-					#		.'<h3>Informazioni Utente</h3>'
-					#		.'<form action="util/updateuser.php" class="editUser" method="POST">'
-					#			.'<div class="container">'
-					#				.'<label for="user"><b>Username</b></label>'
-					#				.'<input type="text" placeholder="Username.." name="user" value="'.$row['username'].'">'
-					#				.'<label for="nome"><b>Nome</b></label>'
-					#				.'<input type="text" placeholder="Nome.." name="nome" value="'.$row['nome'].'">'
-					#				.'<label for="cognome"><b>Cognome</b></label>'
-					#				.'<input type="text" placeholder="Cognome.." name="cognome" value="'.$row['cognome'].'">'
-					#				.'<input type="hidden" name="userId" value="'.$row['id'].'">'
-					#				.'<button type="submit" class="updatebtn">Salva</button>'
-					#			.'</div>'
-					#		.'</form>'
-					#		.'<form action="util/updatepassword.php" class="editUser" method="POST">'
-					#			.'<div class="container">'
-					#				.'<input type="hidden" name="userId" value="'.$row['id'].'">'
-					#				.'<label for="psw"><b>Vecchia Password</b></label>'
-					#				.'<input type="password" placeholder="Password.." name="psw">'
-					#				.'<label for="newPsw"><b>Nuova Password</b></label>'
-					#				.'<input type="password" placeholder="Nuova Password.." name="newPsw">'
-					#				.'<button type="submit" class="updatebtn">Cambia Password</button>'
-					#			.'</div>'
-					#		.'</form>'
-					#		.'<form action="util/deleteaccount.php" class="editUser" method="POST">'
-					#			.'<div class="container">'
-					#				.'<input type="hidden" name="userId" value="'.$row['id'].'">'
-					#				.'<button type="submit" class="deletebtn">Elimina Account</button>'
-					#			.'</div>'
-					#		.'</form>'
-					#	.'</div>';
-					#}
-				?>
 				<!--
 				<div id="London" class="tabcontent">
 					<h3>Informazioni Utente</h3>

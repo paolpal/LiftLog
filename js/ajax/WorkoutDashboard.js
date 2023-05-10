@@ -101,6 +101,7 @@ WorkoutDashboard.createRestPicker = function(){
 	rest.setAttribute("type", "number");
 	rest.setAttribute("name", "rest");
 	rest.setAttribute("value", "30");
+	rest.setAttribute("step", "30");
 	div.appendChild(rest);
 	return div;
 }
