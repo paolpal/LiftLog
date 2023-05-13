@@ -1,7 +1,7 @@
 <?php
     session_start();
     require_once __DIR__."/php/config.php";
-    require_once DIR_UTIL."userManagerDb.php";
+    require_once DIR_UTIL."exerciseManagerDb.php";
     include DIR_UTIL."sessionUtil.php";
 
     #if(isLogged()){

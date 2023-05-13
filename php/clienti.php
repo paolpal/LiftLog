@@ -1,6 +1,6 @@
 <?php
 	require_once __DIR__."/config.php";
-    require_once DIR_UTIL."userManagerDb.php";
+    require_once DIR_UTIL."exerciseManagerDb.php";
 	include DIR_UTIL . "sessionUtil.php";
 	session_start();
 

@@ -1,6 +1,5 @@
 <?php
 	require_once __DIR__."/config.php";
-    require_once DIR_UTIL."userManagerDb.php";
     require_once DIR_UTIL."exerciseManagerDb.php";
 	include DIR_UTIL . "sessionUtil.php";
 	session_start();
@@ -18,35 +17,40 @@
     $workoutId = $_GET['workoutId'];
 
     if(!isTrainer() && $_SESSION['userId']!=$userId){
-        header('Location: ./../index.php');
+        $errorMessage = "Pagina non trovata.";
+        //header('Location: ./../index.php');
+        header('Location: ./../index.php?errorMessage=' . $errorMessage );
         exit;
     }
 
-    $result = getCustomerByUserId($userId);
-    if(checkEmptyResult($result)){
+    $user = getUserByUserId($userId);
+    if($user === null || !$user){
         // FALLIMENTO
         // RITORNA UN ERRORE
-        echo "Utente Inesistente";
-        header('Location: ./../index.php');
+        $errorMessage = "Utente Inesistente";
+        //header('Location: ./../index.php');
+        header('Location: ./../index.php?errorMessage=' . $errorMessage );
         exit;
     }
-    if($row = $result->fetch_assoc()){
-        $nome = $row["nome"].' '.$row["cognome"];
+    else {
+        $nome = $user["nome"].' '.$user["cognome"];
     }
 
     $result = getWorkoutByWorkoutId($workoutId);
     if(checkEmptyResult($result)){
         // FALLIMENTO
         // RITORNA UN ERRORE
-        echo "Scheda Insistente";
-        header('Location: ./../index.php');
+        $errorMessage = "Scheda Insistente";
+        header('Location: ./../index.php?errorMessage=' . $errorMessage );
+        //header('Location: ./../index.php');
         exit;
     }
     if($row = $result->fetch_assoc()){
         $dataAssegnamento = $row["data_assegnamento"];
         if($row["utente"]!=$userId){
-            echo "Scheda Inesistente";
-            header('Location: ./../index.php');
+            $errorMessage = "Scheda Inesistente";
+            header('Location: ./../index.php?errorMessage=' . $errorMessage );
+            //header('Location: ./../index.php');
             exit;
         }
     }
@@ -72,8 +76,8 @@
     <div class="header">
         <h2>LiftLog</h2>
         <div class="info">
-            <p>Nome atleta: <?php echo $nome?></p>
-            <p>Data assegnazione: <?php echo $dataAssegnamento?></p>
+            <p>Nome atleta: <?php echo htmlspecialchars($nome)?></p>
+            <p>Data assegnazione: <?php echo htmlspecialchars($dataAssegnamento)?></p>
         </div>
     </div>
 

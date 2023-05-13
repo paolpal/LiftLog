@@ -55,11 +55,25 @@ function checkUserSelected() {
 	return true;
 }
 
+function checkNumberPicker(formScheda) {
+    var numberPicker = formScheda.querySelectorAll('input[type="number"]')
+	for (var i = 0; i < numberPicker.length; i++) {
+		var num = parseInt(numberPicker[i].value);
+		if(isNaN(num)){
+			createErrorAlert('Inseirsci valori numerici.');
+			console.log('Errore: Inseirsci valori numerici.');
+			return false;
+		}
+	}
+	return true;
+}
+
 function checkBeforeSave() {
 	var formScheda = document.querySelector('#formScheda');
 	var isUnique = checkUniqueSelects(formScheda);
+	var isNumber = checkNumberPicker(formScheda);
 	var isUserSelected = checkUserSelected();
-	return isUnique && isUserSelected; 
+	return isUnique && isUserSelected && isNumber; 
 }
 
 function resetWorkoutForm() {

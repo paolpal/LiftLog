@@ -4,11 +4,9 @@
 
 	function getAllExercises() {
 		global $liftLogDb;
-		
 		$queryText = 'SELECT * FROM Esercizio';
 		$result = $liftLogDb->performQuery($queryText);
 		$liftLogDb->closeConnection();
-		
 		return $result;
 	}
 	
@@ -209,5 +207,21 @@
 		$liftLogDb->closeConnection();
 		return $user;
 	}	
+
+	function getAllTrainers(){
+        global $liftLogDb;
+        $queryText = 'SELECT * FROM Utente WHERE dipendente = TRUE';
+		$result = $liftLogDb->performQuery($queryText);
+		$liftLogDb->closeConnection();
+        return $result;
+    }
+
+    function getAllCustomers(){
+        global $liftLogDb;
+        $queryText = 'SELECT * FROM Utente WHERE dipendente = FALSE';
+		$result = $liftLogDb->performQuery($queryText);
+		$liftLogDb->closeConnection();
+        return $result;
+    }
 
 ?>
