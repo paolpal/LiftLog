@@ -1,7 +1,14 @@
 <?php
     require_once __DIR__ . "/../config.php";
     require_once DIR_UTIL . "liftLogDbManager.php";
+    require_once DIR_UTIL . "exerciseManagerDb.php";
+    include DIR_UTIL . "sessionUtil.php";
+	session_start();
 
+	if (!isLogged()){
+        header('location: ./../../clienti.php?errorMessage=NOT ALLOWED');
+		exit;
+	}
 
     $id = $_POST['userId'];
     $username = $_POST['user'];
@@ -17,30 +24,29 @@
 
     function updateUserInfo($id, $username, $nome, $cognome){
         if ($id != null && $username != null && $nome != null && $cognome != null ){
-            global $liftLogDb;
+            #global $liftLogDb;
 
-		    $id = $liftLogDb->sqlInjectionFilter($id);
-		    $username = $liftLogDb->sqlInjectionFilter($username);
-		    $nome = $liftLogDb->sqlInjectionFilter($nome);
-		    $cognome = $liftLogDb->sqlInjectionFilter($cognome);
+		    #$id = $liftLogDb->sqlInjectionFilter($id);
+		    #$username = $liftLogDb->sqlInjectionFilter($username);
+		    #$nome = $liftLogDb->sqlInjectionFilter($nome);
+		    #$cognome = $liftLogDb->sqlInjectionFilter($cognome);
 
-            #echo $queryText = "SELECT * FROM Utente WHERE id=" . $id . " AND `password` = SHA2('" . $oldPassword . "',512)";
-            #$result = $liftLogDb->performQuery($queryText);
-            #
-            #echo $numRow = mysqli_num_rows($result);
-            #if ($numRow != 1)
-            #    return 'Password Errata.';
-
-            echo $queryText = "UPDATE Utente SET "
-            ."username = '".$username."', "
-            ."nome = '".$nome."', "
-            ."cognome = '".$cognome."' "   
-            ."WHERE id = ".$id;
-            
-            $liftLogDb->performQuery($queryText);
-
-            $liftLogDb->closeConnection();
-            return null;
+            #check for usable username
+            if(checkUsername($username)){
+                
+                #echo $queryText = "UPDATE Utente SET "
+                #."username = '".$username."', "
+                #."nome = '".$nome."', "
+                #."cognome = '".$cognome."' "   
+                #."WHERE id = ".$id;
+                #
+                #$liftLogDb->performQuery($queryText);
+                #
+                #$liftLogDb->closeConnection();
+                updateUser($id, $username, $nome, $cognome);
+                return null;
+            }
+            else return 'Username non disponibile.';
         }
         else return 'Dati non validi.';
     }

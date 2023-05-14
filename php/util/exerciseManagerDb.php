@@ -177,6 +177,7 @@
 		$stmt = $liftLogDb->prepare($queryText);
 		$stmt->bind_param('i', $workoutId);
 		$stmt->execute();
+		$stmt->store_result();
 		$affectedRows = $stmt->affected_rows;
 		$stmt->close();
 		$liftLogDb->closeConnection();
@@ -189,6 +190,7 @@
 		$stmt = $liftLogDb->prepare($queryText);
 		$stmt->bind_param('i', $workoutId);
 		$stmt->execute();
+		$stmt->store_result();
 		$affectedRows = $stmt->affected_rows;
 		$stmt->close();
 		$liftLogDb->closeConnection();
@@ -223,5 +225,135 @@
 		$liftLogDb->closeConnection();
         return $result;
     }
+
+	function checkUsername($username) {
+		global $liftLogDb;
+		$queryText = 'SELECT * FROM Utente WHERE username = ?';
+		$stmt = $liftLogDb->prepare($queryText);
+		$stmt->bind_param('s', $username);
+		$stmt->execute();
+		$stmt->store_result();
+		$affectedRows = $stmt->affected_rows;
+		$stmt->close();
+		$liftLogDb->closeConnection();
+		if($affectedRows===0)
+			return true;
+		else 
+			return false;
+	}
+
+	function updateUser($id, $username, $nome, $cognome){
+		global $liftLogDb;
+		$queryText = "UPDATE Utente SET username = ?, nome = ?, cognome = ? WHERE id = ?";
+		$stmt = $liftLogDb->prepare($queryText);
+		$stmt->bind_param('sssi', $username, $nome, $cognome, $id);
+		$stmt->execute();
+		if ($stmt === false) {
+			die("Errore nell'esecuzione della query: " . $stmt->error);
+		}
+		$stmt->close();
+		$liftLogDb->closeConnection();
+		return true;
+	}
+
+	function checkOldPassword($id, $oldPassword){
+		global $liftLogDb;
+		$queryText = "SELECT * FROM Utente WHERE id = ? AND `password` = SHA2(?, 512)";
+		$stmt = $liftLogDb->prepare($queryText);
+		$stmt->bind_param('is', $id, $oldPassword);
+		$stmt->execute();
+		if ($stmt === false) {
+			die("Errore nell'esecuzione della query: " . $stmt->error);
+		}
+		$stmt->store_result();
+		$affectedRows = $stmt->affected_rows;
+		$stmt->close();
+		$liftLogDb->closeConnection();
+
+		if($affectedRows <= 0)
+			return false;
+		else 
+			return true;
+	}
+
+	function resetPassword($id, $newPassword){
+		global $liftLogDb;
+        $queryText = "UPDATE Utente SET `password` = SHA2(? ,512) WHERE id = ?";
+		$stmt = $liftLogDb->prepare($queryText);
+		$stmt->bind_param('si', $newPassword, $id);
+		$stmt->execute();
+		if ($stmt === false) {
+			die("Errore nell'esecuzione della query: " . $stmt->error);
+		}
+		$stmt->close();
+		$liftLogDb->closeConnection();
+		return true;
+	}
+
+	function insertCostumer($username, $nome, $cognome, $password) {
+		global $liftLogDb;
+		$queryText = "INSERT INTO Utente (username, `password`, nome, cognome, dipendente) VALUES (?, SHA2(? ,512), ?, ?, FALSE)";
+		$stmt = $liftLogDb->prepare($queryText);
+		if ($stmt === false) {
+			die("Errore nella preparazione della query: " . $liftLogDb->error);
+		}
+		$stmt->bind_param("ssss", $username, $nome, $cognome, $password);
+		$stmt->execute();
+		if ($stmt === false) {
+			die("Errore nell'esecuzione della query: " . $stmt->error);
+		}
+		$stmt->close();
+		$liftLogDb->closeConnection();
+		return true; 
+	}
+
+	function authenticate($username, $password){   
+		global $liftLogDb;
+		$username = $liftLogDb->sqlInjectionFilter($username);
+		$password = $liftLogDb->sqlInjectionFilter($password);
+
+		$queryText = "SELECT * FROM Utente WHERE username = ? AND `password` = SHA2(?, 512)";
+
+		$stmt = $liftLogDb->prepare($queryText);
+		$stmt->bind_param("ss", $username, $password);
+		$stmt->execute();
+		
+		$result = $stmt->get_result();
+		#echo $numRow = mysqli_num_rows($result);
+		$numRow = $result->num_rows;
+		if ($numRow !== 1)
+			return -1;
+		
+		echo 0;
+		$stmt->close();
+		$liftLogDb->closeConnection();
+		$userRow = $result->fetch_assoc();
+		return $userRow['id'];
+	}
+
+	function checkTrainer($userId){
+		global $liftLogDb;
+		$queryText = "SELECT * FROM Utente WHERE id = ? AND dipendente = TRUE";
+		$stmt = $liftLogDb->prepare($queryText);
+		$stmt->bind_param("i", $userId);
+		$stmt->execute();
+		$stmt->store_result();
+		$numRow = $stmt->affected_rows;
+		return ($numRow == 1);
+	}
+
+	function deleteCustomerById($id) {
+		global $liftLogDb;
+		$queryText = 'DELETE FROM Utente WHERE id = ?';
+		$stmt = $liftLogDb->prepare($queryText);
+		$stmt->bind_param('i', $id);
+		$stmt->execute();
+		$stmt->store_result();
+		$affectedRows = $stmt->affected_rows;
+		$stmt->close();
+		$liftLogDb->closeConnection();
+		return $affectedRows;
+	}
+	
 
 ?>

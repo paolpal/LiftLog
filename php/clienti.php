@@ -134,7 +134,14 @@
 				<?php
 					} 
 				?>
-
+				<?php
+				if (isset($_GET['errorMessage'])){
+					echo '<div class="alert">'
+                        .'<span class="closebtn" onclick="closeAlert(event)">&times;</span>  '
+                        .'<strong>Attenzione!</strong> '. htmlspecialchars($_GET['errorMessage'])
+                    .'</div>';
+				}
+			?>
 			</div>
 		</div>
 	</body>

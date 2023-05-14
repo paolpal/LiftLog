@@ -1,6 +1,7 @@
 <?php
     require_once __DIR__ . "/../config.php";
     require_once DIR_UTIL . "liftLogDbManager.php";
+    require_once DIR_UTIL . "exerciseManagerDb.php";
     include DIR_UTIL . "sessionUtil.php";
     session_start();
 
@@ -20,15 +21,7 @@
 
     function deleteUser($id){
         if ($id != null){
-            global $liftLogDb;
-
-		    $id = $liftLogDb->sqlInjectionFilter($id);
-
-            $queryText = "DELETE FROM Utente WHERE id = ".$id;
-            
-            $liftLogDb->performQuery($queryText);
-
-            $liftLogDb->closeConnection();
+            deleteCustomerById($id);
             return null;
         }
         else return 'Account non trovato.';

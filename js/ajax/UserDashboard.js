@@ -191,6 +191,8 @@ UserDashboard.createInput = function(type, placeholder, name, value) {
 	input.name = name;
 	input.value = value;
 	input.defaultValue = value;
+	if(type!=="hidden")
+		input.required = true;
 	return input;
 }
 
