@@ -65,7 +65,7 @@
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
     <title>Scheda di allenamento</title>
 	<link rel="stylesheet" href="../css/print.css">
@@ -104,7 +104,7 @@
                 . '<div class="esercizio">'
                 . '<div>'
                 . '<div class="immagine">'
-                . '<img src="../img/'.$immagine.'">'
+                . '<img src="../img/'.$immagine.'" alt="">'
                 . '</div>'
                 . '<div class="contenuto">'
                 . '<div class="nome">'.$nomeEsercizio.'</div>'

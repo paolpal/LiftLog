@@ -114,6 +114,9 @@ h3 {
 
 
 @media print {
+    td {
+        border: 1px solid #ccc;
+    }
     tr:nth-child(2n){
         page-break-before: avoid !important;
         page-break-after: auto;

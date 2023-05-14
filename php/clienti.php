@@ -11,10 +11,11 @@
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="it">
 	<head>
 		<meta charset="utf-8">
 		<meta name="author" content="Paolo Palumbo">
+		<title>Clienti</title>
 		<link rel="stylesheet" href="../css/master.css">
 		<link rel="stylesheet" href="../css/header.css">
 		<link rel="stylesheet" href="../css/navbar.css">
@@ -22,13 +23,13 @@
 		<link rel="stylesheet" href="../css/tab.css">
         <link rel="stylesheet" href="../css/alert.css">
 		<link rel="stylesheet" href="../css/userForm.css">
-		<script type="text/javascript" src="./../js/schedeUtil.js"></script>
-        <script type="text/javascript" src="./../js/alertUtil.js"></script>
-		<script type="text/javascript" src="./../js/formUtil.js"></script>
-		<script type="text/javascript" src="./../js/passwordGenerator.js"></script>
-		<script type="text/javascript" src="./../js/ajax/ajaxManager.js"></script>
-		<script type="text/javascript" src="./../js/ajax/UserLoader.js"></script>
-		<script type="text/javascript" src="./../js/ajax/UserDashboard.js"></script>
+		<script src="./../js/schedeUtil.js"></script>
+        <script src="./../js/alertUtil.js"></script>
+		<script src="./../js/formUtil.js"></script>
+		<script src="./../js/passwordGenerator.js"></script>
+		<script src="./../js/ajax/ajaxManager.js"></script>
+		<script src="./../js/ajax/UserLoader.js"></script>
+		<script src="./../js/ajax/UserDashboard.js"></script>
 		<script src="https://kit.fontawesome.com/65c740b968.js" crossorigin="anonymous"></script>
 	</head>
 
@@ -106,13 +107,13 @@
 					<form action="util/signup.php" class="newUser" method="POST">
 						<div class="container">
 							<label for="user"><b>Username</b></label>
-    						<input type="text" placeholder="Username.." name="user" required>
+    						<input type="text" placeholder="Username.." name="user" id="user" required>
 
 							<label for="nome"><b>Nome</b></label>
-    						<input type="text" placeholder="Nome.." name="nome" required>
+    						<input type="text" placeholder="Nome.." name="nome" id="nome" required>
 
 							<label for="cognome"><b>Cognome</b></label>
-    						<input type="text" placeholder="Cognome.." name="cognome"  required>
+    						<input type="text" placeholder="Cognome.." name="cognome" id="cognome" required>
 
     						<label for="psw"><b>Password</b></label>
 							<div>

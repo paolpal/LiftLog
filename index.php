@@ -12,17 +12,18 @@
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="it">
     <head>
         <meta charset="utf-8">
         <meta name="author" content="Paolo Palumbo">
+        <title>LiftLog</title>
         <link rel="stylesheet" href="css/navbar.css">
         <link rel="stylesheet" href="css/master.css">
         <link rel="stylesheet" href="css/header.css">
         <link rel="stylesheet" href="css/loginForm.css">
         <link rel="stylesheet" href="css/alert.css">
-        <script type="text/javascript" src="js/alertUtil.js"></script>
-        <script type="text/javascript" src="js/loginUtil.js"></script>
+        <script src="js/alertUtil.js"></script>
+        <script src="js/loginUtil.js"></script>
         <script src="https://kit.fontawesome.com/65c740b968.js" crossorigin="anonymous"></script>
     </head>
     <body>
@@ -34,9 +35,11 @@
         <div class="main">
             <div class="background-benvenuto">
                 <section class="benvenuto" id="benvenuto">
-                    <article class="benvenuto">
-                        Are you ready to <br><b><em>get fit</em>, strong <br>& motivated!</b>
-                    </article>
+                    <div class="benvenuto">
+                        <h2>
+                            Are you ready to <br><b><em>get fit</em>, strong <br>& motivated!</b>
+                        </h2>
+                    </div>
                 </section>
             </div>
             <section class="chisiamo" id="chisiamo">
@@ -106,6 +109,9 @@
                     .'</div>';
 				}
 			?>
+            <footer>
+                <a href="html/manuale.html">Manuale Utente</a>
+            </footer>
         </div>
     </body>
 </html>

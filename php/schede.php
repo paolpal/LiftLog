@@ -11,10 +11,11 @@
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="it">
 	<head>
 		<meta charset="utf-8">
 		<meta name="author" content="Paolo Palumbo">
+		<title>Schede</title>
 		<link rel="stylesheet" href="../css/master.css">
 		<link rel="stylesheet" href="../css/header.css">
 		<link rel="stylesheet" href="../css/navbar.css">
@@ -22,13 +23,13 @@
 		<link rel="stylesheet" href="../css/tab.css">
         <link rel="stylesheet" href="../css/alert.css">
 		<link rel="stylesheet" href="../css/schede.css">
-		<script type="text/javascript" src="./../js/schedeUtil.js"></script>
-        <script type="text/javascript" src="./../js/alertUtil.js"></script>
-		<script type="text/javascript" src="./../js/formUtil.js"></script>
-		<script type="text/javascript" src="./../js/ajax/ajaxManager.js"></script>
-		<script type="text/javascript" src="./../js/ajax/WorkoutLoader.js"></script>
-		<script type="text/javascript" src="./../js/ajax/WorkoutDashboard.js"></script>
-		<script type="text/javascript" src="./../js/ajax/UserEventHandler.js"></script>
+		<script src="./../js/schedeUtil.js"></script>
+        <script src="./../js/alertUtil.js"></script>
+		<script src="./../js/formUtil.js"></script>
+		<script src="./../js/ajax/ajaxManager.js"></script>
+		<script src="./../js/ajax/WorkoutLoader.js"></script>
+		<script src="./../js/ajax/WorkoutDashboard.js"></script>
+		<script src="./../js/ajax/UserEventHandler.js"></script>
 		<script src="https://kit.fontawesome.com/65c740b968.js" crossorigin="anonymous"></script>
 	</head>
 

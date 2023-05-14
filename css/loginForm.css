@@ -84,7 +84,7 @@
     -webkit-animation: animatezoom 0.6s;
     animation: animatezoom 0.6s
 }
-
+/* Check for errors */
 @-webkit-keyframes animatezoom {
     from {-webkit-transform: scale(0)} 
     to {-webkit-transform: scale(1)}

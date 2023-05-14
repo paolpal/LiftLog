@@ -34,10 +34,9 @@ section h2 {
     text-align: left;
 }
 
-article.benvenuto {
+div.benvenuto {
     color: antiquewhite;
-    font-size: 3em;
-    
+    font-size: 1.5em;
     text-transform: uppercase;
     border-left: 5px solid;
     border-color: orangered;
@@ -45,11 +44,11 @@ article.benvenuto {
     padding-left: 5px;
 }
 
-article.benvenuto b {
+div.benvenuto b {
     font-size: larger;
 }
 
-article em {
+div.benvenuto em {
     font-style: normal;
     color: orangered;
 }
@@ -79,7 +78,6 @@ article em {
     border-radius: 100px;
     object-fit: cover;
 }
-
 
 .chisiamo div {
     margin: 10px;

@@ -6,11 +6,11 @@
         </div>
 
         <div class="container">
-            <label for="uname"><b>Username</b></label>
-            <input type="text" placeholder="Inserisci lo Username" name="username" required>
+            <label for="username"><b>Username</b></label>
+            <input type="text" placeholder="Inserisci lo Username" name="username" id="username" required>
 
-            <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Inserisci la Password" name="password" required>
+            <label for="password"><b>Password</b></label>
+            <input type="password" placeholder="Inserisci la Password" name="password" id="password" required>
         
             <button type="submit">Login</button>
         </div>

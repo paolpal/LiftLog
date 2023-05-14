@@ -10,19 +10,20 @@
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="it">
 	<head>
 		<meta charset="utf-8">
 		<meta name="author" content="Paolo Palumbo">
+		<title>Esercizi</title>
 		<link rel="stylesheet" href="../css/master.css">
 		<link rel="stylesheet" href="../css/header.css">
 		<link rel="stylesheet" href="../css/navbar.css">
 		<link rel="stylesheet" href="../css/sidebar.css">
 		<link rel="stylesheet" href="../css/searchbar.css">
 		<link rel="stylesheet" href="../css/exerciseCard.css">
-		<script type="text/javascript" src="./../js/ajax/ajaxManager.js"></script>
-		<script type="text/javascript" src="./../js/ajax/ExerciseLoader.js"></script>
-		<script type="text/javascript" src="./../js/ajax/ExerciseDashboard.js"></script>		
+		<script src="./../js/ajax/ajaxManager.js"></script>
+		<script src="./../js/ajax/ExerciseLoader.js"></script>
+		<script src="./../js/ajax/ExerciseDashboard.js"></script>		
 		<script src="https://kit.fontawesome.com/65c740b968.js" crossorigin="anonymous"></script>
 	</head>
 	<body onload="ExerciseLoader.search('')">

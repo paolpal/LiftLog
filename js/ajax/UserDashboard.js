@@ -186,7 +186,8 @@ UserDashboard.createLabel = function(text) {
 UserDashboard.createInput = function(type, placeholder, name, value) {
 	var input = document.createElement("input");
 	input.type = type;
-	input.placeholder = placeholder;
+	if(placeholder!=="")
+		input.placeholder = placeholder;
 	input.name = name;
 	input.value = value;
 	input.defaultValue = value;
