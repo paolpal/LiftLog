@@ -21,10 +21,10 @@
 		<link rel="stylesheet" href="../css/sidebar.css">
 		<link rel="stylesheet" href="../css/searchbar.css">
 		<link rel="stylesheet" href="../css/exerciseCard.css">
+		<link rel="stylesheet" href="../css/icons.css">
 		<script src="./../js/ajax/ajaxManager.js"></script>
 		<script src="./../js/ajax/ExerciseLoader.js"></script>
 		<script src="./../js/ajax/ExerciseDashboard.js"></script>		
-		<script src="https://kit.fontawesome.com/65c740b968.js" crossorigin="anonymous"></script>
 	</head>
 	<body onload="ExerciseLoader.search('')">
 		<header>
@@ -36,7 +36,7 @@
 				<div class="searchContainer">
 					<div class="search">
 						<input type="text" placeholder="Ricerca.." name="search2" onkeyup="ExerciseLoader.search(this.value)">
-						<button type="submit"><i class="fa fa-search"></i></button>
+						<button type="submit"><i class="fa fa-search white"></i></button>
 					</div>
 				</div>
 				

@@ -1,0 +1,110 @@
+.fa {
+	height: 20px;
+	width: 20px;
+	margin: 0px;
+	padding: 0px;
+	display: inline-block;
+	vertical-align: text-bottom;
+	box-sizing: border-box;
+}
+
+.small {
+	height: 17px;
+	width: 17px;
+}
+
+.big {
+	height: 30px;
+	width: 30px;
+}
+
+.white {
+	filter: invert(100%);
+}
+
+.white:hover {
+	filter: invert(100%);
+}
+
+.orangered {
+	filter: invert(38%) sepia(59%) saturate(5497%) hue-rotate(1deg) brightness(102%) contrast(106%);
+}
+
+.fa-search {
+	background: url(../img/icone/magnifying-glass-solid.svg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.fa-envelope {
+	background: url(../img/icone/envelope-solid.svg);
+}
+
+.fa-eye {
+	background: url(../img/icone/eye-solid.svg);
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.fa-eye-slash {
+	background: url(../img/icone/eye-slash-solid.svg);
+	background-position: center;
+	background-repeat: no-repeat;
+	height: 22px;
+	width: 22px;
+}
+
+.fa-location {
+	background: url(../img/icone/location-dot-solid.svg);
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.fa-phone {
+	background: url(../img/icone/phone-solid.svg);
+}
+
+.fa-print {
+	background: url(../img/icone/print-solid.svg);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	height: 17px;
+	width: 17px;
+}
+
+.fa-plus {
+	background: url(../img/icone/plus-solid.svg);
+	background-position: center;
+	background-repeat: no-repeat;
+	vertical-align: text-bottom;
+}
+
+.fa-times {
+	background: url(../img/icone/xmark-solid.svg);
+	background-position: center;
+	background-repeat: no-repeat;
+
+	height: 17px;
+	width: 17px;
+	vertical-align: text-bottom;
+}
+
+.fa-trash {
+	background: url(../img/icone/trash-can-solid.svg);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	height: 17px;
+	width: 17px;
+	vertical-align: text-bottom;
+}
+
+.fa-print:hover,
+.fa-trash:hover,
+.fa-location:hover,
+.fa-phone:hover,
+.fa-envelope:hover{
+	filter: invert(38%) sepia(59%) saturate(5497%) hue-rotate(1deg) brightness(102%) contrast(106%);
+}

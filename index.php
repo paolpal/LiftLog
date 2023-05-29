@@ -22,9 +22,12 @@
         <link rel="stylesheet" href="css/header.css">
         <link rel="stylesheet" href="css/loginForm.css">
         <link rel="stylesheet" href="css/alert.css">
+        <link rel="stylesheet" href="css/icons.css">
         <script src="js/alertUtil.js"></script>
         <script src="js/loginUtil.js"></script>
-        <script src="https://kit.fontawesome.com/65c740b968.js" crossorigin="anonymous"></script>
+        <!--
+            <script src="https://kit.fontawesome.com/65c740b968.js" crossorigin="anonymous"></script>
+        -->
     </head>
     <body>
         <header>
@@ -79,21 +82,24 @@
                 <div class="info">
                     <h2>Dove trovarci e come contattarci</h2>
                     <div class="tag">
-                        <i class="fa-sharp fa-solid fa-location-dot"></i>
+                        <i class="fa fa-location big"></i>
                         <div class="content">
                             <h2>Indirizzo</h2>
                             Street number and town name 23
                         </div>
                     </div>
                     <div class="tag">
-                        <i class="fa-solid fa-envelope"></i>
+                        <i class="fa fa-envelope big"></i>
                         <div class="content">
                             <h2>E-mail</h2>
                             info@liftlog.com
                         </div>
                     </div>
                     <div class="tag">
-                        <i class="fa-solid fa-phone"></i>
+                        <!--
+                            <i class="fa-solid fa-phone"></i>
+                        -->
+                        <i class="fa fa-phone big"></i>
                         <div class="content">
                             <h2>Telefono</h2>
                             425 521432

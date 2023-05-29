@@ -23,6 +23,7 @@
 		<link rel="stylesheet" href="../css/tab.css">
         <link rel="stylesheet" href="../css/alert.css">
 		<link rel="stylesheet" href="../css/schede.css">
+		<link rel="stylesheet" href="../css/icons.css">
 		<script src="./../js/schedeUtil.js"></script>
         <script src="./../js/alertUtil.js"></script>
 		<script src="./../js/formUtil.js"></script>
@@ -30,7 +31,6 @@
 		<script src="./../js/ajax/WorkoutLoader.js"></script>
 		<script src="./../js/ajax/WorkoutDashboard.js"></script>
 		<script src="./../js/ajax/UserEventHandler.js"></script>
-		<script src="https://kit.fontawesome.com/65c740b968.js" crossorigin="anonymous"></script>
 	</head>
 
 	<?php
@@ -108,7 +108,7 @@
 								</div>
 								<div class="command">
 									<div class="addExe">
-										<button onclick="UserEventHandler.addExerciseFields();"><i class="fa fa-plus fa-lg"></i></button>
+										<button onclick="UserEventHandler.addExerciseFields();"><i class="fa fa-plus white"></i></button>
 									</div>
 									<div>&nbsp;</div>
 									<div>&nbsp;</div>

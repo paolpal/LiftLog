@@ -23,6 +23,7 @@
 		<link rel="stylesheet" href="../css/tab.css">
         <link rel="stylesheet" href="../css/alert.css">
 		<link rel="stylesheet" href="../css/userForm.css">
+		<link rel="stylesheet" href="../css/icons.css">
 		<script src="./../js/schedeUtil.js"></script>
         <script src="./../js/alertUtil.js"></script>
 		<script src="./../js/formUtil.js"></script>
@@ -30,7 +31,6 @@
 		<script src="./../js/ajax/ajaxManager.js"></script>
 		<script src="./../js/ajax/UserLoader.js"></script>
 		<script src="./../js/ajax/UserDashboard.js"></script>
-		<script src="https://kit.fontawesome.com/65c740b968.js" crossorigin="anonymous"></script>
 	</head>
 
 	<?php
