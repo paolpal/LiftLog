@@ -111,7 +111,8 @@ blockquote em {
 
 .motivazione img {
     width: 50%;
-    filter: invert(100%);
+    filter: invert(81%) sepia(43%) saturate(117%) hue-rotate(343deg) brightness(108%) contrast(96%); /* 0.3%*/
+    /*filter: invert(92%) sepia(12%) saturate(843%) hue-rotate(316deg) brightness(107%) contrast(96%); /*0.1%*/
 }
 
 /* --------- Dove Trovarci --------- */

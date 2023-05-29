@@ -72,7 +72,7 @@
                     <blockquote>
                         “La forza non viene dal vincere. Le tue lotte sviluppano la tua forza. Quando passi attraverso delle avversità e decidi di <em>non arrenderti, quella è la forza.</em>”
                     </blockquote>
-                    <img src="img/schwarzenegger_signature.png" alt="Arnold Schwarzenegger">
+                    <img src="img/schwarzenegger_signature.svg" alt="Arnold Schwarzenegger">
                 </section>
             </div>
             <section class="dovetrovarci" id="dovetrovarci">
