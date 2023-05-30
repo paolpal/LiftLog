@@ -60,7 +60,6 @@
 		$user->nome = $userDb['nome'];
 		$user->cognome = $userDb['cognome'];
 		$response->data[] = $user;
-		$index++;
 		
 		return $response;
 	}
