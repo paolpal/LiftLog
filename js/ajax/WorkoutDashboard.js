@@ -167,16 +167,6 @@ WorkoutDashboard.createWorkoutCard = function(currentData, isTrainer){
 	return workoutCard;
 }
 
-//<div class="header">
-//	<div>Esercizio </div> 
-//	<div class="info"> 
-//		<div>Serie</div> 
-//		<i class="fa fa-times"></i> 
-//		<div>Ripetizioni</div> 
-//		<div>Riposo</div> 
-//	</div>
-//</div>
-
 WorkoutDashboard.createHeaderElement = function(){
 	var header = document.createElement("div");
 	header.setAttribute("class", "header");

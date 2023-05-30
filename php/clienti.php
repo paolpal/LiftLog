@@ -60,10 +60,8 @@
 						$result = getAllCustomers();
 						while($row = $result->fetch_assoc()){
 							echo '<button class="tablinks" onclick="openTab(event, \'userTab\'); UserLoader.dataOfUser('.$row['id'].')">'.htmlspecialchars($row['nome']).'</button>';
-							#echo '<i class="fa fa-times"></i>';
 						}
 					?>
-					<!--<button class="tablinks" onclick="openTab(event, 'London')">London</button>-->
 					<button class="tablinks" onclick="openTab(event, 'new')" id="defaultOpen">Nuovo Utente</button>
 				</div>
 				<?php
@@ -74,31 +72,6 @@
 					<div id="userDashboard">
 					</div>
 				</div>
-				<!--
-				<div id="London" class="tabcontent">
-					<h3>Informazioni Utente</h3>
-					<form action="">
-						<div class="container">
-							<label for="user"><b>Username</b></label>
-							<input type="text" placeholder="Username.." name="user" value="lunden">
-
-							<label for="nome"><b>Nome</b></label>
-							<input type="text" placeholder="Nome.." name="nome" value="London">
-
-							<label for="cognome"><b>Cognome</b></label>
-							<input type="text" placeholder="Cognome.." name="cognome" value="Bianchi">
-
-							<label for="psw"><b>Password</b></label>
-							<input type="password" placeholder="Password.." name="psw">
-
-							<label for="newPsw"><b>Nuova Password</b></label>
-							<input type="password" placeholder="Nuova Password.." name="newPsw">
-
-							<button type="submit" class="updatebtn">Aggiorna</button>
-						</div>
-					</form>
-				</div>
-				-->
 				<?php
 					if(isTrainer()){
 				?>

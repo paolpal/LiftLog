@@ -70,11 +70,8 @@ UserEventHandler.saveWorkoutPlan = function() {
 UserEventHandler.onWorkoutAjaxResponse = function(response){
 	if (response.responseCode === WorkoutLoader.SUCCESS_RESPONSE){
 		WorkoutDashboard.refreshData(response.data, response.isTrainer);
-		//return;
 	}
 	else WorkoutDashboard.setEmptyDashboard();
-	//if (response.responseCode === WorkoutLoader.NO_MORE_DATA)
-	//    WorkoutDashboard.setEmptyDashboard();
 	return;
 }
 

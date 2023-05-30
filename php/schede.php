@@ -60,7 +60,6 @@
 					$result = getAllCustomers();
 					while($row = $result->fetch_assoc()){
 						echo '<button class="tablinks" onclick="tablinkClick(event, \''.$row['id'].'\');">'.htmlspecialchars($row['nome']).'</button>';
-						#echo '<i class="fa fa-times"></i>';
 					}
 					?>
 				</div>
@@ -71,27 +70,7 @@
 			
 				<div class="tabcontent">
 					<div id="workoutDashboard">
-						<!--
-							<div class="scheda">
-								<h4>12/04/2022</h4>
-								<div class="header">
-									<div>Esercizio </div> <div class="info"> <div>Serie</div> <i class="fa fa-times"></i> <div>Ripetizioni</div> <div>Riposo</div> </div>
-								</div>
-								<ul>
-									<li><div class="exe">Sollevamenti posteriori ai cavi</div> <div class="info"> <div>3</div> <i class="fa fa-times"></i> <div>12</div> <div>30</div>s </div></li>
-									<li><div class="exe">Sollevamenti posteriori ai cavi</div> <div class="info"> <div>3</div> <i class="fa fa-times"></i> <div>12</div> <div>30</div>s </div></li>
-									<li><div class="exe">Sollevamenti posteriori ai cavi</div> <div class="info"> <div>3</div> <i class="fa fa-times"></i> <div>12</div> <div>30</div>s </div></li>
-									<li><div class="exe">Sollevamenti posteriori ai cavi</div> <div class="info"> <div>3</div> <i class="fa fa-times"></i> <div>12</div> <div>30</div>s </div></li>
-									<li><div class="exe">Sollevamenti posteriori ai cavi</div> <div class="info"> <div>3</div> <i class="fa fa-times"></i> <div>12</div> <div>30</div>s </div></li>
-								</ul>
-								<button>
-									<i class="fa fa-trash fa-xl"></i>
-								</button>
-								<button>
-									<i class="fa fa-print fa-xl"></i>
-								</button>
-							</div>
-						-->
+
 						
 					</div>
 
@@ -113,36 +92,9 @@
 									<div>&nbsp;</div>
 									<div>&nbsp;</div>
 									<div>
-										<!-- 
-											<button onclick="UserEventHandler.saveWorkoutPlan();">Salva Scheda</button>
-										-->
 										<button onclick="if (checkBeforeSave()) { UserEventHandler.saveWorkoutPlan(); resetWorkoutForm(); UserEventHandler.addExerciseFields();}">Salva Scheda</button>
 									</div>
 								</div>
-								<!--
-								<div class="exe">
-									<div>
-										<select name="exercise" id="1">
-											<option value="">Sollevamenti posteriori ai cavi</option>
-											<option value="">Sollevamenti posteriori ai cavi</option>
-											<option value="">Sollevamenti posteriori ai cavi</option>
-										</select>
-									</div>
-									<div>
-										<input type="number" name="series" id="">
-									</div>
-									<div>
-										<input type="number" name="reps" id="">
-									</div>
-									<div>
-										<input type="number" name="rest" id="">
-									</div>
-									<div>
-										<i class="fa fa-trash"></i>
-									</div>
-								</div>
-								-->
-								
 								
 							</div>
 						</div>

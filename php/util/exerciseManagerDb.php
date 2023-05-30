@@ -319,7 +319,6 @@
 		$stmt->execute();
 		
 		$result = $stmt->get_result();
-		#echo $numRow = mysqli_num_rows($result);
 		$numRow = $result->num_rows;
 		if ($numRow !== 1)
 			return -1;

@@ -18,17 +18,13 @@
 
 	if(!isTrainer() && $_SESSION['userId']!=$userId){
 		$errorMessage = "Pagina non trovata.";
-		//header('Location: ./../index.php');
 		header('Location: ./../index.php?errorMessage=' . $errorMessage );
 		exit;
 	}
 
 	$user = getUserByUserId($userId);
 	if($user === null || !$user){
-		// FALLIMENTO
-		// RITORNA UN ERRORE
 		$errorMessage = "Utente Inesistente";
-		//header('Location: ./../index.php');
 		header('Location: ./../index.php?errorMessage=' . $errorMessage );
 		exit;
 	}
@@ -38,11 +34,8 @@
 
 	$result = getWorkoutByWorkoutId($workoutId);
 	if(checkEmptyResult($result)){
-		// FALLIMENTO
-		// RITORNA UN ERRORE
 		$errorMessage = "Scheda Insistente";
 		header('Location: ./../index.php?errorMessage=' . $errorMessage );
-		//header('Location: ./../index.php');
 		exit;
 	}
 	if($row = $result->fetch_assoc()){
@@ -50,7 +43,6 @@
 		if($row["utente"]!=$userId){
 			$errorMessage = "Scheda Inesistente";
 			header('Location: ./../index.php?errorMessage=' . $errorMessage );
-			//header('Location: ./../index.php');
 			exit;
 		}
 	}
@@ -127,47 +119,7 @@
 		}
 
 		?>
-	<!--
-		<tr>
-			<td colspan="2">
-				<div class="banda"></div>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<div class="esercizio">
-					<div>
-						<div class="immagine">
-							<img src="../img/esercizi/addominali/abdominal_crunch.png" alt="Squat">
-						</div>
-						<div class="contenuto">
-							<div class="nome">Squat</div>
-							<div class="parte-corpo">Gambe</div>
-							<div class="dettagli">Serie: 3</div>
-							<div class="dettagli">Ripetizioni: 10</div>
-							<div class="dettagli">Tempo di recupero: 1 minuto</div>
-						</div>
-					</div>
-				</div>
-			</td>
-			<td>
-				<div class="esercizio">
-					<div>
-						<div class="immagine">
-							<img src="../img/esercizi/addominali/abdominal_crunch.png" alt="Squat">
-						</div>
-						<div class="contenuto">
-							<div class="nome">Squat</div>
-							<div class="parte-corpo">Gambe</div>
-							<div class="dettagli">Serie: 3</div>
-							<div class="dettagli">Ripetizioni: 10</div>
-							<div class="dettagli">Tempo di recupero: 1 minuto</div>
-						</div>
-					</div>
-				</div>
-			</td>
-		</tr>
-	-->
+
 	</table>
 
 </body>

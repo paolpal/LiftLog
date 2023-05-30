@@ -1,7 +1,6 @@
 function ExerciseLoader(){}
 
 ExerciseLoader.DEFAUL_METHOD = "GET";
-//ExerciseLoader.URL_REQUEST = "./ajax/movieLoader.php";
 ExerciseLoader.EXERCISE_REQUEST = "./ajax/exerciseLoader.php";
 ExerciseLoader.ASYNC_TYPE = true;
 
@@ -12,7 +11,6 @@ ExerciseLoader.search = function(pattern){
 	var responseFunction = ExerciseLoader.onExerciseAjaxResponse;
 	var queryString;
 	if (pattern === null || pattern.length === 0){
-		//ExerciseDashboard.removeContent();
 		queryString = "?all";
 	}
 	else{
@@ -29,7 +27,6 @@ ExerciseLoader.search = function(pattern){
 ExerciseLoader.onExerciseAjaxResponse = function(response){
 	if (response.responseCode === ExerciseLoader.SUCCESS_RESPONSE){
 		ExerciseDashboard.refreshData(response.data);
-		//console.log(response.message);
 		return;
 	}
 	
