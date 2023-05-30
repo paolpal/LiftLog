@@ -156,12 +156,10 @@ blockquote em {
 	padding-left: 10px;
 }
 
-.info div i {
-	vertical-align: middle;
-	font-size: 2em;
+.info div.tag i {
+	align-self: center;
 }
 
-.info div i:hover{
-	color: orangered;
+.info div.tag i:hover{
 	transition-duration: 0.3s;
 }
