@@ -1,6 +1,6 @@
 <?php
 	require_once __DIR__."/config.php";
-    require_once DIR_UTIL."exerciseManagerDb.php";
+	require_once DIR_UTIL."exerciseManagerDb.php";
 	include DIR_UTIL . "sessionUtil.php";
 	session_start();
 
@@ -21,11 +21,11 @@
 		<link rel="stylesheet" href="../css/navbar.css">
 		<link rel="stylesheet" href="../css/sidebar.css">
 		<link rel="stylesheet" href="../css/tab.css">
-        <link rel="stylesheet" href="../css/alert.css">
+		<link rel="stylesheet" href="../css/alert.css">
 		<link rel="stylesheet" href="../css/schede.css">
 		<link rel="stylesheet" href="../css/icons.css">
 		<script src="./../js/schedeUtil.js"></script>
-        <script src="./../js/alertUtil.js"></script>
+		<script src="./../js/alertUtil.js"></script>
 		<script src="./../js/formUtil.js"></script>
 		<script src="./../js/ajax/ajaxManager.js"></script>
 		<script src="./../js/ajax/WorkoutLoader.js"></script>

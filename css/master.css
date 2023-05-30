@@ -1,167 +1,167 @@
 html {
-    height: auto;
+	height: auto;
 }
 
 body {
-    margin: 0;
-    color: #333;
-    font-family: Arial, Helvetica, sans-serif;
-    height: auto;
+	margin: 0;
+	color: #333;
+	font-family: Arial, Helvetica, sans-serif;
+	height: auto;
 }
 
 section {
-    padding-top: 3.5%;
-    padding-left: 25%;
-    padding-right: 25%;
-    padding-bottom: 3.5%;
-    margin: 0;
+	padding-top: 3.5%;
+	padding-left: 25%;
+	padding-right: 25%;
+	padding-bottom: 3.5%;
+	margin: 0;
 }
 
 /* --------- Benvenuto --------- */
 
 .background-benvenuto {
-    background-image: url(../img/benvenuto.png);
-    background-size: cover;
+	background-image: url(../img/benvenuto.png);
+	background-size: cover;
 }
 
 section.benvenuto {
-    background-color: rgba(0, 0, 0, 0.4);
-    height: 600px;
+	background-color: rgba(0, 0, 0, 0.4);
+	height: 600px;
 }
 
 section h2 {
-    font-size: 2em;
-    text-align: left;
+	font-size: 2em;
+	text-align: left;
 }
 
 div.benvenuto {
-    color: antiquewhite;
-    font-size: 1.5em;
-    text-transform: uppercase;
-    border-left: 5px solid;
-    border-color: orangered;
-    border-radius: 5px;
-    padding-left: 5px;
+	color: antiquewhite;
+	font-size: 1.5em;
+	text-transform: uppercase;
+	border-left: 5px solid;
+	border-color: orangered;
+	border-radius: 5px;
+	padding-left: 5px;
 }
 
 div.benvenuto b {
-    font-size: larger;
+	font-size: larger;
 }
 
 div.benvenuto em {
-    font-style: normal;
-    color: orangered;
+	font-style: normal;
+	color: orangered;
 }
 
 /* --------- Chi siamo --------- */
 
 .chisiamo .lista{
-    display: flex;
-    flex-wrap: wrap;
+	display: flex;
+	flex-wrap: wrap;
 }
 
 .chisiamo .scheda {
-    display: block;
-    text-align: center;
-    font-size: 1.2em;
-    font-weight: 600;
+	display: block;
+	text-align: center;
+	font-size: 1.2em;
+	font-weight: 600;
 }
 
 .scheda .ruolo {
-    color: orangered;
-    padding: 0%;
+	color: orangered;
+	padding: 0%;
 }
 
 .chisiamo img {
-    width: 200px;
-    height: 200px;
-    border-radius: 100px;
-    object-fit: cover;
+	width: 200px;
+	height: 200px;
+	border-radius: 100px;
+	object-fit: cover;
 }
 
 .chisiamo div {
-    margin: 10px;
-    padding: 20px;
-    font-size: 18px;
+	margin: 10px;
+	padding: 20px;
+	font-size: 18px;
 }
 
 .background-motivazione {
-    background-image: url(../img/motivazione.png);
-    background-size: cover;
+	background-image: url(../img/motivazione.png);
+	background-size: cover;
 }
 
 /* --------- Motivazione --------- */
 
 .motivazione {
-    background-color: rgba(0, 0, 0, 0.4);
-    height: 600px;
-    color: antiquewhite;
+	background-color: rgba(0, 0, 0, 0.4);
+	height: 600px;
+	color: antiquewhite;
 }
 
 .motivazione blockquote {
-    font-size: 2em;
-    font-style: italic;
-    font-weight: 700;
-    text-align: center;
+	font-size: 2em;
+	font-style: italic;
+	font-weight: 700;
+	text-align: center;
 }
 
 blockquote em {
-    color: orangered;
+	color: orangered;
 }
 
 .motivazione img {
-    width: 50%;
-    filter: invert(81%) sepia(43%) saturate(117%) hue-rotate(343deg) brightness(108%) contrast(96%); /* 0.3%*/
-    /*filter: invert(92%) sepia(12%) saturate(843%) hue-rotate(316deg) brightness(107%) contrast(96%); /*0.1%*/
+	width: 50%;
+	filter: invert(81%) sepia(43%) saturate(117%) hue-rotate(343deg) brightness(108%) contrast(96%); /* 0.3%*/
+	/*filter: invert(92%) sepia(12%) saturate(843%) hue-rotate(316deg) brightness(107%) contrast(96%); /*0.1%*/
 }
 
 /* --------- Dove Trovarci --------- */
 
 .dovetrovarci {
-    display: flex;
-    padding: 0%;
+	display: flex;
+	padding: 0%;
 }
 
 .dovetrovarci .info {
-    display: block;
-    padding-left: 30px;
+	display: block;
+	padding-left: 30px;
 }
 
 .dovetrovarci .map {
-    background-color: beige;
-    width: 50%;
-    height: 400px;
-    filter: grayscale(90%);
+	background-color: beige;
+	width: 50%;
+	height: 400px;
+	filter: grayscale(90%);
 }
 
 .map iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
+	width: 100%;
+	height: 100%;
+	border: none;
 }
 
 .content h2 {
-    font-size: 1.3em;
-    padding: 0%;
-    margin: 0%;
+	font-size: 1.3em;
+	padding: 0%;
+	margin: 0%;
 }
 
 .info div.tag {
-    display: flex;
-    padding: 10px;
+	display: flex;
+	padding: 10px;
 }
 
 .info div.content{
-    font-size: 1.2em;
-    padding-left: 10px;
+	font-size: 1.2em;
+	padding-left: 10px;
 }
 
 .info div i {
-    vertical-align: middle;
-    font-size: 2em;
+	vertical-align: middle;
+	font-size: 2em;
 }
 
 .info div i:hover{
-    color: orangered;
-    transition-duration: 0.3s;
+	color: orangered;
+	transition-duration: 0.3s;
 }

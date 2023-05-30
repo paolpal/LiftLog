@@ -1,6 +1,6 @@
 <?php
 	require_once __DIR__."/config.php";
-    require_once DIR_UTIL."exerciseManagerDb.php";
+	require_once DIR_UTIL."exerciseManagerDb.php";
 	include DIR_UTIL . "sessionUtil.php";
 	session_start();
 
@@ -21,11 +21,11 @@
 		<link rel="stylesheet" href="../css/navbar.css">
 		<link rel="stylesheet" href="../css/sidebar.css">
 		<link rel="stylesheet" href="../css/tab.css">
-        <link rel="stylesheet" href="../css/alert.css">
+		<link rel="stylesheet" href="../css/alert.css">
 		<link rel="stylesheet" href="../css/userForm.css">
 		<link rel="stylesheet" href="../css/icons.css">
 		<script src="./../js/schedeUtil.js"></script>
-        <script src="./../js/alertUtil.js"></script>
+		<script src="./../js/alertUtil.js"></script>
 		<script src="./../js/formUtil.js"></script>
 		<script src="./../js/passwordGenerator.js"></script>
 		<script src="./../js/ajax/ajaxManager.js"></script>
@@ -80,19 +80,19 @@
 					<form action="">
 						<div class="container">
 							<label for="user"><b>Username</b></label>
-    						<input type="text" placeholder="Username.." name="user" value="lunden">
+							<input type="text" placeholder="Username.." name="user" value="lunden">
 
 							<label for="nome"><b>Nome</b></label>
-    						<input type="text" placeholder="Nome.." name="nome" value="London">
+							<input type="text" placeholder="Nome.." name="nome" value="London">
 
 							<label for="cognome"><b>Cognome</b></label>
-    						<input type="text" placeholder="Cognome.." name="cognome" value="Bianchi">
+							<input type="text" placeholder="Cognome.." name="cognome" value="Bianchi">
 
-    						<label for="psw"><b>Password</b></label>
-    						<input type="password" placeholder="Password.." name="psw">
+							<label for="psw"><b>Password</b></label>
+							<input type="password" placeholder="Password.." name="psw">
 
 							<label for="newPsw"><b>Nuova Password</b></label>
-    						<input type="password" placeholder="Nuova Password.." name="newPsw">
+							<input type="password" placeholder="Nuova Password.." name="newPsw">
 
 							<button type="submit" class="updatebtn">Aggiorna</button>
 						</div>
@@ -107,24 +107,24 @@
 					<form action="util/signup.php" class="newUser" method="POST">
 						<div class="container">
 							<label for="user"><b>Username</b></label>
-    						<input type="text" placeholder="Username.." name="user" id="user" required>
+							<input type="text" placeholder="Username.." name="user" id="user" required>
 
 							<label for="nome"><b>Nome</b></label>
-    						<input type="text" placeholder="Nome.." name="nome" id="nome" required>
+							<input type="text" placeholder="Nome.." name="nome" id="nome" required>
 
 							<label for="cognome"><b>Cognome</b></label>
-    						<input type="text" placeholder="Cognome.." name="cognome" id="cognome" required>
+							<input type="text" placeholder="Cognome.." name="cognome" id="cognome" required>
 
-    						<label for="psw"><b>Password</b></label>
+							<label for="psw"><b>Password</b></label>
 							<div>
 								<div class="pass">
 									<input type="password" placeholder="Password.." name="psw" id="psw" value="" required>
 									<i class="fa fa-eye" onclick="showPassword()" id="eye"></i>
 								</div>
 							</div>
-    						<!--
+							<!--
 							<label for="confPsw"><b>Conferma Password</b></label>
-    						<input type="password" placeholder="Conferma Password.." name="confPsw" id="confPsw" required>
+							<input type="password" placeholder="Conferma Password.." name="confPsw" id="confPsw" required>
 							-->
 							<button type="button" onclick="genPassword()">Genera Password</button>
 							<button type="submit" >Registra</button>
@@ -137,9 +137,9 @@
 				<?php
 				if (isset($_GET['errorMessage'])){
 					echo '<div class="alert">'
-                        .'<span class="closebtn" onclick="closeAlert(event)">&times;</span>  '
-                        .'<strong>Attenzione!</strong> '. htmlspecialchars($_GET['errorMessage'])
-                    .'</div>';
+						.'<span class="closebtn" onclick="closeAlert(event)">&times;</span>  '
+						.'<strong>Attenzione!</strong> '. htmlspecialchars($_GET['errorMessage'])
+					.'</div>';
 				}
 			?>
 			</div>

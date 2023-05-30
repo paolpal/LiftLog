@@ -1,54 +1,50 @@
 .newUser .pass {
-    display: inline-block;
-    width: 100%;
-    position: relative;
+	display: inline-block;
+	width: 100%;
+	position: relative;
 }
 
 .editUser .container,
 .newUser .container {
-    padding: 16px;
-    width: 50%;
+	padding: 16px;
+	width: 50%;
 }
 
 .editUser input[type=text], 
 .editUser input[type=password],
 .newUser input[type=text], 
 .newUser input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
 }
 
 
 .pass i {
-    cursor: pointer;
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    /*
-    margin-left: -40px;
-    display: inline-block;
-    */
+	cursor: pointer;
+	position: absolute;
+	right: 10px;
+	top: 50%;
+	transform: translateY(-50%);
 }
 
 /* Set a style for all buttons */
 .editUser button,
 .newUser button {
-    background-color: orangered;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    font-size: 17px;
+	background-color: orangered;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+	font-size: 17px;
 }
 
 .editUser button:hover,
 .newUser button:hover {
-    background-color: orange;
+	background-color: orange;
 }

@@ -1,8 +1,8 @@
 function closeAlert(event){
-    //var div = this.parentElement;
-    var div = event.currentTarget.parentElement;
-    div.style.opacity = "0";
-    setTimeout(function(){ div.style.display = "none"; }, 600);
+	//var div = this.parentElement;
+	var div = event.currentTarget.parentElement;
+	div.style.opacity = "0";
+	setTimeout(function(){ div.style.display = "none"; }, 600);
 }
 
 function createErrorAlert(message) {

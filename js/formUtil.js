@@ -46,7 +46,7 @@ function checkUniqueSelects(formScheda) {
 }
 
 function checkUserSelected() {
-    var userId = document.querySelector("#userId").value;
+	var userId = document.querySelector("#userId").value;
 	if (userId===""){
 		console.log('Errore: Utente non selezionato.');
 		createErrorAlert('Utente non selezionato.');
@@ -56,7 +56,7 @@ function checkUserSelected() {
 }
 
 function checkNumberPicker(formScheda) {
-    var numberPicker = formScheda.querySelectorAll('input[type="number"]')
+	var numberPicker = formScheda.querySelectorAll('input[type="number"]')
 	for (var i = 0; i < numberPicker.length; i++) {
 		var num = parseInt(numberPicker[i].value);
 		if(isNaN(num)){

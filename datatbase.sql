@@ -60,25 +60,6 @@ CONSTRAINT FK_svolgimento_esercizio FOREIGN KEY(esercizio)
 	REFERENCES Esercizio(id)
 )ENGINE=InnoDB;
 
-DROP TABLE IF EXISTS Turno;
-CREATE TABLE IF NOT EXISTS Turno(
-id INT NOT NULL AUTO_INCREMENT,
-giorno INT NOT NULL, /*DAYOFWEEK: 1 - sunday, 2 - monday ...*/
-ora VARCHAR(10) NOT NULL,
-PRIMARY KEY(id)
-)ENGINE=InnoDB;
-
-DROP TABLE IF EXISTS Orario;
-CREATE TABLE IF NOT EXISTS Orario(
-dipendente VARCHAR(50) NOT NULL,
-turno INT NOT NULL,
-PRIMARY KEY(dipendente, turno),
-CONSTRAINT FK_orario_utente FOREIGN KEY(dipendente)
-	REFERENCES Utente(username),
-CONSTRAINT FK_orario_turno FOREIGN KEY(turno)
-	REFERENCES Turno(id)
-)ENGINE=InnoDB;
-
 INSERT INTO Esercizio
 VALUES (NULL, "Sollevamenti posteriori ai cavi", "esercizi/dorso/sollevamenti_posteriori_ai_cavi.png", "Dorso", "Consiste nel allungare delle cavi mediante l&rsquo;uso della braccia, serve per allenare la parte alta del dorso.", ""),
 (NULL, "Rematore gomiti larghi", "esercizi/dorso/rematore_gomiti_larghi.png", "Dorso", "Consiste nel sollevare e abbassare il bilanciere con una posizione leggermente inclinata verso l&rsquo;avanti.", ""),

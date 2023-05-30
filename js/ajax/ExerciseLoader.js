@@ -34,7 +34,7 @@ ExerciseLoader.onExerciseAjaxResponse = function(response){
 	}
 	
 	if (response.responseCode === ExerciseLoader.NO_MORE_DATA)
-        ExerciseDashboard.setEmptyDashboard();
+		ExerciseDashboard.setEmptyDashboard();
 	return;
 }
 	

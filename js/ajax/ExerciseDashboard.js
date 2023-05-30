@@ -7,32 +7,25 @@ ExerciseDashboard.removeContent = function(){
 	
 	var firstChild = dashboardElement.firstChild;
 	while(firstChild !== null){
-        dashboardElement.removeChild(firstChild);
-        firstChild = dashboardElement.firstChild;
-    }
+		dashboardElement.removeChild(firstChild);
+		firstChild = dashboardElement.firstChild;
+	}
 
 }
 
 ExerciseDashboard.setEmptyDashboard = function(){
 	ExerciseDashboard.removeContent();
-	//var warningDivElem = document.createElement("div");
-	//warningDivElem.setAttribute("class", "warning");
-	//var warningSpanElem = document.createElement("span");
-	//warningSpanElem.textContent = "There are no movies to load!";
-	//
-	//warningDivElem.appendChild(warningSpanElem);
-	//dashboardElement.appendChild(warningDivElem);
 }
 
 ExerciseDashboard.refreshData = function(data){
 	ExerciseDashboard.removeContent();
 
-    var exerciseDeck = document.getElementById("exerciseDashboard");
-    // Create Excercise card	
-    for (var i = 0; i < data.length; i++){
-        var exerciseCard = ExerciseDashboard.createExerciseCard(data[i]);
-        exerciseDeck.appendChild(exerciseCard);
-    }
+	var exerciseDeck = document.getElementById("exerciseDashboard");
+	// Create Excercise card	
+	for (var i = 0; i < data.length; i++){
+		var exerciseCard = ExerciseDashboard.createExerciseCard(data[i]);
+		exerciseDeck.appendChild(exerciseCard);
+	}
 }
 
 ExerciseDashboard.createExerciseCard = function(currentData){
@@ -46,25 +39,23 @@ ExerciseDashboard.createExerciseCard = function(currentData){
 }
 
 ExerciseDashboard.createDetailExerciseElement = function(currentData){
-    var detailExercise = document.createElement("div");
+	var detailExercise = document.createElement("div");
 
-    var nameExercise = document.createElement("h4");
-    //nameExercise.textContent = currentData.name;
-    nameExercise.innerHTML = currentData.name;
+	var nameExercise = document.createElement("h4");
+	nameExercise.innerHTML = currentData.name;
 
-    var descriptionExercise = document.createElement("p");
-    //descriptionExercise.textContent = currentData.description;
-    descriptionExercise.innerHTML = currentData.description;
-    
-    detailExercise.appendChild(nameExercise);
-    detailExercise.appendChild(descriptionExercise);
+	var descriptionExercise = document.createElement("p");
+	descriptionExercise.innerHTML = currentData.description;
+	
+	detailExercise.appendChild(nameExercise);
+	detailExercise.appendChild(descriptionExercise);
 
-    return detailExercise;
+	return detailExercise;
 }
 
 ExerciseDashboard.createIllustrationElement = function(currentData){
-    var imageExercise = document.createElement("img");
-    imageExercise.setAttribute("src", "../img/"+currentData.image);
-    imageExercise.setAttribute("alt", "");
-    return imageExercise;
+	var imageExercise = document.createElement("img");
+	imageExercise.setAttribute("src", "../img/"+currentData.image);
+	imageExercise.setAttribute("alt", "");
+	return imageExercise;
 }

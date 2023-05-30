@@ -4,7 +4,9 @@
 	require_once DIR_UTIL . "exerciseManagerDb.php";
 	require_once DIR_AJAX_UTIL . "AjaxResponse.php";
 	include_once DIR_UTIL . "sessionUtil.php";
-	session_start();
+	if(!isset($_SESSION)){
+		session_start();
+	}
 	$response = new AjaxResponse();
 
 	if(!isLogged()){

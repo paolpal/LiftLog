@@ -3,7 +3,7 @@ function WorkoutDashboard(){}
 // **************** FIELD FORM NUOVA SCHEDA ****************
 
 WorkoutDashboard.addExerciseFields = function(data){
-    var container = document.getElementById("formScheda");
+	var container = document.getElementById("formScheda");
 
 	var riga = document.createElement("div");
 	riga.setAttribute("class", "exe");
@@ -122,9 +122,9 @@ WorkoutDashboard.removeContent = function(){
 	
 	var firstChild = dashboardElement.firstChild;
 	while(firstChild !== null){
-        dashboardElement.removeChild(firstChild);
-        firstChild = dashboardElement.firstChild;
-    }
+		dashboardElement.removeChild(firstChild);
+		firstChild = dashboardElement.firstChild;
+	}
 
 }
 
@@ -140,9 +140,9 @@ WorkoutDashboard.refreshData = function(data, isTrainer) {
 
 	var dashboardElement = document.getElementById("workoutDashboard");
 	for (var i = 0; i < data.length; i++){
-        var workoutCard = WorkoutDashboard.createWorkoutCard(data[i], isTrainer);
-        dashboardElement.appendChild(workoutCard);
-    }
+		var workoutCard = WorkoutDashboard.createWorkoutCard(data[i], isTrainer);
+		dashboardElement.appendChild(workoutCard);
+	}
 }
 
 WorkoutDashboard.createWorkoutCard = function(currentData, isTrainer){

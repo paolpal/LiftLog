@@ -1,144 +1,144 @@
 .scheda {
-    background-color: #f1f1f1;
-    width: 50%;
-    border-radius: 20px;
-    border: 1px solid #ccc;
-    padding: 20px;
-    box-sizing: border-box;
-    margin-top: 10px;
+	background-color: #f1f1f1;
+	width: 50%;
+	border-radius: 20px;
+	border: 1px solid #ccc;
+	padding: 20px;
+	box-sizing: border-box;
+	margin-top: 10px;
 }
 
 .scheda .header {
-    font-weight: 700;
-    width: 95%;
-    margin-left: 5%;
+	font-weight: 700;
+	width: 95%;
+	margin-left: 5%;
 }
 
 .scheda .header div {
-    display: inline-block;
-    padding-right: 10px;
-    padding-left: 10px;
+	display: inline-block;
+	padding-right: 10px;
+	padding-left: 10px;
 }
 
 .scheda > button {
-    box-sizing: border-box;
-    background-color: inherit;
-    border: none;
+	box-sizing: border-box;
+	background-color: inherit;
+	border: none;
 }
 
-.scheda > button:hover {
-    color: orangered;
+.scheda > button:hover > i {
+	filter: invert(38%) sepia(59%) saturate(5497%) hue-rotate(1deg) brightness(102%) contrast(106%);
 }
 
 .scheda ul {
-    list-style: none;
-    overflow-x: hidden;
-    width: 90%;
-    background-color: inherit;
+	list-style: none;
+	overflow-x: hidden;
+	width: 90%;
+	background-color: inherit;
 }
 
 .scheda li {
-    padding-top: 10px;
-    background-color: inherit;
+	padding-top: 10px;
+	background-color: inherit;
 }
 
 .scheda li div {
-    display: inline-block;
-    background-color: inherit;
-    padding-left: 5px;
-    padding-right: 5px;
+	display: inline-block;
+	background-color: inherit;
+	padding-left: 5px;
+	padding-right: 5px;
 }
 
 .scheda li:before {
-    white-space: nowrap;
-    width: 0;
-    float: left;
-    content:
-        ". . . . . . . . . . . . . . . . . . . . "
-        ". . . . . . . . . . . . . . . . . . . . "
-        ". . . . . . . . . . . . . . . . . . . . "
-        ". . . . . . . . . . . . . . . . . . . . "
-        ". . . . . . . . . . . . . . . . . . . . "
-        ". . . . . . . . . . . . . . . . . . . . ";
+	white-space: nowrap;
+	width: 0;
+	float: left;
+	content:
+		". . . . . . . . . . . . . . . . . . . . "
+		". . . . . . . . . . . . . . . . . . . . "
+		". . . . . . . . . . . . . . . . . . . . "
+		". . . . . . . . . . . . . . . . . . . . "
+		". . . . . . . . . . . . . . . . . . . . "
+		". . . . . . . . . . . . . . . . . . . . ";
 }
 
 .scheda .info {
-    float: right;
+	float: right;
 }
 
 .newScheda {
-    position: fixed;
-    right: 0px;
-    top: 50px;
-    background-color: #f1f1f1;
-    width: 40%;
-    margin-right: 20px;
-    margin-top: 20px;
-    border-radius: 20px;
-    border: 1px solid #ccc;
-    padding: 20px;
-    box-sizing: border-box;
+	position: fixed;
+	right: 0px;
+	top: 50px;
+	background-color: #f1f1f1;
+	width: 40%;
+	margin-right: 20px;
+	margin-top: 20px;
+	border-radius: 20px;
+	border: 1px solid #ccc;
+	padding: 20px;
+	box-sizing: border-box;
 }
 
 .newScheda .container {
-    display: table;
+	display: table;
 }
 
 .newScheda .titles {
-    display: table-header-group;
-    font-weight: bold;
+	display: table-header-group;
+	font-weight: bold;
 }
 
 .newScheda .exe {
-    display: table-row;
-    font-weight: bold;
+	display: table-row;
+	font-weight: bold;
 }
 
 .newScheda div {
-    display: table-cell;
-    padding: 5px 10px;
+	display: table-cell;
+	padding: 5px 10px;
 }
 
 .newScheda input[type=number]{
-    width: 50px;
+	width: 50px;
 }
 
 .exe i:hover {
-    color: orangered;
+	color: orangered;
 }
 
 .addExe button {
-    background-color: orangered;
-    color: white;
-    border-radius: 20px;
-    text-align: center;
-    border: none;
-    padding: 10px;
-    margin: 4px 2px;
-    padding-left: 12px;
-    padding-right: 12px;
+	background-color: orangered;
+	color: white;
+	border-radius: 20px;
+	text-align: center;
+	border: none;
+	padding: 10px;
+	margin: 4px 2px;
+	padding-left: 12px;
+	padding-right: 12px;
 }
 
 .addExe button:hover{
-    background-color: orange;
+	background-color: orange;
 }
 
 .newScheda .command {
-    display: table-footer-group;
+	display: table-footer-group;
 }
 
 .command button {
-    background-color: orangered;
-    color: white;
-    border-radius: 20px;
-    text-align: center;
-    border: none;
-    padding: 10px;
-    margin: 4px 2px;
-    padding-left: 12px;
-    padding-right: 12px;
+	background-color: orangered;
+	color: white;
+	border-radius: 20px;
+	text-align: center;
+	border: none;
+	padding: 10px;
+	margin: 4px 2px;
+	padding-left: 12px;
+	padding-right: 12px;
 }
 
 .command button:hover{
-    background-color: orange;
+	background-color: orange;
 }

@@ -1,6 +1,6 @@
 <?php
 	require_once __DIR__ . "/../config.php";
-    require_once DIR_UTIL . "liftLogDbManager.php"; //includes Database Class
+	require_once DIR_UTIL . "liftLogDbManager.php"; //includes Database Class
 
 	function getAllExercises() {
 		global $liftLogDb;
@@ -211,20 +211,20 @@
 	}	
 
 	function getAllTrainers(){
-        global $liftLogDb;
-        $queryText = 'SELECT * FROM Utente WHERE dipendente = TRUE';
+		global $liftLogDb;
+		$queryText = 'SELECT * FROM Utente WHERE dipendente = TRUE';
 		$result = $liftLogDb->performQuery($queryText);
 		$liftLogDb->closeConnection();
-        return $result;
-    }
+		return $result;
+	}
 
-    function getAllCustomers(){
-        global $liftLogDb;
-        $queryText = 'SELECT * FROM Utente WHERE dipendente = FALSE';
+	function getAllCustomers(){
+		global $liftLogDb;
+		$queryText = 'SELECT * FROM Utente WHERE dipendente = FALSE';
 		$result = $liftLogDb->performQuery($queryText);
 		$liftLogDb->closeConnection();
-        return $result;
-    }
+		return $result;
+	}
 
 	function checkUsername($username) {
 		global $liftLogDb;
@@ -278,7 +278,7 @@
 
 	function resetPassword($id, $newPassword){
 		global $liftLogDb;
-        $queryText = "UPDATE Utente SET `password` = SHA2(? ,512) WHERE id = ?";
+		$queryText = "UPDATE Utente SET `password` = SHA2(? ,512) WHERE id = ?";
 		$stmt = $liftLogDb->prepare($queryText);
 		$stmt->bind_param('si', $newPassword, $id);
 		$stmt->execute();
@@ -297,7 +297,7 @@
 		if ($stmt === false) {
 			die("Errore nella preparazione della query: " . $liftLogDb->error);
 		}
-		$stmt->bind_param("ssss", $username, $nome, $cognome, $password);
+		$stmt->bind_param("ssss", $username, $password, $nome, $cognome);
 		$stmt->execute();
 		if ($stmt === false) {
 			die("Errore nell'esecuzione della query: " . $stmt->error);
