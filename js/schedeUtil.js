@@ -25,16 +25,16 @@ function openTab(evt, cityName) {
 
 // Get the element with id="defaultOpen" and click on it
 
-function showPassword() {
-var x = document.getElementById("psw");
-var eye = document.getElementById("eye");
-if (x.type === "password") {
-	x.type = "text";
-	eye.classList.remove("fa-eye");
-	eye.classList.add("fa-eye-slash");
-} else {
-	x.type = "password";
-	eye.classList.remove("fa-eye-slash");
-	eye.classList.add("fa-eye");
-}
+function showPassword(event) {
+	var eye = event.target;
+	var pwdField = event.target.parentNode.querySelector("input");
+	if (pwdField.type === "password") {
+		pwdField.type = "text";
+		eye.classList.remove("fa-eye");
+		eye.classList.add("fa-eye-slash");
+	} else {
+		pwdField.type = "password";
+		eye.classList.remove("fa-eye-slash");
+		eye.classList.add("fa-eye");
+	}
 } 

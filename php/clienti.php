@@ -116,16 +116,10 @@
 							<input type="text" placeholder="Cognome.." name="cognome" id="cognome" required>
 
 							<label for="psw"><b>Password</b></label>
-							<div>
-								<div class="pass">
-									<input type="password" placeholder="Password.." name="psw" id="psw" value="" required>
-									<i class="fa fa-eye" onclick="showPassword()" id="eye"></i>
-								</div>
+							<div class="pass">
+								<input type="password" placeholder="Password.." name="psw" id="psw" value="" required>
+								<i class="fa fa-eye" onclick="showPassword(event)" id="eye"></i>
 							</div>
-							<!--
-							<label for="confPsw"><b>Conferma Password</b></label>
-							<input type="password" placeholder="Conferma Password.." name="confPsw" id="confPsw" required>
-							-->
 							<button type="button" onclick="genPassword()">Genera Password</button>
 							<button type="submit" >Registra</button>
 						</div>

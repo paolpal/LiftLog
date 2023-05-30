@@ -128,19 +128,36 @@ UserDashboard.createUserIdField = function(container, currentData) {
 	var userIdInput = UserDashboard.createInput("hidden", "", "userId", currentData.id);
 	container.appendChild(userIdInput);
 }
+
+UserDashboard.createEye = function() {
+	var eye = document.createElement("i");
+	eye.className = "fa fa-eye";
+	eye.addEventListener("click", showPassword);
+	return eye;
+}
   
 UserDashboard.createPasswordField = function(container) {
 	var passwordLabel = UserDashboard.createLabel("Vecchia Password");
 	var passwordInput = UserDashboard.createInput("password", "Password..", "psw", "");
+	var eye = UserDashboard.createEye();
+	var wrapper = document.createElement("div");
+	wrapper.className = "pass";
+	wrapper.appendChild(passwordInput);
+	wrapper.appendChild(eye);
 	container.appendChild(passwordLabel);
-	container.appendChild(passwordInput);
+	container.appendChild(wrapper);
 }
   
 UserDashboard.createNewPasswordField = function(container) {
 	var newPasswordLabel = UserDashboard.createLabel("Nuova Password");
 	var newPasswordInput = UserDashboard.createInput("password", "Nuova Password..", "newPsw", "");
+	var eye = UserDashboard.createEye();
+	var wrapper = document.createElement("div");
+	wrapper.className = "pass";
+	wrapper.appendChild(newPasswordInput);
+	wrapper.appendChild(eye);
 	container.appendChild(newPasswordLabel);
-	container.appendChild(newPasswordInput);
+	container.appendChild(wrapper);
 }
   
 UserDashboard.createChangePasswordButton = function(container) {

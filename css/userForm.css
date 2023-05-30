@@ -1,4 +1,5 @@
-.newUser .pass {
+/*wrapper per l'occhio*/
+.pass {
 	display: inline-block;
 	width: 100%;
 	position: relative;
