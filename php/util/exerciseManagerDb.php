@@ -260,21 +260,7 @@
 
 		return $userRow['id']==$id;
 	}
-/*
-	function updateUser($id, $username, $nome, $cognome){
-		global $liftLogDb;
-		$queryText = "UPDATE Utente SET username = ?, nome = ?, cognome = ? WHERE id = ?";
-		$stmt = $liftLogDb->prepare($queryText);
-		$stmt->bind_param('sssi', $username, $nome, $cognome, $id);
-		$stmt->execute();
-		if ($stmt === false) {
-			die("Errore nell'esecuzione della query: " . $stmt->error);
-		}
-		$stmt->close();
-		$liftLogDb->closeConnection();
-		return true;
-	}
-*/
+
 	function updateUser($id, $username, $nome, $cognome){
 		global $liftLogDb;
 		$queryText = "UPDATE Utente SET ";
@@ -290,31 +276,22 @@
 			$queryText .= buildUpdateField("cognome", $cognome, $params);
 		}
 		
-		// Rimuovi l'ultima virgola dalla queryText
 		$queryText = rtrim($queryText, ', ');
 		
 		$queryText .= " WHERE id = ?";
 		$params[] = $id;
-		echo $queryText;
 
 		$stmt = $liftLogDb->prepare($queryText);
 		
-		// Verifica se la preparazione della query ha avuto successo
 		if ($stmt === false) {
 			die("Errore nella preparazione della query: " . $liftLogDb->error);
 		}
-		echo 1;
-		// Se ci sono parametri, associa correttamente i tipi di dati per il bind
 		if (!empty($params)) {
-			echo 2;
 			$types = str_repeat('s', count($params)-1) . 'i';
-			echo $types;
-			print_r($params);
 			$stmt->bind_param($types, ...$params);
 		}
 		
 		$stmt->execute();
-		// Verifica se l'esecuzione della query ha avuto successo
 		if ($stmt === false) {
 			die("Errore nell'esecuzione della query: " . $stmt->error);
 		}
