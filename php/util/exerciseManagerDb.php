@@ -242,6 +242,25 @@
 			return false;
 	}
 
+	function myUsername($username, $id) {
+		global $liftLogDb;
+		$queryText = 'SELECT * FROM Utente WHERE username = ?';
+		$stmt = $liftLogDb->prepare($queryText);
+		$stmt->bind_param('s', $username);
+		$stmt->execute();
+
+		$result = $stmt->get_result();
+		$numRow = $result->num_rows;
+		if ($numRow !== 1)
+			return false;
+		
+		$stmt->close();
+		$liftLogDb->closeConnection();
+		$userRow = $result->fetch_assoc();
+
+		return $userRow['id']==$id;
+	}
+/*
 	function updateUser($id, $username, $nome, $cognome){
 		global $liftLogDb;
 		$queryText = "UPDATE Utente SET username = ?, nome = ?, cognome = ? WHERE id = ?";
@@ -255,6 +274,63 @@
 		$liftLogDb->closeConnection();
 		return true;
 	}
+*/
+	function updateUser($id, $username, $nome, $cognome){
+		global $liftLogDb;
+		$queryText = "UPDATE Utente SET ";
+		$params = array();
+		
+		if (!empty($username) && $username !== null) {
+			$queryText .= buildUpdateField("username", $username, $params);
+		}
+		if (!empty($nome) && $nome !== null) {
+			$queryText .= buildUpdateField("nome", $nome, $params);
+		}
+		if (!empty($cognome) && $cognome !== null) {
+			$queryText .= buildUpdateField("cognome", $cognome, $params);
+		}
+		
+		// Rimuovi l'ultima virgola dalla queryText
+		$queryText = rtrim($queryText, ', ');
+		
+		$queryText .= " WHERE id = ?";
+		$params[] = $id;
+		echo $queryText;
+
+		$stmt = $liftLogDb->prepare($queryText);
+		
+		// Verifica se la preparazione della query ha avuto successo
+		if ($stmt === false) {
+			die("Errore nella preparazione della query: " . $liftLogDb->error);
+		}
+		echo 1;
+		// Se ci sono parametri, associa correttamente i tipi di dati per il bind
+		if (!empty($params)) {
+			echo 2;
+			$types = str_repeat('s', count($params)-1) . 'i';
+			echo $types;
+			print_r($params);
+			$stmt->bind_param($types, ...$params);
+		}
+		
+		$stmt->execute();
+		// Verifica se l'esecuzione della query ha avuto successo
+		if ($stmt === false) {
+			die("Errore nell'esecuzione della query: " . $stmt->error);
+		}
+		
+		$stmt->close();
+		$liftLogDb->closeConnection();
+		return true;
+	}
+	
+	function buildUpdateField($field, $value, &$params) {
+		$query = "";
+		$query .= $field . " = ?, ";
+		$params[] = $value;
+		return $query;
+	}
+	
 
 	function checkOldPassword($id, $oldPassword){
 		global $liftLogDb;
@@ -323,7 +399,6 @@
 		if ($numRow !== 1)
 			return -1;
 		
-		echo 0;
 		$stmt->close();
 		$liftLogDb->closeConnection();
 		$userRow = $result->fetch_assoc();
