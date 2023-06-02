@@ -242,7 +242,7 @@
 			return false;
 	}
 
-	function myUsername($username, $id) {
+	function myUsername($id, $username) {
 		global $liftLogDb;
 		$queryText = 'SELECT * FROM Utente WHERE username = ?';
 		$stmt = $liftLogDb->prepare($queryText);
@@ -260,54 +260,34 @@
 
 		return $userRow['id']==$id;
 	}
-
-	function updateUser($id, $username, $nome, $cognome){
+	
+	function updateUserData($id, $nome, $cognome){
 		global $liftLogDb;
-		$queryText = "UPDATE Utente SET ";
-		$params = array();
-		
-		if (!empty($username) && $username !== null) {
-			$queryText .= buildUpdateField("username", $username, $params);
-		}
-		if (!empty($nome) && $nome !== null) {
-			$queryText .= buildUpdateField("nome", $nome, $params);
-		}
-		if (!empty($cognome) && $cognome !== null) {
-			$queryText .= buildUpdateField("cognome", $cognome, $params);
-		}
-		
-		$queryText = rtrim($queryText, ', ');
-		
-		$queryText .= " WHERE id = ?";
-		$params[] = $id;
-
+		$queryText = "UPDATE Utente SET nome = ?, cognome = ? WHERE id = ?";
 		$stmt = $liftLogDb->prepare($queryText);
-		
-		if ($stmt === false) {
-			die("Errore nella preparazione della query: " . $liftLogDb->error);
-		}
-		if (!empty($params)) {
-			$types = str_repeat('s', count($params)-1) . 'i';
-			$stmt->bind_param($types, ...$params);
-		}
-		
+		$stmt->bind_param('ssi', $nome, $cognome, $id);
 		$stmt->execute();
 		if ($stmt === false) {
 			die("Errore nell'esecuzione della query: " . $stmt->error);
 		}
-		
 		$stmt->close();
 		$liftLogDb->closeConnection();
 		return true;
 	}
-	
-	function buildUpdateField($field, $value, &$params) {
-		$query = "";
-		$query .= $field . " = ?, ";
-		$params[] = $value;
-		return $query;
+
+	function updateUserUsername($id, $username){
+		global $liftLogDb;
+		$queryText = "UPDATE Utente SET username = ? WHERE id = ?";
+		$stmt = $liftLogDb->prepare($queryText);
+		$stmt->bind_param('si', $username, $id);
+		$stmt->execute();
+		if ($stmt === false) {
+			die("Errore nell'esecuzione della query: " . $stmt->error);
+		}
+		$stmt->close();
+		$liftLogDb->closeConnection();
+		return true;
 	}
-	
 
 	function checkOldPassword($id, $oldPassword){
 		global $liftLogDb;

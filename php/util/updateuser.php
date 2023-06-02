@@ -26,9 +26,9 @@
 		if ($id != null && $username != null && $nome != null && $cognome != null ){
 
 			#check for usable username
-			if(checkUsername($username) || myUsername($username, $id)){
-				if(myUsername($username, $id)) $username = NULL;
-				updateUser($id, $username, $nome, $cognome);
+			if(checkUsername($username) || myUsername($id, $username)){
+				if(!myUsername($id, $username)) updateUserUsername($id, $username);
+				updateUserData($id, $nome, $cognome);
 				return null;
 			}
 			else return 'Username non disponibile.';
