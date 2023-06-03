@@ -4,7 +4,7 @@
 
 	function getAllExercises() {
 		global $liftLogDb;
-		$queryText = 'SELECT * FROM Esercizio';
+		$queryText = 'SELECT * FROM esercizio';
 		$result = $liftLogDb->performQuery($queryText);
 		$liftLogDb->closeConnection();
 		return $result;
@@ -13,7 +13,7 @@
 	function getSearchExerciseByKeyWord($pattern) {
 		global $liftLogDb;
 	
-		$queryText = 'SELECT * FROM Esercizio WHERE nome LIKE ?';
+		$queryText = 'SELECT * FROM esercizio WHERE nome LIKE ?';
 		$stmt = $liftLogDb->prepare($queryText);
 		
 		if ($stmt === false) {
@@ -38,7 +38,7 @@
 	function getWorkoutByUserId($userId) {
 		global $liftLogDb;
 	
-		$queryText = 'SELECT * FROM Scheda WHERE utente = ?';
+		$queryText = 'SELECT * FROM scheda WHERE utente = ?';
 		$stmt = $liftLogDb->prepare($queryText);
 		if ($stmt === false) {
 			die("Errore nella preparazione della query: " . $liftLogDb->error);
@@ -61,7 +61,7 @@
 	function getWorkoutByWorkoutId($workoutId) {
 		global $liftLogDb;
 	
-		$queryText = 'SELECT * FROM Scheda WHERE id = ?';
+		$queryText = 'SELECT * FROM scheda WHERE id = ?';
 		$stmt = $liftLogDb->prepare($queryText);
 	
 		if ($stmt === false) {
@@ -85,7 +85,7 @@
 	function getTrainingByWorkoutId($workoutId) {
 		global $liftLogDb;
 	
-		$queryText = 'SELECT * FROM Svolgimento WHERE scheda = ?';
+		$queryText = 'SELECT * FROM svolgimento WHERE scheda = ?';
 		$stmt = $liftLogDb->prepare($queryText);
 	
 		if ($stmt === false) {
@@ -108,7 +108,7 @@
 	
 	function getExerciseById($exeId){
 		global $liftLogDb;
-		$queryText = 'SELECT * FROM Esercizio WHERE id = ?';
+		$queryText = 'SELECT * FROM esercizio WHERE id = ?';
 		$stmt = $liftLogDb->prepare($queryText);
 		if ($stmt === false) {
 			die("Errore nella preparazione della query: " . $liftLogDb->error);
@@ -126,7 +126,7 @@
 	
 	function getLastWorkout($userId) {
 		global $liftLogDb;
-		$queryText = 'SELECT MAX(id) FROM Scheda WHERE utente = ?';
+		$queryText = 'SELECT MAX(id) FROM scheda WHERE utente = ?';
 		$stmt = $liftLogDb->prepare($queryText);
 		$stmt->bind_param('i', $userId);
 		$stmt->execute();
@@ -139,7 +139,7 @@
 	
 	function insertWorkout($userId) {
 		global $liftLogDb;
-		$queryText = 'INSERT INTO Scheda VALUES (NULL, ?, curdate())';
+		$queryText = 'INSERT INTO scheda VALUES (NULL, ?, curdate())';
 		$stmt = $liftLogDb->prepare($queryText);
 		if ($stmt === false) {
 			die("Errore nella preparazione della query: " . $liftLogDb->error);
@@ -156,7 +156,7 @@
 	
 	function insertTraining($exeId, $workoutId, $series, $reps, $rest){
 		global $liftLogDb;
-		$queryText = 'INSERT INTO Svolgimento VALUES (NULL, ?, ?, ?, ?, ?)';
+		$queryText = 'INSERT INTO svolgimento VALUES (NULL, ?, ?, ?, ?, ?)';
 		$stmt = $liftLogDb->prepare($queryText);
 		if ($stmt === false) {
 			die("Errore nella preparazione della query: " . $liftLogDb->error);
@@ -173,7 +173,7 @@
 	
 	function deleteWorkoutById($workoutId) {
 		global $liftLogDb;
-		$queryText = 'DELETE FROM Scheda WHERE id = ?';
+		$queryText = 'DELETE FROM scheda WHERE id = ?';
 		$stmt = $liftLogDb->prepare($queryText);
 		$stmt->bind_param('i', $workoutId);
 		$stmt->execute();
@@ -186,7 +186,7 @@
 
 	function deleteTrainingByWorkoutId($workoutId) {
 		global $liftLogDb;
-		$queryText = 'DELETE FROM Svolgimento WHERE scheda = ?';
+		$queryText = 'DELETE FROM svolgimento WHERE scheda = ?';
 		$stmt = $liftLogDb->prepare($queryText);
 		$stmt->bind_param('i', $workoutId);
 		$stmt->execute();
@@ -199,7 +199,7 @@
 
 	function getUserByUserId($userId) {
 		global $liftLogDb;
-		$queryText = 'SELECT * FROM Utente WHERE id = ?';
+		$queryText = 'SELECT * FROM utente WHERE id = ?';
 		$stmt = $liftLogDb->prepare($queryText);
 		$stmt->bind_param('i', $userId);
 		$stmt->execute();
@@ -212,7 +212,7 @@
 
 	function getAllTrainers(){
 		global $liftLogDb;
-		$queryText = 'SELECT * FROM Utente WHERE dipendente = TRUE';
+		$queryText = 'SELECT * FROM utente WHERE dipendente = TRUE';
 		$result = $liftLogDb->performQuery($queryText);
 		$liftLogDb->closeConnection();
 		return $result;
@@ -220,7 +220,7 @@
 
 	function getAllCustomers(){
 		global $liftLogDb;
-		$queryText = 'SELECT * FROM Utente WHERE dipendente = FALSE';
+		$queryText = 'SELECT * FROM utente WHERE dipendente = FALSE';
 		$result = $liftLogDb->performQuery($queryText);
 		$liftLogDb->closeConnection();
 		return $result;
@@ -228,7 +228,7 @@
 
 	function checkUsername($username) {
 		global $liftLogDb;
-		$queryText = 'SELECT * FROM Utente WHERE username = ?';
+		$queryText = 'SELECT * FROM utente WHERE username = ?';
 		$stmt = $liftLogDb->prepare($queryText);
 		$stmt->bind_param('s', $username);
 		$stmt->execute();
@@ -244,7 +244,7 @@
 
 	function myUsername($id, $username) {
 		global $liftLogDb;
-		$queryText = 'SELECT * FROM Utente WHERE username = ?';
+		$queryText = 'SELECT * FROM utente WHERE username = ?';
 		$stmt = $liftLogDb->prepare($queryText);
 		$stmt->bind_param('s', $username);
 		$stmt->execute();
@@ -263,7 +263,7 @@
 	
 	function updateUserData($id, $nome, $cognome){
 		global $liftLogDb;
-		$queryText = "UPDATE Utente SET nome = ?, cognome = ? WHERE id = ?";
+		$queryText = "UPDATE utente SET nome = ?, cognome = ? WHERE id = ?";
 		$stmt = $liftLogDb->prepare($queryText);
 		$stmt->bind_param('ssi', $nome, $cognome, $id);
 		$stmt->execute();
@@ -277,7 +277,7 @@
 
 	function updateUserUsername($id, $username){
 		global $liftLogDb;
-		$queryText = "UPDATE Utente SET username = ? WHERE id = ?";
+		$queryText = "UPDATE utente SET username = ? WHERE id = ?";
 		$stmt = $liftLogDb->prepare($queryText);
 		$stmt->bind_param('si', $username, $id);
 		$stmt->execute();
@@ -291,7 +291,7 @@
 
 	function checkOldPassword($id, $oldPassword){
 		global $liftLogDb;
-		$queryText = "SELECT * FROM Utente WHERE id = ? AND `password` = SHA2(?, 512)";
+		$queryText = "SELECT * FROM utente WHERE id = ? AND `password` = SHA2(?, 512)";
 		$stmt = $liftLogDb->prepare($queryText);
 		$stmt->bind_param('is', $id, $oldPassword);
 		$stmt->execute();
@@ -311,7 +311,7 @@
 
 	function resetPassword($id, $newPassword){
 		global $liftLogDb;
-		$queryText = "UPDATE Utente SET `password` = SHA2(? ,512) WHERE id = ?";
+		$queryText = "UPDATE utente SET `password` = SHA2(? ,512) WHERE id = ?";
 		$stmt = $liftLogDb->prepare($queryText);
 		$stmt->bind_param('si', $newPassword, $id);
 		$stmt->execute();
@@ -325,7 +325,7 @@
 
 	function insertCostumer($username, $nome, $cognome, $password) {
 		global $liftLogDb;
-		$queryText = "INSERT INTO Utente (username, `password`, nome, cognome, dipendente) VALUES (?, SHA2(? ,512), ?, ?, FALSE)";
+		$queryText = "INSERT INTO utente (username, `password`, nome, cognome, dipendente) VALUES (?, SHA2(? ,512), ?, ?, FALSE)";
 		$stmt = $liftLogDb->prepare($queryText);
 		if ($stmt === false) {
 			die("Errore nella preparazione della query: " . $liftLogDb->error);
@@ -345,7 +345,7 @@
 		$username = $liftLogDb->sqlInjectionFilter($username);
 		$password = $liftLogDb->sqlInjectionFilter($password);
 
-		$queryText = "SELECT * FROM Utente WHERE username = ? AND `password` = SHA2(?, 512)";
+		$queryText = "SELECT * FROM utente WHERE username = ? AND `password` = SHA2(?, 512)";
 
 		$stmt = $liftLogDb->prepare($queryText);
 		$stmt->bind_param("ss", $username, $password);
@@ -364,7 +364,7 @@
 
 	function checkTrainer($userId){
 		global $liftLogDb;
-		$queryText = "SELECT * FROM Utente WHERE id = ? AND dipendente = TRUE";
+		$queryText = "SELECT * FROM utente WHERE id = ? AND dipendente = TRUE";
 		$stmt = $liftLogDb->prepare($queryText);
 		$stmt->bind_param("i", $userId);
 		$stmt->execute();
@@ -375,7 +375,7 @@
 
 	function deleteCustomerById($id) {
 		global $liftLogDb;
-		$queryText = 'DELETE FROM Utente WHERE id = ?';
+		$queryText = 'DELETE FROM utente WHERE id = ?';
 		$stmt = $liftLogDb->prepare($queryText);
 		$stmt->bind_param('i', $id);
 		$stmt->execute();
